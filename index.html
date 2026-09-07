@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Central 01 — QG 001 • V5.1 Final • Painel Único</title>
+    <title>Paula Bento Criações & Soluções ERP • QG 001</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
@@ -51,7 +51,7 @@
         @media(max-width:1100px){ .kanban{grid-template-columns:repeat(4,260px);} }
 
         /* PAULA BENTO — identidade visual aplicada ao QG 001 */
-        :root{--pb-black:#0F0F10;--pb-ivory:#FAF8F4;--pb-charcoal:#2F3133;--pb-gray:#6F7275;--pb-blush:#DCCFCF;--pb-taupe:#9A887C;--pb-brown:#45362F;--pb-sand:#C9B79A;--pb-line:rgba(154,136,124,.28)}
+        :root{--pb-black:#0F0F10;--pb-ivory:#FAF8F4;--pb-charcoal:#2F3133;--pb-gray:#6F7275;--pb-blush:#DCCFCF;--pb-taupe:#9A887C;--pb-brown:#45362F;--pb-sand:#C9B79A;--pb-line:rgba(154,136,124,.28);--app-accent:#45362F;--app-accent-soft:#C9B79A;--app-bg:#FAF8F4;--app-panel:#FFFFFF;--app-sidebar:#2F3133;--app-text:#2F3133;--app-border:#ded3c9}
         body{background:var(--pb-ivory)!important;color:var(--pb-charcoal)!important}
         header{background:rgba(250,248,244,.96)!important;border-color:var(--pb-line)!important;color:var(--pb-charcoal)!important}
         aside{background:var(--pb-black)!important;border-color:#2a2a2c!important}
@@ -101,9 +101,43 @@
         .pb-product{border:1px solid #e2d9d1;background:#FAF8F4;color:#2F3133;border-radius:18px;padding:18px}
         .pb-product .pb-price{font-weight:900;color:#45362F}
         .pb-access{border:1px solid rgba(201,183,154,.35);background:rgba(201,183,154,.08);border-radius:14px;padding:10px}
+
     </style>
 
-<style id="qg-master-consolidado-css">.master-wrap{max-width:1500px;margin:auto}.master-hero{background:linear-gradient(135deg,#0f172a,#111827);border:1px solid #334155;border-radius:24px;padding:28px}.master-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}.master-card{background:#0f172a;border:1px solid #334155;border-radius:18px;padding:18px}.master-card h3{font-size:15px;font-weight:800;margin:0 0 8px}.master-card p{font-size:12px;color:#94a3b8;line-height:1.55;margin:0}.master-pill{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:999px;font-size:10px;font-weight:800;margin:3px 3px 0 0;border:1px solid #334155}.master-green{color:#86efac}.master-yellow{color:#fde68a}.master-blue{color:#93c5fd}.master-red{color:#fca5a5}.master-tree{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#020617;border:1px solid #334155;border-radius:16px;padding:18px;font-size:12px;line-height:1.8;overflow:auto}.master-table{width:100%;border-collapse:collapse;font-size:12px}.master-table th,.master-table td{padding:9px;border-bottom:1px solid #1e293b;text-align:left;vertical-align:top}.master-table th{color:#cbd5e1}.master-note{font-size:11px;color:#94a3b8}.master-actions{display:flex;gap:8px;flex-wrap:wrap}.master-btn{border:1px solid #475569;background:#1e293b;color:#e2e8f0;border-radius:10px;padding:9px 12px;font-size:11px;font-weight:800;cursor:pointer}.master-btn:hover{background:#334155}</style>
+<style id="qg-theme-presets-css">
+.theme-presets{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}
+.theme-preset{appearance:none;border:1px solid var(--app-border);background:var(--app-panel);color:var(--app-text);border-radius:16px;padding:14px;text-align:left;cursor:pointer;transition:.2s;box-shadow:0 5px 18px rgba(0,0,0,.04)}
+.theme-preset:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.08)}
+.theme-preset strong{display:block;font-size:12px;margin-top:9px}.theme-preset small{display:block;font-size:10px;color:var(--app-muted);margin-top:3px}
+.preset-dots{display:flex;gap:5px}.preset-dots i{display:block;width:18px;height:18px;border-radius:50%;border:1px solid rgba(0,0,0,.08)}
+.theme-preset:nth-child(1) .preset-dots i:nth-child(1){background:#26252A}.theme-preset:nth-child(1) .preset-dots i:nth-child(2){background:#B79A72}.theme-preset:nth-child(1) .preset-dots i:nth-child(3){background:#8A63A8}
+.theme-preset:nth-child(2) .preset-dots i:nth-child(1){background:#151617}.theme-preset:nth-child(2) .preset-dots i:nth-child(2){background:#B79A72}.theme-preset:nth-child(2) .preset-dots i:nth-child(3){background:#E9E5DE}
+.theme-preset:nth-child(3) .preset-dots i:nth-child(1){background:#40383A}.theme-preset:nth-child(3) .preset-dots i:nth-child(2){background:#C9AEB2}.theme-preset:nth-child(3) .preset-dots i:nth-child(3){background:#F7F1F1}
+.theme-preset:nth-child(4) .preset-dots i:nth-child(1){background:#34312E}.theme-preset:nth-child(4) .preset-dots i:nth-child(2){background:#A8957E}.theme-preset:nth-child(4) .preset-dots i:nth-child(3){background:#FAF8F4}
+@media(max-width:900px){.theme-presets{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:600px){.theme-presets{grid-template-columns:1fr}}
+</style>
+<style id="qg-theme-css">
+/* QG 001 — motor de tema visual */
+body{background:var(--app-bg)!important;color:var(--app-text)!important}
+header{background:var(--app-panel)!important;color:var(--app-text)!important;border-color:var(--app-border)!important}
+aside{background:var(--app-sidebar)!important;border-color:var(--app-border)!important}
+main{background:var(--app-bg)!important}
+.card,.metric,.glass,.app-card{background:var(--app-panel)!important;border-color:var(--app-border)!important;color:var(--app-text)!important}
+.nav-active{background:var(--app-accent-soft)!important;border-color:var(--app-accent-soft)!important;color:var(--app-accent)!important}
+input,select,textarea{background:var(--app-panel)!important;border-color:var(--app-border)!important;color:var(--app-text)!important}
+button.bg-amber-500,.bg-amber-500{background:var(--app-accent)!important;color:#fff!important}
+.text-amber-400,.text-amber-500{color:var(--app-accent)!important}
+.bg-emerald-500{background:var(--app-accent)!important}
+.text-emerald-400,.text-emerald-500{color:var(--app-accent)!important}
+.bg-slate-950,.bg-slate-900,.bg-slate-800,.bg-slate-700{background:var(--app-panel)!important;color:var(--app-text)!important}
+.text-slate-100,.text-slate-200,.text-slate-300,.text-slate-400{color:var(--app-text)!important}
+.text-slate-500,.text-slate-600,.text-slate-700{color:var(--app-muted)!important}
+.border-slate-800,.border-slate-700,.border-slate-600{border-color:var(--app-border)!important}
+.progress{background:var(--app-border)!important}.progress>span{background:var(--app-accent-soft)!important}
+.theme-preview{background:var(--app-panel)!important;border-color:var(--app-border)!important;color:var(--app-text)!important}
+.theme-preview-head{background:var(--app-sidebar)!important;color:#fff!important}
+.theme-preview-accent{background:var(--app-accent)!important;color:#fff!important}
+</style><style id="qg-master-consolidado-css">.master-wrap{max-width:1500px;margin:auto}.master-hero{background:linear-gradient(135deg,#0f172a,#111827);border:1px solid #334155;border-radius:24px;padding:28px}.master-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}.master-card{background:#0f172a;border:1px solid #334155;border-radius:18px;padding:18px}.master-card h3{font-size:15px;font-weight:800;margin:0 0 8px}.master-card p{font-size:12px;color:#94a3b8;line-height:1.55;margin:0}.master-pill{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:999px;font-size:10px;font-weight:800;margin:3px 3px 0 0;border:1px solid #334155}.master-green{color:#86efac}.master-yellow{color:#fde68a}.master-blue{color:#93c5fd}.master-red{color:#fca5a5}.master-tree{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#020617;border:1px solid #334155;border-radius:16px;padding:18px;font-size:12px;line-height:1.8;overflow:auto}.master-table{width:100%;border-collapse:collapse;font-size:12px}.master-table th,.master-table td{padding:9px;border-bottom:1px solid #1e293b;text-align:left;vertical-align:top}.master-table th{color:#cbd5e1}.master-note{font-size:11px;color:#94a3b8}.master-actions{display:flex;gap:8px;flex-wrap:wrap}.master-btn{border:1px solid #475569;background:#1e293b;color:#e2e8f0;border-radius:10px;padding:9px 12px;font-size:11px;font-weight:800;cursor:pointer}.master-btn:hover{background:#334155}</style>
 </head>
 <body class="h-full bg-[#070b12] text-slate-100 flex flex-col font-sans antialiased">
 
@@ -112,8 +146,8 @@
             <div class="pb-brandmark" aria-label="Paula Bento">PB</div>
             <div>
                 <div class="pb-kicker">Identidade visual activa</div>
-                <h1 class="font-black tracking-wide">CENTRAL 01 (QG 001)</h1>
-                <p class="text-[10px] text-slate-500">Sistema Multiempresa, ERP & Gestão Integrada</p>
+                <h1 class="font-black tracking-wide">PAULA BENTO CRIAÇÕES</h1>
+                <p class="text-[10px] text-slate-500">Criações & Soluções ERP • QG 001</p>
             </div>
         </div>
         <div class="hidden md:flex items-center gap-3">
@@ -159,7 +193,7 @@
                 <button onclick="pagina('orcamentos')" class="nav w-full text-left px-3 py-2.5 rounded-xl text-sm"><i class="fa-solid fa-file-invoice-dollar mr-3 w-4"></i>Orçamentos</button>
                 <button onclick="pagina('pdv')" class="nav w-full text-left px-3 py-2.5 rounded-xl text-sm"><i class="fa-solid fa-cash-register mr-3 w-4"></i>PDV / Caixa</button>
                 <button onclick="pagina('produtos')" class="nav w-full text-left px-3 py-2.5 rounded-xl text-sm"><i class="fa-solid fa-boxes-stacked mr-3 w-4"></i>Produtos & Estoque</button>
-                <button onclick="pagina('inteligencia')" class="nav w-full text-left px-3 py-2.5 rounded-xl text-sm"><i class="fa-solid fa-brain mr-3 w-4"></i> Inteligência de Catálogo</button>
+            <button onclick="pagina('inteligencia')" class="w-full text-left px-3 py-2 rounded-lg text-xs font-semibold flex items-center gap-2"><i class="fa-solid fa-brain w-4"></i> Inteligência de Catálogo</button>
                 <button onclick="pagina('catalogos')" class="nav w-full text-left px-3 py-2.5 rounded-xl text-sm"><i class="fa-solid fa-book-open mr-3 w-4"></i>Catálogos Digitais</button>
                 <button onclick="pagina('catalogosVenda')" class="nav w-full text-left px-3 py-2.5 rounded-xl text-sm"><i class="fa-solid fa-share-nodes mr-3 w-4"></i>Catálogos & Acessos</button>
                 <button onclick="pagina('importacao')" class="nav w-full text-left px-3 py-2.5 rounded-xl text-sm"><i class="fa-solid fa-file-import mr-3 w-4"></i>Importação IA</button>
@@ -185,88 +219,88 @@
         <main class="flex-1 p-4 md:p-7 overflow-y-auto">
 
             <!-- IDENTIDADE ADMINISTRATIVA 001 -->
-            <script>
-            window.QG001_OWNER = {
-              id: '001',
-              nome: 'Ana Paula Bento da Silva',
-              nomeCurto: 'Paula Bento',
-              perfil: 'Fundadora • Criadora • Responsável Geral',
-              nivel: 'Administrador Master',
-              email: 'anapaulabento.adm@gmail.com',
-              telefone1: '(61) 99590-8435',
-              telefone2: '(61) 99984-6320',
-              instagram: '@anapaula_bento',
-              tipo: 'proprietaria_do_ecossistema',
-              clientePrincipal: false
-            };
-            </script>
+<script>
+window.QG001_OWNER = {
+  id: '001',
+  nome: 'Ana Paula Bento da Silva',
+  nomeCurto: 'Paula Bento',
+  perfil: 'Fundadora • Criadora • Responsável Geral',
+  nivel: 'Administrador Master',
+  email: 'anapaulabento.adm@gmail.com',
+  telefone1: '(61) 99590-8435',
+  telefone2: '(61) 99984-6320',
+  instagram: '@anapaula_bento',
+  tipo: 'proprietaria_do_ecossistema',
+  clientePrincipal: false
+};
+</script>
 
-            <!-- V5 CORE -->
-            <section id="corev5" class="page">
-              <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 mb-6">
-                <div><p class="pb-kicker">V5.1 • QG 001 CORE</p><h2 class="text-3xl font-black mt-1">Arquitectura Central de Comando</h2><p class="text-sm text-slate-500 mt-2">A interface continua num único painel. O V5 organiza o sistema por núcleos independentes: identidade, empresas, dados, IA, aprovações, auditoria e integrações.</p></div>
-                <span class="pill">V5.1 • PUBLICAÇÃO / DEPLOY</span>
-              </div>
+<!-- V5 CORE -->
+<section id="corev5" class="page">
+  <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 mb-6">
+    <div><p class="pb-kicker">V5.1 • QG 001 CORE</p><h2 class="text-3xl font-black mt-1">Arquitectura Central de Comando</h2><p class="text-sm text-slate-500 mt-2">A interface continua num único painel. O V5 organiza o sistema por núcleos independentes: identidade, empresas, dados, IA, aprovações, auditoria e integrações.</p></div>
+    <span class="pill">V5.1 • PUBLICAÇÃO / DEPLOY</span>
+  </div>
 
-              <div class="card p-5 mb-5 border border-amber-500/20">
-                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                  <div>
-                    <p class="pb-kicker">IDENTIDADE 001 • ADMINISTRAÇÃO MASTER</p>
-                    <h3 class="text-xl font-black mt-1">Paula Bento (001)</h3>
-                    <p class="text-sm text-slate-400 mt-1">Fundadora, criadora e responsável por toda a Central 01 / QG 001.</p>
-                  </div>
-                  <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
-                    <div class="bg-slate-900 rounded-xl px-3 py-2"><span class="text-slate-500 block">E-mail</span><strong>anapaulabento.adm@gmail.com</strong></div>
-                    <div class="bg-slate-900 rounded-xl px-3 py-2"><span class="text-slate-500 block">Telefone</span><strong>(61) 99590-8435</strong></div>
-                    <div class="bg-slate-900 rounded-xl px-3 py-2"><span class="text-slate-500 block">Instagram</span><strong>@anapaula_bento</strong></div>
-                  </div>
-                </div>
-                <div class="mt-4 text-[11px] text-slate-500">Loja da Fábrica e demais organizações são clientes/ambientes administrados pela Central 01. Nenhum cliente é proprietário, editor ou empresa principal do QG 001.</div>
-              </div>
+  <div class="card p-5 mb-5 border border-amber-500/20">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <div>
+        <p class="pb-kicker">IDENTIDADE 001 • ADMINISTRAÇÃO MASTER</p>
+        <h3 class="text-xl font-black mt-1">Paula Bento (001)</h3>
+        <p class="text-sm text-slate-400 mt-1">Fundadora, criadora e responsável por toda a Central 01 / QG 001.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
+        <div class="bg-slate-900 rounded-xl px-3 py-2"><span class="text-slate-500 block">E-mail</span><strong>anapaulabento.adm@gmail.com</strong></div>
+        <div class="bg-slate-900 rounded-xl px-3 py-2"><span class="text-slate-500 block">Telefone</span><strong>(61) 99590-8435</strong></div>
+        <div class="bg-slate-900 rounded-xl px-3 py-2"><span class="text-slate-500 block">Instagram</span><strong>@anapaula_bento</strong></div>
+      </div>
+    </div>
+    <div class="mt-4 text-[11px] text-slate-500">Loja da Fábrica e demais organizações são clientes/ambientes administrados pela Central 01. Nenhum cliente é proprietário, editor ou empresa principal do QG 001.</div>
+  </div>
 
-              <div class="grid md:grid-cols-4 gap-4 mb-5">
-                <div class="metric p-5"><span class="text-xs text-slate-500">Core</span><strong class="block text-2xl mt-2">QG 001</strong><span class="text-[10px] text-emerald-600">Estrutura activa • V5.1</span></div>
-                <div class="metric p-5"><span class="text-xs text-slate-500">Tenants</span><strong id="v5Tenants" class="block text-2xl mt-2">0</strong><span class="text-[10px] text-slate-500">ambientes isolados (modelo)</span></div>
-                <div class="metric p-5"><span class="text-xs text-slate-500">Aprovações</span><strong id="v5Approvals" class="block text-2xl mt-2">0</strong><span class="text-[10px] text-slate-500">decisões pendentes</span></div>
-                <div class="metric p-5"><span class="text-xs text-slate-500">Auditoria</span><strong id="v5Audit" class="block text-2xl mt-2">0</strong><span class="text-[10px] text-slate-500">eventos registados</span></div>
-              </div>
-              <div class="grid lg:grid-cols-3 gap-5">
-                <div class="card p-5 lg:col-span-2">
-                  <h3 class="font-black text-lg">Núcleos V5</h3><p class="text-xs text-slate-500 mt-1">Cada bloco terá API, permissões, dados e auditoria próprios quando ligado ao backend.</p>
-                  <div class="grid md:grid-cols-2 gap-3 mt-5">
-                    <div class="p-4 rounded-xl bg-slate-900/50 border border-slate-800"><b>001 • Identity</b><p class="text-xs text-slate-500 mt-1">Utilizador, sessão, funções e permissões.</p><span class="mini-tag inline-block mt-3">P0</span></div>
-                    <div class="p-4 rounded-xl bg-slate-900/50 border border-slate-800"><b>010 • Tenants</b><p class="text-xs text-slate-500 mt-1">Empresa, isolamento e contexto activo.</p><span class="mini-tag inline-block mt-3">P0</span></div>
-                    <div class="p-4 rounded-xl bg-slate-900/50 border border-slate-800"><b>100 • Data</b><p class="text-xs text-slate-500 mt-1">Clientes, produtos, catálogos e versões.</p><span class="mini-tag inline-block mt-3">P0</span></div>
-                    <div class="p-4 rounded-xl bg-slate-900/50 border border-slate-800"><b>400 • AI Catalog</b><p class="text-xs text-slate-500 mt-1">Padrão, duplicidades, sugestões e confiança.</p><span class="mini-tag inline-block mt-3">P0</span></div>
-                    <div class="p-4 rounded-xl bg-slate-900/50 border border-slate-800"><b>800 • Approval</b><p class="text-xs text-slate-500 mt-1">Nenhuma alteração crítica entra sem aprovação humana.</p><span class="mini-tag inline-block mt-3">P0</span></div>
-                    <div class="p-4 rounded-xl bg-slate-900/50 border border-slate-800"><b>900 • Audit</b><p class="text-xs text-slate-500 mt-1">Histórico, eventos, origem, autor e estado anterior/posterior.</p><span class="mini-tag inline-block mt-3">P0</span></div>
-                  </div>
-                </div>
-                <div class="card p-5">
-                  <h3 class="font-black text-lg">Estado da implantação</h3>
-                  <div class="space-y-3 mt-5 text-xs">
-                    <div class="flex justify-between"><span>Interface V4.3 preservada</span><b>✓</b></div>
-                    <div class="flex justify-between"><span>Painel único</span><b>✓</b></div>
-                    <div class="flex justify-between"><span>Multiempresa lógico</span><b>✓</b></div>
-                    <div class="flex justify-between"><span>Backend real</span><b class="text-amber-700">DEPLOY</b></div>
-                    <div class="flex justify-between"><span>Autenticação segura</span><b class="text-amber-700">DEPLOY</b></div>
-                    <div class="flex justify-between"><span>Pagamentos / Pix</span><b class="text-amber-700">INTEGRAÇÃO</b></div>
-                    <div class="flex justify-between"><span>WhatsApp / Instagram API</span><b class="text-amber-700">INTEGRAÇÃO</b></div>
-                  </div>
-                  <button onclick="v5CriarSnapshot()" class="w-full mt-5 bg-amber-500 text-slate-950 py-3 rounded-xl text-xs font-black">Criar snapshot V5.1</button>
-                </div>
-              </div>
-              <div class="card p-5 mt-5">
-                <h3 class="font-black">Contrato de dados V5</h3>
-                <div class="grid md:grid-cols-3 gap-3 mt-4 text-xs">
-                  <div class="p-4 rounded-xl bg-slate-900/50"><b>tenantId</b><p class="text-slate-500 mt-1">Toda entidade operacional pertence a uma empresa/ambiente.</p></div>
-                  <div class="p-4 rounded-xl bg-slate-900/50"><b>version</b><p class="text-slate-500 mt-1">Produtos, catálogos e regras comerciais mantêm histórico.</p></div>
-                  <div class="p-4 rounded-xl bg-slate-900/50"><b>approvalState</b><p class="text-slate-500 mt-1">IA sugere; humano aprova, rejeita ou solicita revisão.</p></div>
-                </div>
-              </div>
-            </section>
+  <div class="grid md:grid-cols-4 gap-4 mb-5">
+    <div class="metric p-5"><span class="text-xs text-slate-500">Core</span><strong class="block text-2xl mt-2">QG 001</strong><span class="text-[10px] text-emerald-600">Estrutura activa • V5.1</span></div>
+    <div class="metric p-5"><span class="text-xs text-slate-500">Tenants</span><strong id="v5Tenants" class="block text-2xl mt-2">0</strong><span class="text-[10px] text-slate-500">ambientes isolados (modelo)</span></div>
+    <div class="metric p-5"><span class="text-xs text-slate-500">Aprovações</span><strong id="v5Approvals" class="block text-2xl mt-2">0</strong><span class="text-[10px] text-slate-500">decisões pendentes</span></div>
+    <div class="metric p-5"><span class="text-xs text-slate-500">Auditoria</span><strong id="v5Audit" class="block text-2xl mt-2">0</strong><span class="text-[10px] text-slate-500">eventos registados</span></div>
+  </div>
+  <div class="grid lg:grid-cols-3 gap-5">
+    <div class="card p-5 lg:col-span-2">
+      <h3 class="font-black text-lg">Núcleos V5</h3><p class="text-xs text-slate-500 mt-1">Cada bloco terá API, permissões, dados e auditoria próprios quando ligado ao backend.</p>
+      <div class="grid md:grid-cols-2 gap-3 mt-5">
+        <div class="p-4 rounded-xl bg-slate-900/50 border border-slate-800"><b>001 • Identity</b><p class="text-xs text-slate-500 mt-1">Utilizador, sessão, funções e permissões.</p><span class="mini-tag inline-block mt-3">P0</span></div>
+        <div class="p-4 rounded-xl bg-slate-900/50 border border-slate-800"><b>010 • Tenants</b><p class="text-xs text-slate-500 mt-1">Empresa, isolamento e contexto activo.</p><span class="mini-tag inline-block mt-3">P0</span></div>
+        <div class="p-4 rounded-xl bg-slate-900/50 border border-slate-800"><b>100 • Data</b><p class="text-xs text-slate-500 mt-1">Clientes, produtos, catálogos e versões.</p><span class="mini-tag inline-block mt-3">P0</span></div>
+        <div class="p-4 rounded-xl bg-slate-900/50 border border-slate-800"><b>400 • AI Catalog</b><p class="text-xs text-slate-500 mt-1">Padrão, duplicidades, sugestões e confiança.</p><span class="mini-tag inline-block mt-3">P0</span></div>
+        <div class="p-4 rounded-xl bg-slate-900/50 border border-slate-800"><b>800 • Approval</b><p class="text-xs text-slate-500 mt-1">Nenhuma alteração crítica entra sem aprovação humana.</p><span class="mini-tag inline-block mt-3">P0</span></div>
+        <div class="p-4 rounded-xl bg-slate-900/50 border border-slate-800"><b>900 • Audit</b><p class="text-xs text-slate-500 mt-1">Histórico, eventos, origem, autor e estado anterior/posterior.</p><span class="mini-tag inline-block mt-3">P0</span></div>
+      </div>
+    </div>
+    <div class="card p-5">
+      <h3 class="font-black text-lg">Estado da implantação</h3>
+      <div class="space-y-3 mt-5 text-xs">
+        <div class="flex justify-between"><span>Interface V4.3 preservada</span><b>✓</b></div>
+        <div class="flex justify-between"><span>Painel único</span><b>✓</b></div>
+        <div class="flex justify-between"><span>Multiempresa lógico</span><b>✓</b></div>
+        <div class="flex justify-between"><span>Backend real</span><b class="text-amber-700">DEPLOY</b></div>
+        <div class="flex justify-between"><span>Autenticação segura</span><b class="text-amber-700">DEPLOY</b></div>
+        <div class="flex justify-between"><span>Pagamentos / Pix</span><b class="text-amber-700">INTEGRAÇÃO</b></div>
+        <div class="flex justify-between"><span>WhatsApp / Instagram API</span><b class="text-amber-700">INTEGRAÇÃO</b></div>
+      </div>
+      <button onclick="v5CriarSnapshot()" class="w-full mt-5 bg-amber-500 text-slate-950 py-3 rounded-xl text-xs font-black">Criar snapshot V5.1</button>
+    </div>
+  </div>
+  <div class="card p-5 mt-5">
+    <h3 class="font-black">Contrato de dados V5</h3>
+    <div class="grid md:grid-cols-3 gap-3 mt-4 text-xs">
+      <div class="p-4 rounded-xl bg-slate-900/50"><b>tenantId</b><p class="text-slate-500 mt-1">Toda entidade operacional pertence a uma empresa/ambiente.</p></div>
+      <div class="p-4 rounded-xl bg-slate-900/50"><b>version</b><p class="text-slate-500 mt-1">Produtos, catálogos e regras comerciais mantêm histórico.</p></div>
+      <div class="p-4 rounded-xl bg-slate-900/50"><b>approvalState</b><p class="text-slate-500 mt-1">IA sugere; humano aprova, rejeita ou solicita revisão.</p></div>
+    </div>
+  </div>
+</section>
 
-            <!-- ECOSSISTEMA / CÓDIGOS OFICIAIS -->
+<!-- ECOSSISTEMA / CÓDIGOS OFICIAIS -->
             <section id="ecossistema" class="page">
               <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 mb-6">
                 <div><p class="pb-kicker">REGISTRO OFICIAL • V5.1</p><h2 class="text-3xl font-black mt-1">Ecossistema, Códigos & Hierarquia</h2><p class="text-sm text-slate-500 mt-2">Uma única Central 01, com operações próprias, clientes isolados e produtos comerciais independentes.</p></div>
@@ -282,7 +316,7 @@
               <div class="card p-5 mt-5"><h3 class="font-black">Regra estrutural</h3><p class="text-xs text-slate-500 mt-2">A Central 01 / QG 001 pertence a Paula Bento (001). PB001 e PB002 são operações próprias; PB003 é cliente; PBIRP001 é produto/serviço comercial. O sistema não trata Loja da Fábrica como empresa principal.</p></div>
             </section>
 
-            <!-- DASHBOARD -->
+<!-- DASHBOARD -->
             <section id="dashboard" class="page active">
                 <div class="flex flex-col md:flex-row md:items-center justify-between mb-7">
                     <div>
@@ -466,48 +500,49 @@
             </section>
 
             <!-- IMPORTAÇÃO INTELIGENTE -->
-            <section id="inteligencia" class="page">
-              <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 mb-6">
-                <div><span class="pb-kicker">Bloco 410 • Inteligência</span><h2 class="text-2xl md:text-3xl font-black mt-1">Inteligência de Catálogo</h2><p class="text-sm text-slate-500 mt-2">Aprender o padrão aprovado do cliente, comparar novos materiais, detectar duplicidades e encaminhar decisões para aprovação humana.</p></div>
-                <div class="flex flex-wrap gap-2"><button onclick="pagina('importacao')" class="bg-slate-900 text-white px-4 py-2 rounded-xl text-xs font-bold">Abrir Importação</button><button onclick="abrirNovoProdutoInteligente()" class="bg-amber-500 px-4 py-2 rounded-xl text-xs font-bold">+ Novo produto</button></div>
-              </div>
-              <div class="intel-grid mb-5">
-                <div class="intel-card"><div class="text-2xl font-black" id="intelProdutos">0</div><h4>Produtos analisados</h4><p>Base aprovada usada para aprendizagem do padrão.</p></div>
-                <div class="intel-card"><div class="text-2xl font-black" id="intelPadrao">0%</div><h4>Padrão aprendido</h4><p>Confiança agregada em nomenclatura, categorias, unidades e estilo.</p></div>
-                <div class="intel-card"><div class="text-2xl font-black" id="intelDuplicidades">0</div><h4>Duplicidades detectadas</h4><p>Possíveis repetições aguardando decisão.</p></div>
-                <div class="intel-card"><div class="text-2xl font-black" id="intelPendentes">0</div><h4>Decisões humanas</h4><p>Itens que não devem alterar o cadastro sem aprovação.</p></div>
-              </div>
-              <div class="grid lg:grid-cols-2 gap-5">
-                <div class="card p-5">
-                  <div class="flex items-center justify-between gap-3"><div><h3 class="font-black">1. Padrão aprendido</h3><p class="text-xs text-slate-500 mt-1">O motor cria uma fotografia do padrão a partir de produtos aprovados.</p></div><span class="pill">somente aprovados</span></div>
-                  <div id="intelPattern" class="mt-5 space-y-3"></div>
-                  <button onclick="aprenderPadraoAgora()" class="mt-4 w-full bg-slate-900 text-white py-2.5 rounded-xl text-xs font-bold">Recalcular padrão</button>
-                </div>
-                <div class="card p-5">
-                  <div class="flex items-center justify-between gap-3"><div><h3 class="font-black">2. Detector de duplicidades</h3><p class="text-xs text-slate-500 mt-1">Compara SKU, nome, categoria, medidas e descrição.</p></div><span class="pill">revisão humana</span></div>
-                  <div id="intelDuplicates" class="mt-5 space-y-3"></div>
-                  <button onclick="detectarDuplicidades()" class="mt-4 w-full bg-slate-900 text-white py-2.5 rounded-xl text-xs font-bold">Executar comparação</button>
-                </div>
-              </div>
-              <div class="card p-5 mt-5">
-                <div class="flex flex-col md:flex-row md:items-center justify-between gap-3"><div><h3 class="font-black">3. Fila de aprovação</h3><p class="text-xs text-slate-500 mt-1">Nenhuma alteração sensível entra no cadastro sem decisão humana.</p></div><button onclick="renderInteligencia()" class="pill">Actualizar</button></div>
-                <div id="intelQueue" class="mt-5 space-y-3"></div>
-              </div>
-              <div class="card p-5 mt-5">
-                <h3 class="font-black">4. Novo produto com assistência do padrão</h3>
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-3 mt-4">
-                  <input id="intelNome" class="rounded-xl px-3 py-2 text-xs" placeholder="Nome / modelo">
-                  <input id="intelSku" class="rounded-xl px-3 py-2 text-xs" placeholder="SKU / código">
-                  <input id="intelCategoria" class="rounded-xl px-3 py-2 text-xs" placeholder="Categoria">
-                  <input id="intelUnidade" class="rounded-xl px-3 py-2 text-xs" placeholder="Unidade / medida">
-                </div>
-                <textarea id="intelDescricao" rows="3" class="rounded-xl px-3 py-2 text-xs w-full mt-3" placeholder="Descrição original"></textarea>
-                <div class="flex flex-wrap gap-2 mt-3"><button onclick="analisarNovoProduto()" class="bg-slate-900 text-white px-4 py-2 rounded-xl text-xs font-bold">Analisar contra o padrão</button><button onclick="aprovarNovoProduto()" class="bg-amber-500 px-4 py-2 rounded-xl text-xs font-bold">Aprovar cadastro</button></div>
-                <div id="intelAnalysis" class="mt-4"></div>
-              </div>
-            </section>
+            
+<section id="inteligencia" class="page">
+  <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 mb-6">
+    <div><span class="pb-kicker">Bloco 410 • Inteligência</span><h2 class="text-2xl md:text-3xl font-black mt-1">Inteligência de Catálogo</h2><p class="text-sm text-slate-500 mt-2">Aprender o padrão aprovado do cliente, comparar novos materiais, detectar duplicidades e encaminhar decisões para aprovação humana.</p></div>
+    <div class="flex flex-wrap gap-2"><button onclick="pagina('importacao')" class="bg-slate-900 text-white px-4 py-2 rounded-xl text-xs font-bold">Abrir Importação</button><button onclick="abrirNovoProdutoInteligente()" class="bg-amber-500 px-4 py-2 rounded-xl text-xs font-bold">+ Novo produto</button></div>
+  </div>
+  <div class="intel-grid mb-5">
+    <div class="intel-card"><div class="text-2xl font-black" id="intelProdutos">0</div><h4>Produtos analisados</h4><p>Base aprovada usada para aprendizagem do padrão.</p></div>
+    <div class="intel-card"><div class="text-2xl font-black" id="intelPadrao">0%</div><h4>Padrão aprendido</h4><p>Confiança agregada em nomenclatura, categorias, unidades e estilo.</p></div>
+    <div class="intel-card"><div class="text-2xl font-black" id="intelDuplicidades">0</div><h4>Duplicidades detectadas</h4><p>Possíveis repetições aguardando decisão.</p></div>
+    <div class="intel-card"><div class="text-2xl font-black" id="intelPendentes">0</div><h4>Decisões humanas</h4><p>Itens que não devem alterar o cadastro sem aprovação.</p></div>
+  </div>
+  <div class="grid lg:grid-cols-2 gap-5">
+    <div class="card p-5">
+      <div class="flex items-center justify-between gap-3"><div><h3 class="font-black">1. Padrão aprendido</h3><p class="text-xs text-slate-500 mt-1">O motor cria uma fotografia do padrão a partir de produtos aprovados.</p></div><span class="pill">somente aprovados</span></div>
+      <div id="intelPattern" class="mt-5 space-y-3"></div>
+      <button onclick="aprenderPadraoAgora()" class="mt-4 w-full bg-slate-900 text-white py-2.5 rounded-xl text-xs font-bold">Recalcular padrão</button>
+    </div>
+    <div class="card p-5">
+      <div class="flex items-center justify-between gap-3"><div><h3 class="font-black">2. Detector de duplicidades</h3><p class="text-xs text-slate-500 mt-1">Compara SKU, nome, categoria, medidas e descrição.</p></div><span class="pill">revisão humana</span></div>
+      <div id="intelDuplicates" class="mt-5 space-y-3"></div>
+      <button onclick="detectarDuplicidades()" class="mt-4 w-full bg-slate-900 text-white py-2.5 rounded-xl text-xs font-bold">Executar comparação</button>
+    </div>
+  </div>
+  <div class="card p-5 mt-5">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-3"><div><h3 class="font-black">3. Fila de aprovação</h3><p class="text-xs text-slate-500 mt-1">Nenhuma alteração sensível entra no cadastro sem decisão humana.</p></div><button onclick="renderInteligencia()" class="pill">Actualizar</button></div>
+    <div id="intelQueue" class="mt-5 space-y-3"></div>
+  </div>
+  <div class="card p-5 mt-5">
+    <h3 class="font-black">4. Novo produto com assistência do padrão</h3>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-3 mt-4">
+      <input id="intelNome" class="rounded-xl px-3 py-2 text-xs" placeholder="Nome / modelo">
+      <input id="intelSku" class="rounded-xl px-3 py-2 text-xs" placeholder="SKU / código">
+      <input id="intelCategoria" class="rounded-xl px-3 py-2 text-xs" placeholder="Categoria">
+      <input id="intelUnidade" class="rounded-xl px-3 py-2 text-xs" placeholder="Unidade / medida">
+    </div>
+    <textarea id="intelDescricao" rows="3" class="rounded-xl px-3 py-2 text-xs w-full mt-3" placeholder="Descrição original"></textarea>
+    <div class="flex flex-wrap gap-2 mt-3"><button onclick="analisarNovoProduto()" class="bg-slate-900 text-white px-4 py-2 rounded-xl text-xs font-bold">Analisar contra o padrão</button><button onclick="aprovarNovoProduto()" class="bg-amber-500 px-4 py-2 rounded-xl text-xs font-bold">Aprovar cadastro</button></div>
+    <div id="intelAnalysis" class="mt-4"></div>
+  </div>
+</section>
 
-            <section id="importacao" class="page">
+<section id="importacao" class="page">
                 <h2 class="text-2xl font-black">Importação Inteligente (IA)</h2>
                 <p class="text-sm text-slate-500 mb-6">Envie PDF, planilhas Excel, documentos Word, imagens ou vídeos. A IA extrai e valida automaticamente.</p>
                 <div class="card p-8 text-center">
@@ -779,596 +814,879 @@
                     <div class="grid md:grid-cols-3 gap-4">
                         <div class="card p-5 border-t-4 border-amber-500"><h3 class="font-bold">👩 Mamãe</h3><ul class="text-xs text-slate-300 space-y-2 mt-4 list-disc pl-4"><li>Ateliê e trabalho pela manhã.</li><li>Planeamento doméstico.</li><li>Rotina do Gustavo e alimentação.</li><li>Guardar e organizar comida após o jantar.</li><li>Activar robô aspirador quando a casa estiver livre.</li></ul></div>
                         <div class="card p-5 border-t-4 border-amber-500"><h3 class="font-bold">👨 Papai</h3><ul class="text-xs text-slate-300 space-y-2 mt-4 list-disc pl-4"><li>Lavar a louça após o jantar.</li><li>Retirar o lixo.</li><li>Conferir portas e janelas.</li><li>Conferir/fechar a garagem à noite.</li><li>Organizar roupas e home office.</li></ul></div>
-                        <div class="card p-5 border-t-4 border-orange-500"><h3 class="font-bold">👦 Gustavo</h3><ul class="text-xs text-slate-300 space-y-2 mt-4 list-disc pl-4"><li>Guardar os brinquedos após brincar.</li><li>Organizar a própria cama.</li><li>Levar prato e talher para a pia.</li><li>Recolher sapatos e mochila.</li></ul></div>
+                        <div class="card p-5 border-t-4 border-orange-400"><h3 class="font-bold">👦 Gustavo</h3><ul class="text-xs text-slate-300 space-y-2 mt-4 list-disc pl-4"><li>Arrumar a própria cama.</li><li>Guardar brinquedos.</li><li>Organizar a mesa de estudos.</li><li>Roupa suja no cesto.</li><li>Sapatos no lugar.</li><li>Após o jantar, ajudar a limpar a mesa.</li></ul></div>
                     </div>
+                    <div class="card p-5"><h3 class="font-bold mb-3">🏃 Rotina de terça, quinta e sábado</h3><p class="text-xs text-slate-400">O papai pode correr no fim do dia quando possível. Nesse período, a mamãe leva o Gustavo ao parque: ele brinca, a mamãe pode crochetar. Os horários podem ser ajustados conforme a rotina de trabalho.</p></div>
                 </div>
 
                 <div id="sub-casa-limpeza" class="casa-sub-module hidden space-y-5">
-                    <div class="card p-5"><h3 class="font-bold text-lg mb-3">🧹 Organização e Limpeza Inteligente</h3><div id="casaLimpezaLista" class="space-y-2 text-xs"></div></div>
+                    <div class="card p-5"><h3 class="font-bold text-lg mb-4">🧹 Limpeza inteligente</h3><div class="grid md:grid-cols-2 gap-3 text-xs">
+                        <div class="p-4 bg-slate-900 rounded-xl"><b class="text-amber-400">🤖 Robô aspirador</b><p class="text-slate-400 mt-1">Depois de organizar a casa, liberar o caminho, aspirar e, quando necessário, passar pano/água.</p></div>
+                        <div class="p-4 bg-slate-900 rounded-xl"><b class="text-amber-400">🧽 Sábado</b><p class="text-slate-400 mt-1">Tapetes e pano de chão lavados à mão.</p></div>
+                        <div class="p-4 bg-slate-900 rounded-xl"><b class="text-amber-400">🪟 A cada 2 meses</b><p class="text-slate-400 mt-1">Lavar cortinas.</p></div>
+                        <div class="p-4 bg-slate-900 rounded-xl"><b class="text-amber-400">🕸️ 1x por mês</b><p class="text-slate-400 mt-1">Aspirar cantos e teto.</p></div>
+                    </div></div>
                 </div>
 
                 <div id="sub-casa-refeicoes" class="casa-sub-module hidden space-y-5">
-                    <div class="card p-5"><h3 class="font-bold text-lg mb-3">🍲 Cardápio & Refeições</h3><div id="casaCardapioLista" class="grid md:grid-cols-3 gap-3"></div></div>
+                    <div class="card p-5"><div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3"><div><h3 class="font-bold text-lg">🧊 Preparação de congelados</h3><p class="text-xs text-slate-500 mt-1">Escolha o melhor dia e reduza trabalho durante a semana.</p></div><select id="casaDiaCongelados" onchange="salvarDiaCongelados(this.value)" class="rounded-xl px-3 py-2 text-xs w-full sm:w-44"><option value="domingo">Domingo</option><option value="sábado">Sábado</option><option value="sexta-feira">Sexta-feira</option><option value="outro">Outro dia</option></select></div><div class="grid md:grid-cols-4 gap-3 mt-5 text-xs"><label class="p-3 bg-slate-900 rounded-xl flex gap-2"><input type="checkbox" data-casa-task="congelados-feijao"> Feijão porcionado</label><label class="p-3 bg-slate-900 rounded-xl flex gap-2"><input type="checkbox" data-casa-task="congelados-carne"> Carnes porcionadas</label><label class="p-3 bg-slate-900 rounded-xl flex gap-2"><input type="checkbox" data-casa-task="congelados-legumes"> Legumes separados</label><label class="p-3 bg-slate-900 rounded-xl flex gap-2"><input type="checkbox" data-casa-task="congelados-etiquetas"> Etiquetar e datar</label></div></div>
+                    <div class="card p-5"><h3 class="font-bold mb-3">🍽️ Depois do jantar</h3><div class="grid md:grid-cols-2 gap-3 text-xs"><div class="p-3 bg-slate-900 rounded-xl">👩 <b>Mamãe:</b> guardar e organizar os alimentos.</div><div class="p-3 bg-slate-900 rounded-xl">👨 <b>Papai:</b> lavar a louça.</div></div></div>
                 </div>
 
                 <div id="sub-casa-regras" class="casa-sub-module hidden space-y-5">
-                    <div class="card p-5"><h3 class="font-bold text-lg mb-3">⚖️ Regras de Ouro da Convivência</h3><div class="space-y-2 text-xs text-slate-300"><div class="p-3 bg-slate-900 rounded-xl"><b>1.</b> Quem usa, guarda no devido lugar imediatamente.</div><div class="p-3 bg-slate-900 rounded-xl"><b>2.</b> Quem suja, limpa ou providencia a limpeza.</div><div class="p-3 bg-slate-900 rounded-xl"><b>3.</b> Diálogo aberto e respeito mútuo em todas as decisões.</div></div></div>
+                    <div class="card p-5 border border-amber-500/20 bg-amber-500/5"><div class="flex gap-4"><div class="text-3xl">👟</div><div><h3 class="font-black text-lg text-amber-300">REGRA DOS SAPATOS DA RUA</h3><p class="text-sm text-slate-300 mt-1">Sapatos usados na rua <b>não entram pela casa.</b></p><p class="text-xs text-slate-500 mt-2">Exemplo: depois de correr, a pessoa pode passar pelo corredor até à área de serviço e tirar os ténis ali. O objectivo é proteger o piso branco e diminuir a necessidade de esfregar a casa.</p></div></div></div>
+                    <div class="grid md:grid-cols-2 gap-4"><div class="card p-5"><h3 class="font-bold">❤️ Regra de ouro</h3><p class="text-sm text-slate-300 mt-2">Quem usa, guarda. Quem suja, participa. Quem tira, coloca de volta. Quem termina, organiza.</p></div><div class="card p-5"><h3 class="font-bold">🧺 Roupa</h3><p class="text-xs text-slate-400 mt-2">Roupa suja vai directamente para o cesto. Sapatos vão para o local definido.</p></div></div>
                 </div>
 
                 <div id="sub-casa-beleza" class="casa-sub-module hidden space-y-5">
-                    <div class="card p-5"><h3 class="font-bold text-lg mb-3">✨ Cuidados & Bem-Estar</h3><p class="text-xs text-slate-400">Rotina de cuidados pessoais, organização de horários e bem-estar de Paula Bento.</p></div>
+                    <div class="card p-6 border border-pink-500/20"><div class="flex items-start gap-4"><div class="text-4xl">💆‍♀️</div><div><p class="text-pink-400 text-[10px] font-black uppercase tracking-widest">Sábado de manhã</p><h3 class="font-black text-xl mt-1">Momento Beleza Mamãe</h3><p class="text-xs text-slate-500 mt-1">Um momento reservado para cuidar da família e também de si.</p></div></div><div class="grid md:grid-cols-2 gap-3 mt-5 text-xs"><label class="p-3 bg-slate-900 rounded-xl flex gap-2"><input type="checkbox" data-casa-task="beleza-cabelo"> Corte de cabelo: papai + Gustavo</label><label class="p-3 bg-slate-900 rounded-xl flex gap-2"><input type="checkbox" data-casa-task="beleza-unhas"> Unhas do Gustavo</label><label class="p-3 bg-slate-900 rounded-xl flex gap-2"><input type="checkbox" data-casa-task="beleza-mamae"> Tempo de autocuidado da mamãe</label><label class="p-3 bg-slate-900 rounded-xl flex gap-2"><input type="checkbox" data-casa-task="beleza-pele"> Cuidados de pele / esfoliação</label><label class="p-3 bg-slate-900 rounded-xl flex gap-2"><input type="checkbox" data-casa-task="beleza-gustavo"> Esfoliar pés/joelhos e áreas ásperas do Gustavo</label></div></div>
                 </div>
             </section>
 
-            <!-- OUTRAS PÁGINAS EM BRANCO / GESTÃO -->
-            <section id="mapamestre" class="page">
-                <div class="master-wrap space-y-5">
-                    <div class="master-hero">
-                        <span class="pb-kicker">QG 001 • V5.1</span>
-                        <h2 class="text-2xl md:text-3xl font-black mt-1">Mapa Mestre Consolidado</h2>
-                        <p class="text-sm text-slate-400 mt-2">Arquitetura integrada, hierarquia de tenants, blocos funcionais e conexões ativas do ecossistema.</p>
+
+            <!-- ORÇAMENTOS -->
+            <section id="orcamentos" class="page">
+                <div class="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-3">
+                    <div><p class="text-amber-400 text-xs font-bold uppercase">Bloco 500 • Comercial</p><h2 class="text-2xl font-black">Orçamentos & Propostas</h2><p class="text-xs text-slate-500">Criação, revisão, aprovação e acompanhamento de propostas.</p></div>
+                    <button onclick="novoOrcamento()" class="bg-amber-500 text-slate-950 px-4 py-2.5 rounded-xl text-xs font-bold">+ Novo orçamento</button>
+                </div>
+                <div class="grid md:grid-cols-4 gap-3 mb-5">
+                    <div class="metric p-4"><span class="text-xs text-slate-500">Rascunhos</span><strong id="orcRascunhos" class="text-2xl block mt-1">0</strong></div>
+                    <div class="metric p-4"><span class="text-xs text-slate-500">Enviados</span><strong id="orcEnviados" class="text-2xl block mt-1">0</strong></div>
+                    <div class="metric p-4"><span class="text-xs text-slate-500">Aprovados</span><strong id="orcAprovados" class="text-2xl block mt-1">0</strong></div>
+                    <div class="metric p-4"><span class="text-xs text-slate-500">Valor aprovado</span><strong id="orcValor" class="text-2xl block mt-1">R$ 0,00</strong></div>
+                </div>
+                <div class="card p-5 table-wrap"><table class="w-full text-xs"><thead><tr class="text-slate-500 text-left border-b border-slate-800"><th class="p-3">Código</th><th>Cliente</th><th>Descrição</th><th>Valor</th><th>Status</th><th></th></tr></thead><tbody id="orcamentosBody"></tbody></table></div>
+            </section>
+
+            <!-- CENTRAL DE COMUNICAÇÃO -->
+            <section id="comercial" class="page">
+                <div class="mb-6"><p class="text-amber-400 text-xs font-bold uppercase">Bloco 700 • Canais</p><h2 class="text-2xl font-black">Central de Comunicação</h2><p class="text-xs text-slate-500">Unificação de origem, histórico e próximos passos do atendimento.</p></div>
+                <div class="grid lg:grid-cols-3 gap-5">
+                    <div class="card p-5 lg:col-span-2">
+                        <div class="flex justify-between items-center mb-4"><h3 class="font-bold">Conversas</h3><span class="pill"><span class="status-dot mr-1"></span> Canais preparados</span></div>
+                        <div id="conversasList" class="space-y-2"></div>
                     </div>
-                    <div class="master-grid">
-                        <div class="master-card">
-                            <h3>001 • Identidade Master</h3>
-                            <p>Paula Bento (001) como fundadora e administradora de todo o QG 001.</p>
-                            <div class="mt-3"><span class="master-pill master-green">Activo</span><span class="master-pill master-blue">Governança</span></div>
-                        </div>
-                        <div class="master-card">
-                            <h3>010 • Gestão Multi-Tenant</h3>
-                            <p>Isolamento lógico e seguro de dados, clientes e operações por empresa.</p>
-                            <div class="mt-3"><span class="master-pill master-green">Isolado</span><span class="master-pill master-blue">Dinâmico</span></div>
-                        </div>
-                        <div class="master-card">
-                            <h3>410 • IA & Catálogos</h3>
-                            <p>Importação inteligente, análise de padrão, detecção de duplicidades e aprovação humana.</p>
-                            <div class="mt-3"><span class="master-pill master-yellow">IA Assistida</span><span class="master-pill master-green">Protegido</span></div>
-                        </div>
-                        <div class="master-card">
-                            <h3>900 • Doméstico & Pessoal</h3>
-                            <p>Sistema da Nossa Casa e rotinas integradas de organização familiar.</p>
-                            <div class="mt-3"><span class="master-pill master-green">Ativo</span><span class="master-pill master-blue">Exclusivo</span></div>
-                        </div>
-                    </div>
-                    <div class="master-tree">
-                        [QG 001] — Central de Comando (Paula Bento 001)<br>
-                        ├── [001] Identidade e Controlo Geral<br>
-                        ├── [100] ERP & Infraestrutura de Dados<br>
-                        ├── [200] Experiência do Cliente & Suporte<br>
-                        ├── [300] Comercial, CRM & Leads<br>
-                        ├── [410] Inteligência de Catálogo & IA<br>
-                        ├── [500] Operações, PDV e Estoque<br>
-                        ├── [800] Segurança, Auditoria & Aprovações<br>
-                        └── [900] Rotinas Pessoais e Sistema da Nossa Casa
+                    <div class="card p-5">
+                        <h3 class="font-bold mb-4">Nova interacção</h3>
+                        <select id="canalMensagem" class="w-full rounded-xl p-3 text-xs mb-3"><option>WhatsApp</option><option>Instagram Direct</option><option>E-mail</option><option>Interno</option></select>
+                        <input id="destinoMensagem" class="w-full rounded-xl p-3 text-xs mb-3" placeholder="Cliente / contacto">
+                        <textarea id="textoMensagem" class="w-full rounded-xl p-3 text-xs mb-3" rows="5" placeholder="Mensagem / observação"></textarea>
+                        <button onclick="registrarMensagem()" class="w-full bg-amber-500 text-slate-950 py-3 rounded-xl font-bold text-xs">Registar interacção</button>
                     </div>
                 </div>
             </section>
 
+            <!-- VITRINE IMERSIVA -->
+            <section id="vitrine" class="page">
+                <div class="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-3">
+                    <div><p class="text-amber-400 text-xs font-bold uppercase">Bloco 400 • Catálogo</p><h2 class="text-2xl font-black">Vitrine Imersiva</h2><p class="text-xs text-slate-500">Até 10 imagens, vídeo, 360°, descrição comercial e publicação digital.</p></div>
+                    <button onclick="abrirVitrineProduto()" class="bg-amber-500 text-slate-950 px-4 py-2.5 rounded-xl text-xs font-bold">+ Criar vitrine</button>
+                </div>
+                <div id="vitrineGrid" class="grid md:grid-cols-2 xl:grid-cols-3 gap-4"></div>
+            </section>
+
+            <!-- AUDITORIA -->
+            <section id="auditoria" class="page">
+                <div class="mb-6"><p class="text-amber-400 text-xs font-bold uppercase">Bloco 800 • Governança</p><h2 class="text-2xl font-black">Auditoria & Aprovações</h2><p class="text-xs text-slate-500">Todas as alterações sensíveis passam por histórico e aprovação humana quando necessário.</p></div>
+                <div class="grid md:grid-cols-3 gap-4 mb-5">
+                    <div class="metric p-5"><span class="text-xs text-slate-500">Pendentes</span><strong id="audPendentes" class="text-3xl block mt-2">0</strong></div>
+                    <div class="metric p-5"><span class="text-xs text-slate-500">Aprovadas</span><strong id="audAprovadas" class="text-3xl block mt-2">0</strong></div>
+                    <div class="metric p-5"><span class="text-xs text-slate-500">Eventos registados</span><strong id="audEventos" class="text-3xl block mt-2">0</strong></div>
+                </div>
+                <div class="card p-5"><div id="auditoriaList" class="space-y-2"></div></div>
+            </section>
+
+            <!-- FINANCEIRO / RENTABILIDADE -->
+            <section id="financeiro" class="page">
+                <h2 class="text-2xl font-black">Rentabilidade & Custos (Bloco 600)</h2>
+                <p class="text-sm text-slate-500 mb-6">Acompanhar faturamento, custos, markup e margem de lucro por empresa.</p>
+                <div class="grid md:grid-cols-4 gap-4">
+                    <div class="metric p-5"><p class="text-xs text-slate-500">Facturação</p><strong class="text-2xl block mt-2">R$ 0,00</strong></div>
+                    <div class="metric p-5"><p class="text-xs text-slate-500">Custos</p><strong class="text-2xl block mt-2">R$ 0,00</strong></div>
+                    <div class="metric p-5"><p class="text-xs text-slate-500">Lucro Líquido</p><strong class="text-2xl block mt-2">R$ 0,00</strong></div>
+                    <div class="metric p-5"><p class="text-xs text-slate-500">Margem Média</p><strong class="text-2xl block mt-2">0%</strong></div>
+                </div>
+            </section>
+
+            <!-- RELATÓRIOS -->
+            <section id="relatorios" class="page">
+                <h2 class="text-2xl font-black">Relatórios</h2>
+                <p class="text-sm text-slate-500 mb-6">Relatórios consolidados do ecossistema ou segmentados por empresa.</p>
+                <div class="card p-5">
+                    <div class="grid md:grid-cols-3 gap-3">
+                        <select class="rounded-xl px-3 py-3 text-xs"><option>Todas as empresas</option></select>
+                        <select class="rounded-xl px-3 py-3 text-xs"><option>Vendas</option><option>Catálogos</option><option>Marketing</option><option>Rentabilidade</option></select>
+                        <button class="bg-amber-500 text-slate-950 rounded-xl font-bold text-xs">Gerar relatório</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CONFIGURAÇÕES -->
+            <section id="configuracoes" class="page">
+                <h2 class="text-2xl font-black">Configurações & Segurança (Bloco 800 • V5)</h2>
+                <p class="text-sm text-slate-500 mb-6">Controlo geral, permissões, logs de auditoria e backups do QG 001.</p><div class="theme-panel mb-5">
+<div class="flex flex-col lg:flex-row lg:items-start justify-between gap-5 mb-5">
+  <div><p class="pb-kicker">IDENTIDADE VISUAL • PAINEL</p><h3 class="text-xl font-black mt-1">🎨 Escolha o ambiente do seu QG</h3><p class="text-xs text-slate-500 mt-2">Em vez de montar as cores uma por uma, escolha uma identidade pronta ou personalize apenas se quiser.</p></div>
+  <div class="theme-actions"><button class="theme-btn primary" onclick="QG_salvarTema()">Guardar tema</button><button class="theme-btn" onclick="QG_restaurarTema()">Restaurar</button></div>
+</div>
+<div class="theme-presets">
+  <button class="theme-preset" onclick="QG_preset('champagne')"><span class="preset-dots"><i></i><i></i><i></i></span><strong>Champagne • Grafite • Roxo Metálico</strong><small>Premium • sofisticado • identidade Paula Bento</small></button>
+
+</div>
+<div class="theme-grid mt-5">
+<label class="theme-field"><span class="theme-swatch" id="swAccent"></span><span class="flex-1"><b class="text-xs block">Principal</b><small class="text-[10px] text-slate-500">Botões e acções</small></span><input id="themeAccent" type="color" value="#6B4F3A" oninput="QG_previewTema()"></label>
+<label class="theme-field"><span class="theme-swatch" id="swAccentSoft"></span><span class="flex-1"><b class="text-xs block">Apoio</b><small class="text-[10px] text-slate-500">Destaques e selecção</small></span><input id="themeAccentSoft" type="color" value="#D6BC98" oninput="QG_previewTema()"></label>
+<label class="theme-field"><span class="theme-swatch" id="swBg"></span><span class="flex-1"><b class="text-xs block">Fundo</b><small class="text-[10px] text-slate-500">Área de trabalho</small></span><input id="themeBg" type="color" value="#F5F1EB" oninput="QG_previewTema()"></label>
+<label class="theme-field"><span class="theme-swatch" id="swPanel"></span><span class="flex-1"><b class="text-xs block">Cartões</b><small class="text-[10px] text-slate-500">Conteúdo e painéis</small></span><input id="themePanel" type="color" value="#FFFFFF" oninput="QG_previewTema()"></label>
+<label class="theme-field"><span class="theme-swatch" id="swSidebar"></span><span class="flex-1"><b class="text-xs block">Menu</b><small class="text-[10px] text-slate-500">Navegação principal</small></span><input id="themeSidebar" type="color" value="#242220" oninput="QG_previewTema()"></label>
+<label class="theme-field"><span class="theme-swatch" id="swText"></span><span class="flex-1"><b class="text-xs block">Texto</b><small class="text-[10px] text-slate-500">Texto principal</small></span><input id="themeText" type="color" value="#292725" oninput="QG_previewTema()"></label>
+</div>
+<div class="grid lg:grid-cols-2 gap-4 mt-5"><div class="theme-preview"><div class="theme-preview-head"><b>Pré-visualização</b><p class="text-xs opacity-80 mt-1">Veja o equilíbrio entre fundo, cartões, menu e cor de acção.</p></div><div class="p-4"><div class="theme-preview-accent rounded-xl">Acção principal</div><div class="mt-3 p-4 rounded-xl border" style="border-color:var(--app-border);background:var(--app-panel)"><b>Cartão de informação</b><p class="text-xs mt-1" style="color:var(--app-muted)">Exemplo do aspecto do seu painel.</p></div></div></div><div class="card p-5"><h4 class="font-black">💡 Minha recomendação</h4><p class="text-xs text-slate-500 mt-2">Para a Paula Bento, eu começaria por <b>Champagne Premium</b>: preto/grafite para estrutura, marfim para respirar e champagne para dar assinatura sem deixar o painel pesado.</p></div></div>
+</div>
+
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="card p-5"><h3 class="font-bold">Segurança & LGPD</h3><p class="text-xs text-slate-500 mt-2">Controlo de acessos, criptografia e conformidade de dados.</p></div>
+                    <div class="card p-5"><h3 class="font-bold">Backup & Restauração</h3><p class="text-xs text-slate-500 mt-2">Gestão automática de backups e histórico do sistema.</p></div>
+                </div>
+            </section>
+
+        
+            <!-- CATÁLOGOS VENDÁVEIS / ACESSO CLIENTE -->
             <section id="catalogosVenda" class="page">
-                <div class="card p-6">
-                    <h2 class="text-2xl font-black mb-2">Soluções Comerciais & Catálogos & Acessos</h2>
-                    <p class="text-sm text-slate-500 mb-6">Acesso aos produtos comerciais criados pelo QG 001.</p>
-                    <div class="grid md:grid-cols-2 gap-4">
-                        <div class="pb-product">
-                            <span class="mini-tag">PBIRP001</span>
-                            <h3 class="font-black text-lg mt-2">Pacote ERP & Catálogo Digital</h3>
-                            <p class="text-xs text-slate-500 mt-1">Solução completa com CRM, PDV, catálogos e inteligência artificial.</p>
-                            <div class="mt-4 pb-price text-lg">R$ 197,00 / mês</div>
-                        </div>
-                        <div class="pb-product">
-                            <span class="mini-tag">SUPORTE</span>
-                            <h3 class="font-black text-lg mt-2">Suporte & Implantação Dedicada</h3>
-                            <p class="text-xs text-slate-500 mt-1">Acompanhamento e configuração personalizada de ambientes.</p>
-                            <div class="mt-4 pb-price text-lg">R$ 497,00 (único)</div>
-                        </div>
-                    </div>
-                </div>
+              <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 mb-6">
+                <div><span class="pb-kicker">Bloco 430 • Publicação Comercial</span><h2 class="text-2xl md:text-3xl font-black mt-1">Catálogos & Acessos de Clientes</h2><p class="text-sm text-slate-500 mt-2">Crie, personalize, venda e partilhe catálogos a partir do mesmo painel. Cada cliente recebe um acesso próprio.</p></div>
+                <button onclick="PB_novoCatalogoVenda()" class="bg-amber-500 text-slate-950 px-4 py-2.5 rounded-xl text-xs font-black"><i class="fa-solid fa-plus mr-2"></i>Novo catálogo vendável</button>
+              </div>
+              <div class="grid md:grid-cols-4 gap-4 mb-5">
+                <div class="metric p-5"><span class="text-xs text-slate-500">Catálogos activos</span><strong id="pbCatAtivos" class="block text-3xl mt-2">0</strong></div>
+                <div class="metric p-5"><span class="text-xs text-slate-500">Acessos protegidos</span><strong id="pbCatProtegidos" class="block text-3xl mt-2">0</strong></div>
+                <div class="metric p-5"><span class="text-xs text-slate-500">Catálogos vendidos</span><strong id="pbCatVendidos" class="block text-3xl mt-2">0</strong></div>
+                <div class="metric p-5"><span class="text-xs text-slate-500">Receita contratada</span><strong id="pbCatReceita" class="block text-3xl mt-2">R$ 0,00</strong></div>
+              </div>
+              <div class="grid lg:grid-cols-3 gap-5">
+                <div class="card p-5 lg:col-span-2"><div class="flex items-center justify-between mb-4"><div><h3 class="font-black">Catálogos publicados</h3><p class="text-xs text-slate-500">Loja da Fábrica entra como catálogo de cliente; PB001 é a base de operação própria.</p></div><span class="pill">painel único</span></div><div id="pbCatalogosGrid" class="space-y-3"></div></div>
+                <div class="card p-5"><h3 class="font-black">Modelo comercial</h3><p class="text-xs text-slate-500 mt-2">Venda o acesso, não exponha a área administrativa. O cliente vê apenas a vitrine autorizada.</p><div class="space-y-2 mt-4 text-xs"><div class="p-3 rounded-xl bg-slate-900/60">🔐 Senha individual</div><div class="p-3 rounded-xl bg-slate-900/60">🔗 Link exclusivo</div><div class="p-3 rounded-xl bg-slate-900/60">🎨 Identidade do cliente</div><div class="p-3 rounded-xl bg-slate-900/60">🛒 Pedido / orçamento</div><div class="p-3 rounded-xl bg-slate-900/60">📊 Registo de acesso</div></div></div>
+              </div>
+              <div class="card p-5 mt-5"><h3 class="font-black">Como funciona</h3><div class="grid md:grid-cols-4 gap-3 mt-4"><div class="p-4 rounded-xl bg-slate-900/50"><b>01</b><p class="text-xs text-slate-500 mt-1">Escolha o cliente e a base de catálogo.</p></div><div class="p-4 rounded-xl bg-slate-900/50"><b>02</b><p class="text-xs text-slate-500 mt-1">Personalize marca, produtos, preços e conteúdo.</p></div><div class="p-4 rounded-xl bg-slate-900/50"><b>03</b><p class="text-xs text-slate-500 mt-1">Defina preço de acesso e palavra-passe.</p></div><div class="p-4 rounded-xl bg-slate-900/50"><b>04</b><p class="text-xs text-slate-500 mt-1">Gere o link e envie ao cliente.</p></div></div></div>
             </section>
 
-            <section id="comercial" class="page"><div class="card p-6"><h2 class="text-2xl font-black mb-2">Central de Comunicação</h2><p class="text-sm text-slate-500">Gestão integrada de canais WhatsApp, Instagram e Atendimento.</p></div></section>
-            <section id="financeiro" class="page"><div class="card p-6"><h2 class="text-2xl font-black mb-2">Rentabilidade & Custos</h2><p class="text-sm text-slate-500">Controlo financeiro, margem de lucro e custos operacionais.</p></div></section>
-            <section id="relatorios" class="page"><div class="card p-6"><h2 class="text-2xl font-black mb-2">Relatórios Gerenciais</h2><p class="text-sm text-slate-500">Relatórios consolidados de vendas, clientes e desempenho.</p></div></section>
-            <section id="configuracoes" class="page"><div class="card p-6"><h2 class="text-2xl font-black mb-2">Configurações do Sistema</h2><p class="text-sm text-slate-500">Parâmetros globais, perfis de acesso e integrações.</p></div></section>
-            <section id="auditoria" class="page"><div class="card p-6"><h2 class="text-2xl font-black mb-2">Auditoria & Aprovações</h2><p class="text-sm text-slate-500">Histórico de eventos, logs e aprovações pendentes.</p></div></section>
+            <!-- CATÁLOGO PÚBLICO LOJA DA FÁBRICA -->
+            <section id="catalogoLF" class="page">
+              <div class="client-hero rounded-3xl p-6 md:p-10 mb-6">
+                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+                  <div><span class="mini-tag" style="background:#c9b79a;color:#0f0f10">PB003 • CLIENTE QG 001</span><h2 class="text-3xl md:text-5xl font-black mt-3">LOJA DA FÁBRICA</h2><p class="text-sm text-slate-300 mt-2">Móveis Comerciais e Industriais</p><p class="text-xs text-slate-400 mt-3 max-w-2xl">Projetos exclusivos com fabricação própria. Opções de cores, tecidos, estofados, serralharia e dimensões sob medida.</p><div class="flex flex-wrap gap-2 mt-5"><a href="https://wa.me/5561996934108?text=Olá!%20Vim%20pelo%20Catálogo%20e%20gostaria%20de%20solicitar%20um%20orçamento%20personalizado." target="_blank" class="bg-emerald-600 text-white font-bold px-5 py-3 rounded-xl text-xs">WhatsApp • Solicitar orçamento</a><button onclick="openPaymentModal()" class="bg-[#C9B79A] text-[#0F0F10] font-bold px-5 py-3 rounded-xl text-xs">Condições de pagamento</button></div></div><div class="w-full lg:w-80 h-52 bg-slate-800 rounded-2xl overflow-hidden border border-slate-700"><img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover" alt="Móveis comerciais"></div></div>
+              </div>
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6 text-center"><div class="card p-4"><b class="text-sm">PIX</b><p class="text-[10px] text-slate-500 mt-1">Condições especiais</p></div><div class="card p-4"><b class="text-sm">Cartão</b><p class="text-[10px] text-slate-500 mt-1">Parcelamento</p></div><div class="card p-4"><b class="text-sm">Faturado</b><p class="text-[10px] text-slate-500 mt-1">Sob análise</p></div><div class="card p-4"><b class="text-sm">Empenho</b><p class="text-[10px] text-slate-500 mt-1">Órgãos públicos</p></div></div>
+              <div class="card p-5 mb-6"><div class="flex flex-col md:flex-row gap-3"><input id="lfSearch" class="flex-1 rounded-xl px-4 py-3 text-xs" placeholder="Buscar móvel..." oninput="renderCatalogoLF()"><select id="lfFilter" class="rounded-xl px-4 py-3 text-xs" onchange="renderCatalogoLF()"><option value="all">Todas as categorias</option><option>Gastronômica</option><option>Couro & Rústico</option><option>Escolar</option><option>Igrejas & Auditórios</option><option>Outros</option></select></div></div>
+              <div id="lfProductsGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+              <div class="card p-7 mt-6 text-center"><p class="pb-kicker">ATENDIMENTO</p><h3 class="text-2xl font-black mt-2">Vamos desenhar o seu projecto?</h3><p class="text-xs text-slate-500 mt-2">Envie medidas, quantidade e referência. O atendimento comercial pode preparar uma proposta personalizada.</p><a href="https://wa.me/5561996934108?text=Olá!%20Gostaria%20de%20um%20orçamento%20personalizado%20da%20Loja%20da%20Fábrica." target="_blank" class="inline-flex mt-4 bg-[#45362F] text-white px-6 py-3 rounded-xl text-xs font-bold">Falar com atendimento</a></div>
+            </section>
 
+            <!-- PORTAL DO CLIENTE: fica dentro do mesmo HTML e é aberto pelo link gerado -->
+            <section id="portalClientePB" class="page">
+              <div id="pbPortalLogin" class="max-w-md mx-auto py-10"><div class="card p-7 text-center"><div class="pb-logo-mini mx-auto mb-4">PB</div><span class="pb-kicker">ACESSO PRIVADO</span><h2 id="pbPortalLoginTitulo" class="text-2xl font-black mt-2">Catálogo do Cliente</h2><p class="text-xs text-slate-500 mt-2">Introduza a palavra-passe fornecida pela Paula Bento.</p><input id="pbPortalSenha" type="password" class="w-full rounded-xl p-3 mt-5 text-sm" placeholder="Palavra-passe"><button onclick="PB_entrarPortal()" class="w-full bg-amber-500 text-slate-950 py-3 rounded-xl font-black text-xs mt-3">Entrar no catálogo</button><p id="pbPortalErro" class="text-xs text-rose-400 mt-3 hidden">Palavra-passe incorrecta.</p></div></div>
+              <div id="pbPortalConteudo" class="hidden">
+                <div class="pb-public-head"><div><span class="pb-kicker">CATÁLOGO PRIVADO</span><h2 id="pbPortalTitulo" class="text-3xl font-black mt-1"></h2><p id="pbPortalSub" class="text-sm mt-2"></p></div><button onclick="PB_sairPortal()" class="px-4 py-2 rounded-xl border border-slate-700 text-xs">Sair</button></div>
+                <div id="pbPortalProdutos" class="grid sm:grid-cols-2 xl:grid-cols-3 gap-4 mt-5"></div>
+                <div class="card p-5 mt-5"><h3 class="font-black">Solicitar orçamento</h3><div class="grid md:grid-cols-2 gap-3 mt-3"><input id="pbLeadNome" class="rounded-xl p-3 text-xs" placeholder="Nome / empresa"><input id="pbLeadContacto" class="rounded-xl p-3 text-xs" placeholder="WhatsApp ou e-mail"><textarea id="pbLeadMensagem" class="rounded-xl p-3 text-xs md:col-span-2" rows="3" placeholder="O que gostaria de solicitar?"></textarea><button onclick="PB_solicitarOrcamento()" class="bg-amber-500 text-slate-950 py-3 rounded-xl font-black text-xs md:col-span-2">Enviar pedido</button></div></div>
+              </div>
+            </section>
+
+<section id="mapamestre" class="page"><div class="master-wrap space-y-5"><div class="master-hero"><div class="flex flex-wrap items-start justify-between gap-5"><div><div class="text-[10px] uppercase tracking-[.25em] text-emerald-400 font-bold">CENTRAL 01 • BASE-MESTRA</div><h1 class="text-3xl md:text-4xl font-black mt-2">Mapa Mestre Consolidado do QG 001</h1><p class="text-slate-400 mt-2 max-w-3xl">Uma única visão para não perder nenhuma ideia, módulo, regra ou recuperação histórica. A V5.1 continua a ser a referência estável; este mapa organiza o que já existe, o que foi recuperado e o que ainda precisa de evolução.</p><div class="mt-4"><span class="master-pill master-green">🟢 Base / função presente</span><span class="master-pill master-yellow">🟡 Parcial / recuperada</span><span class="master-pill master-blue">🔵 Evolução planeada</span><span class="master-pill master-red">🔴 Dependência de produção</span></div></div><div class="master-actions"><button class="master-btn" onclick="exportarRegrasSistema()">⬇ Exportar Regras JSON</button><button class="master-btn" onclick="mostrarResumoMaster()">✓ Ver estado actual</button></div></div></div>
+<div class="master-grid"><div class="master-card"><h3>👑 001 — Paula Bento</h3><p>Fundadora, criadora, responsável geral e Administradora Master. O QG 001 é o ecossistema; os clientes são ambientes administrados pela Central.</p><span class="master-pill master-green">PROPRIETÁRIA DO ECOSSISTEMA</span></div><div class="master-card"><h3>🏢 Ecossistema</h3><p><b>PB001</b> Paula Bento Ateliê • <b>PB001-Amazon</b> canal Amazon • <b>PB002</b> Loja Império Ferragens • <b>PB003</b> Loja da Fábrica.</p><span class="master-pill master-green">REGISTADO</span></div><div class="master-card"><h3>🧪 Laboratório 001</h3><p>As próprias operações podem ser usadas como laboratório real para testar processos, encontrar falhas e melhorar o produto antes de vender a solução.</p><span class="master-pill master-blue">ÁREA PRIVADA</span></div><div class="master-card"><h3>🛒 PBIRP001</h3><p>Soluções ERP é produto/serviço comercial do QG 001, não uma empresa cliente nem um tenant.</p><span class="master-pill master-green">PRODUTO COMERCIAL</span></div></div>
+<div class="master-grid"><div class="master-card"><h3>📦 ERP & Operação</h3><p>Produtos/SKU/estoque, custos & lucro, orçamentos, CRM, PDV/caixa, rentabilidade, relatórios, empresas/clientes, funcionários e auditoria.</p><span class="master-pill master-green">BASE V5.1</span></div><div class="master-card"><h3>🧠 Inteligência de Catálogo</h3><p>Aprender padrão do cliente; detectar duplicidades; sugerir actualização/nova versão; aprovação humana nas incertezas.</p><span class="master-pill master-yellow">IA ACTUAL = HEURÍSTICA</span></div><div class="master-card"><h3>🖼 Catálogos Vendáveis</h3><p>Catálogo limpo reutilizável, personalização, imagens, vídeo/áudio, 360°, paleta, link protegido e acesso.</p><span class="master-pill master-yellow">PORTAL A EVOLUIR</span></div><div class="master-card"><h3>📥 Importação Inteligente</h3><p>Importar → extrair → aprender padrão → rever/aprovar → organizar → publicar. Inclui SKU, descrições, medidas, custos, margem, mídia, PDFs, tags e origem.</p><span class="master-pill master-yellow">VISÃO + PROTÓTIPO</span></div></div>
+<div class="master-card"><h3>🧩 Arquitectura única</h3><div class="master-tree">QG 001 / CENTRAL 01
+├── 001 Paula Bento — Administração Master
+├── MINHAS OPERAÇÕES
+│   ├── PB001 Paula Bento Ateliê
+│   │   └── PB001-Amazon — canal de vendas
+│   └── PB002 Loja Império Ferragens
+├── CLIENTES
+│   └── PB003 Loja da Fábrica
+├── PRODUTOS COMERCIAIS
+│   └── PBIRP001 Soluções ERP
+├── ERP / COMERCIAL / FINANCEIRO / MARKETING
+├── CENTRAL 700 — COMUNICAÇÃO & AUTOMAÇÃO
+├── ENGENHARIA & PRODUÇÃO
+│   └── CNC
+├── CENTRAL ESCOLAR PRO
+│   ├── Escola → Turma → Criança → Pasta Digital
+│   └── Painel da Família
+├── ÁREA KIDS / TIA LORENA
+├── SISTEMA DA NOSSA CASA
+├── LABORATÓRIO 001
+└── REGRAS DO SISTEMA + AUDITORIA</div></div>
+<div class="master-card"><h3>🎓 Central Escolar Pro — arquitectura preservada</h3><p class="mb-3"><b>Painel da Família</b> é o canal oficial individual entre escola, professora e família. WhatsApp não substitui o painel nem o histórico oficial.</p><table class="master-table"><thead><tr><th>Camada</th><th>O que deve existir</th><th>Estado</th></tr></thead><tbody><tr><td>Escola</td><td>Escola, professores, turmas e permissões.</td><td>🟡 Consolidar</td></tr><tr><td>Turma</td><td>Turma, alunos e quadro de 13 alunos.</td><td>🟡 Recuperado</td></tr><tr><td>Criança</td><td>Código único e responsáveis autorizados.</td><td>🟡 Parcial</td></tr><tr><td>Pasta Digital</td><td>Comunicados, agenda, actividades, passeios, autorizações, pagamentos, documentos, calendário, lembretes e histórico.</td><td>🟡 A completar</td></tr><tr><td>Painel da Família</td><td>Alertas, confirmações, recados e acesso só às crianças ligadas à conta.</td><td>🟡 A completar</td></tr><tr><td>Sacola Literária</td><td>Livro→criança→data→devolução e lembrete automático.</td><td>🟡 Rodízio existente</td></tr><tr><td>Kids / Tia Lorena</td><td>Leitura guiada por voz e apoio interactivo para 1.º ano / 7 anos.</td><td>🟡 Conceito recuperado</td></tr></tbody></table></div>
+<div class="master-grid"><div class="master-card"><h3>👩‍🏫 Quadro da Turma — 13 alunos</h3><p>Pontuação por aluno, ajudas vs. bagunça, sorteio do Ajudante do Dia, estrelas colectivas e estado da sala.</p><span class="master-pill master-yellow">RECUPERAR / INTEGRAR</span></div><div class="master-card"><h3>🏠 Nossa Casa</h3><p>Rotinas sustentáveis, tarefas, regras de organização, lavagens, sapatos fora de casa e manutenção.</p><span class="master-pill master-green">MÓDULO EXISTENTE</span></div><div class="master-card"><h3>⚙️ Engenharia & CNC</h3><p>Orçamento → projecto → engenharia → corte/CNC → ficheiro → fila → operador → produção → conclusão → auditoria.</p><span class="master-pill master-yellow">HISTÓRICO MOVEISFLOW</span></div><div class="master-card"><h3>🔐 Governança Master</h3><p>Segurança, permissões, auditoria, aprovação humana, backup JSON e conformidade.</p><span class="master-pill master-red">BACKEND NECESSÁRIO</span></div></div>
+<div class="master-card"><h3>⚙️ CNC — o que foi realmente recuperado</h3><p>Fila CNC, ID do pedido, material, nome do G-Code, estados, acções, sincronização Firestore e permissões operador/designer/master.</p><div class="master-grid mt-3"><div class="master-card"><h3>🟢 Histórico</h3><p>Fila, Firestore/onSnapshot, materiais, estados e acesso.</p></div><div class="master-card"><h3>🔵 Evolução</h3><p>G-code real, CAD/DXF→CNC, nesting, tempo, versões e validação.</p></div><div class="master-card"><h3>🔴 Não assumir pronto</h3><p>O MoveisFlow não enviava fisicamente ficheiros para a máquina.</p></div></div></div>
+<div class="master-card"><h3>💬 CENTRAL 700 — Comunicação & Automação</h3><p>WhatsApp/Instagram, multi-atendimento, equipa, etiquetas, histórico, campanhas, segmentação, mídias, agendamento, aprovação, funis, automações, IA e conversão.</p><table class="master-table"><thead><tr><th>Bloco</th><th>Capacidade</th><th>Estado</th></tr></thead><tbody><tr><td>CRM</td><td>Leads, etiquetas, funil, origem, follow-up, orçamento e conversão.</td><td>🟢/🟡</td></tr><tr><td>WhatsApp</td><td>Central, multi-atendimento, campanhas, agendamento e automações.</td><td>🟡 Interface; motor real falta</td></tr><tr><td>Campanhas</td><td>Rascunho → IA → validação → preview → aprovação → liberar → executar → relatório.</td><td>🔵 Evolução</td></tr><tr><td>Chatbot</td><td>Gatilho, condição, acção, espera, resposta e transferência humana.</td><td>🔵 Evolução</td></tr><tr><td>Meta / Pixel</td><td>Eventos, conversões e ROI.</td><td>🔵 Evolução</td></tr><tr><td>Materiais</td><td>Scripts validados, bots pré-configurados e e-books.</td><td>🔵 Recuperar / construir</td></tr><tr><td>Suporte</td><td>Segunda–sábado, SLA, prioridade, tickets e conhecimento.</td><td>🔵 Regra comercial</td></tr></tbody></table></div>
+<div class="master-card"><h3>📚 Histórico de recuperação</h3><table class="master-table"><thead><tr><th>Fonte</th><th>Contribuição</th><th>Destino</th></tr></thead><tbody><tr><td>V4.3</td><td>ERP, KPIs, catálogos, CRM, PDV e auditoria.</td><td>Base histórica</td></tr><tr><td>V5</td><td>Core 001, identidade master e ecossistema.</td><td>V5.1</td></tr><tr><td>V5.1</td><td>Referência pré-pronta, PB codes e catálogo LF.</td><td>BASE-MESTRA</td></tr><tr><td>CENTRAL_01_COMPLETO</td><td>Escola e Nossa Casa.</td><td>Recuperar ausências</td></tr><tr><td>MoveisFlow</td><td>CNC + Firestore + permissões.</td><td>Engenharia & Produção</td></tr><tr><td>Central Escolar Pro</td><td>Pasta individual, Painel da Família e fluxo escolar.</td><td>Central Escolar</td></tr></tbody></table></div>
+<div class="master-card"><h3>📜 Regras do Sistema — núcleo de decisões</h3><div id="masterRegrasLista" class="space-y-2"></div><p class="master-note mt-3">As regras ficam registadas localmente para orientar as próximas integrações.</p></div>
+<div class="master-card"><h3>🚦 O que “pronto” significa</h3><p><b>V5.1 é pré-pronta/base-mestra.</b> HTML/localStorage permite testar a operação, mas produção segura exige backend, base de dados, autenticação real, isolamento multi-tenant, armazenamento, IA real, integrações, pagamentos e auditoria no servidor.</p></div></div></section>
         </main>
     </div>
 
-    <!-- MODAIS E COMPONENTES -->
-    <div id="modalEmpresa" class="modal">
-        <div class="card p-6 max-w-lg w-full">
-            <h3 class="text-xl font-bold mb-4">Nova Empresa / Cliente Multi-Tenant</h3>
-            <div class="space-y-3 text-xs">
-                <input id="inputNomeEmpresa" class="w-full p-3 rounded-xl" placeholder="Nome da empresa ou cliente">
-                <input id="inputSegmentoEmpresa" class="w-full p-3 rounded-xl" placeholder="Segmento (ex: Móveis, Ateliê, Ferragens)">
-                <input id="inputResponsavelEmpresa" class="w-full p-3 rounded-xl" placeholder="Responsável principal">
+    <div id="empresaModal" class="modal">
+        <div class="card p-6 w-full max-w-lg">
+            <div class="flex justify-between items-center mb-5">
+                <h2 class="text-xl font-black">Cadastrar nova empresa / cliente</h2>
+                <button onclick="fecharEmpresa()"><i class="fa-solid fa-xmark"></i></button>
             </div>
-            <div class="flex gap-2 mt-5 justify-end">
-                <button onclick="fecharModalEmpresa()" class="bg-slate-800 px-4 py-2.5 rounded-xl text-xs font-bold">Cancelar</button>
-                <button onclick="salvarEmpresa()" class="bg-amber-500 text-slate-950 px-5 py-2.5 rounded-xl text-xs font-bold">Salvar empresa</button>
+            <input id="nomeEmpresa" class="w-full rounded-xl p-3 mb-3 text-xs" placeholder="Nome da empresa (Ex.: 05 LF / Loja da Fábrica)">
+            <input id="segmentoEmpresa" class="w-full rounded-xl p-3 mb-3 text-xs" placeholder="Segmento / actividade">
+            <input id="emailEmpresa" class="w-full rounded-xl p-3 mb-3 text-xs" placeholder="E-mail de contacto">
+            <button onclick="salvarEmpresa()" class="w-full bg-amber-500 text-slate-950 py-3 rounded-xl font-bold text-xs">Criar ambiente independente</button>
+        </div>
+    </div>
+
+    <div id="modalEscolar" class="modal">
+        <div class="card p-6 w-full max-w-lg">
+            <div class="flex justify-between items-center mb-4">
+                <h3 id="modalEscolarTitle" class="text-lg font-bold">Nova informação</h3>
+                <button onclick="closeModalEscolar()">✕</button>
+            </div>
+            <form id="modalEscolarForm" class="space-y-4" onsubmit="submitModalEscolar(event)"></form>
+        </div>
+    </div>
+
+    <div id="paymentModal" class="modal">
+  <div class="card p-6 w-full max-w-xl bg-white text-slate-900">
+    <div class="text-center space-y-2"><div class="w-14 h-14 bg-[#45362F]/10 text-[#45362F] rounded-2xl flex items-center justify-center mx-auto text-2xl"><i class="fa-solid fa-bag-shopping"></i></div><h3 class="text-xl font-black">Opções de Pagamento e Condições</h3><p class="text-xs text-slate-500">Facilidades para fechar o seu projecto com segurança.</p></div>
+    <div class="grid sm:grid-cols-2 gap-3 mt-5 text-xs"><div class="p-4 bg-slate-50 rounded-2xl border border-slate-200"><b>PIX com Desconto</b><p class="text-slate-600 mt-1">Pagamento à vista com condições especiais e aprovação imediata.</p></div><div class="p-4 bg-slate-50 rounded-2xl border border-slate-200"><b>Cartão de Crédito</b><p class="text-slate-600 mt-1">Parcelamento conforme condições comerciais.</p></div><div class="p-4 bg-slate-50 rounded-2xl border border-slate-200"><b>Boleto / Faturado</b><p class="text-slate-600 mt-1">Sob análise de crédito para empresas.</p></div><div class="p-4 bg-slate-50 rounded-2xl border border-slate-200"><b>Nota de Empenho</b><p class="text-slate-600 mt-1">Atendimento a órgãos e instituições públicas.</p></div></div>
+    <div class="flex gap-2 mt-5"><a href="https://wa.me/5561996934108?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20as%20condições%20e%20formas%20de%20pagamento." target="_blank" class="flex-1 bg-emerald-600 text-white font-bold py-3 rounded-xl text-center text-xs">Tirar dúvidas no WhatsApp</a><button onclick="closePaymentModal()" class="bg-slate-200 text-slate-700 font-bold py-3 px-5 rounded-xl text-xs">Voltar</button></div>
+  </div>
+</div>
+
+<div id="toast" class="toast glass rounded-xl px-5 py-4">
+        <div class="flex items-center gap-3">
+            <i class="fa-solid fa-circle-check text-emerald-400"></i>
+            <div>
+                <strong id="toastTitle" class="text-xs">Central 01</strong>
+                <p id="toastText" class="text-[11px] text-slate-400">Operação concluída.</p>
             </div>
         </div>
     </div>
 
-    <div id="toast" class="toast card p-4 bg-slate-900 border border-slate-700 shadow-2xl flex items-center gap-3">
-        <i class="fa-solid fa-circle-check text-emerald-400"></i>
-        <div class="text-xs">
-            <strong id="toastTitulo" class="block">Sucesso</strong>
-            <span id="toastMensagem" class="text-slate-400">Operação realizada.</span>
-        </div>
-    </div>
-
-    <!-- SCRIPT DE FUNCIONAMENTO -->
     <script>
-        let state = {
-            empresas: [
-                { id: 'PB001', nome: 'Paula Bento Ateliê', segmento: 'Ateliê & Artesanato', responsavel: 'Paula Bento', produtos: 0 },
-                { id: 'PB002', nome: 'Loja Império Ferragens', segmento: 'Ferragens & Ferramentas', responsavel: 'Equipe Império', produtos: 0 },
-                { id: 'PB003', nome: 'Loja da Fábrica', segmento: 'Móveis Comerciais', responsavel: 'Cliente QG 001', produtos: 4 }
-            ],
-            empresaAtiva: 'PB001',
-            catalogos: [
-                { id: 1, nome: 'Catálogo Oficial Ateliê', empresa: 'PB001', itens: 12 },
-                { id: 2, nome: 'Catálogo Loja da Fábrica', empresa: 'PB003', itens: 25 }
-            ],
-            carrinho: [],
-            tarefasCasa: [
-                { id: 1, texto: 'Lavar louça do jantar', feito: false, responsavel: 'Papai' },
-                { id: 2, texto: 'Guardar louça limpa', feito: false, responsavel: 'Mamãe' },
-                { id: 3, texto: 'Organizar brinquedos', feito: false, responsavel: 'Gustavo' },
-                { id: 4, texto: 'Lixo recolhido e levado', feito: false, responsavel: 'Papai' }
-            ],
-            tarefasSemanaCasa: [
-                { dia: 'Segunda-feira', tarefa: 'Organização geral de salas e quartos' },
-                { dia: 'Terça-feira', tarefa: 'Lavandaria e roupas leves' },
-                { dia: 'Quarta-feira', tarefa: 'Limpeza profunda da cozinha e frigorífico' },
-                { dia: 'Quinta-feira', tarefa: 'Banheiros e higienização' },
-                { dia: 'Sexta-feira', tarefa: 'Organização geral para o fim de semana' }
-            ],
-            limpezaLista: [
-                { zona: 'Cozinha', frequencia: 'Diária', status: 'Em dia' },
-                { zona: 'Salas', frequencia: 'Diária', status: 'Em dia' },
-                { zona: 'Quartos', frequencia: 'Contínua', status: 'Em dia' },
-                { zona: 'Banheiros', frequencia: 'Bissemanal', status: 'Pendente' }
-            ],
-            cardapioLista: [
-                { refeicao: 'Almoço (Seg-Sex)', prato: 'Arroz, feijão, carne magra e salada variada' },
-                { refeicao: 'Jantar leve', prato: 'Sopas, omeletes ou sanduíches naturais' },
-                { refeicao: 'Lanches', prato: 'Frutas, iogurtes e castanhas' }
-            ],
-            intel: {
-                produtosAnalisados: 12,
-                padraoConfiança: 94,
-                duplicidades: 1,
-                pendentes: 2,
-                pattern: [
-                    { chave: 'Nomenclatura', valor: 'Padrão capitalizado com SKU e unidade clara' },
-                    { chave: 'Categorias', valor: 'Móveis, Ateliê, Ferragens, Acessórios' },
-                    { chave: 'Preços', valor: 'Formato BRL (R$ 0,00) com margem padrão' }
-                ],
-                duplicatesList: [
-                    { id: 1, itemA: 'Cadeira Office Executiva (SKU-101)', itemB: 'Cadeira Escritório Executiva (SKU-102)', match: '96%' }
-                ],
-                queueList: [
-                    { id: 1, titulo: 'Inclusão de novo SKU em Lote', origem: 'Importação PDF', status: 'Aguardando Aprovação' }
-                ]
-            }
+        const STORAGE = {
+            empresas:"central01_empresas_v4",
+            catalogos:"central01_catalogos_v4",
+            produtos:"central01_produtos_v4",
+            orcamentos:"central01_orcamentos_v4",
+            conversas:"central01_conversas_v4",
+            vitrines:"central01_vitrines_v4",
+            auditoria:"central01_auditoria_v4",
+            casa:"central01_nossa_casa"
         };
 
-        function pagina(id) {
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            const el = document.getElementById(id);
-            if (el) el.classList.add('active');
-            
-            document.querySelectorAll('.nav').forEach(n => n.classList.remove('nav-active'));
-            event && event.currentTarget && event.currentTarget.classList.add('nav-active');
-            
-            window.scrollTo(0, 0);
-            atualizarDadosTela();
+        const defaultEmpresas = [
+            {id:"PB001",codigo:"PB001",nome:"Paula Bento Ateliê",tipo:"Operação própria",segmento:"Personalizados, Papelaria & Produtos Criativos",email:"",catalogos:[],produtos:[],vendas:[],unidades:[{id:"PB001-01",nome:"Paula Bento Ateliê",tipo:"Unidade principal"},{id:"PB001-Amazon",nome:"Amazon",tipo:"Canal de vendas"}]},
+            {id:"PB002",codigo:"PB002",nome:"Loja Império Ferragens",tipo:"Operação própria / parceria",segmento:"Ferragens, estruturas e projectos por medida",email:"",catalogos:[],produtos:[],vendas:[],parceria:"Operação partilhada"},
+            {id:"PB003",codigo:"PB003",nome:"Loja da Fábrica",tipo:"Cliente QG 001",segmento:"Móveis Comerciais e Industriais",email:"",catalogos:[],produtos:[],vendas:[],clienteCatalogo:true},
+        ];
+        let empresas = load(STORAGE.empresas, defaultEmpresas);
+        let catalogos = load(STORAGE.catalogos, []);
+        let produtos = load(STORAGE.produtos, []);
+        let orcamentos = load(STORAGE.orcamentos, []);
+        let conversas = load(STORAGE.conversas, []);
+        let vitrines = load(STORAGE.vitrines, []);
+        let auditoria = load(STORAGE.auditoria, []);
+        let empresaSelecionada = null;
+        let carrinho = [];
+        let streamCamera = null;
+
+        /* ==========================================================
+           REGISTRO OFICIAL QG 001 — CÓDIGOS V5.1
+           PB001  = Paula Bento Ateliê + canal PB001-Amazon
+           PB002  = Loja Império Ferragens
+           PB003  = Loja da Fábrica (cliente)
+           PBIRP001 = Solução ERP / produto comercial do QG 001
+           Nenhum destes clientes é proprietário do QG 001.
+        ========================================================== */
+        const QG001_REGISTRY = {
+          owner:{id:'001',nome:'Ana Paula Bento da Silva',nomeCurto:'Paula Bento',tipo:'proprietaria_do_ecossistema'},
+          operacoes:[
+            {id:'PB001',nome:'Paula Bento Ateliê',natureza:'operação própria',unidades:['PB001-01','PB001-Amazon']},
+            {id:'PB002',nome:'Loja Império Ferragens',natureza:'operação própria / parceria',unidades:[]},
+          ],
+          clientes:[{id:'PB003',nome:'Loja da Fábrica',natureza:'cliente QG 001',escopo:'catálogo e gestão comercial autorizada'}],
+          produtosComerciais:[{id:'PBIRP001',nome:'Soluções ERP',natureza:'produto/serviço comercial do QG 001'}]
+        };
+        function migrarEstruturaPB001(){
+          const map={"EMP-01":'PB001',"EMP-03":'PB001',"EMP-05":'PB003'};
+          let changed=false;
+          empresas=(empresas||[]).map(e=>{const old=e.id,newId=map[old]||e.id;if(newId!==old){changed=true;e.id=newId;e.codigo=newId;}return e;});
+          // Remove duplicidades e garante os quatro registos oficiais.
+          const ensure=defaultEmpresas.map(d=>structuredClone(d));
+          ensure.forEach(d=>{if(!empresas.some(e=>e.id===d.id)){empresas.push(d);changed=true;}});
+          const byId={}; empresas.forEach(e=>{if(!byId[e.id])byId[e.id]=e;}); empresas=Object.values(byId);
+          produtos=(produtos||[]).map(p=>{if(map[p.empresaId]){p.empresaId=map[p.empresaId];changed=true;}else if(p.empresaId==='EMP-04'){p.empresaId='PB001';p.migradoDe='EMP-04';changed=true;}return p;});
+          catalogos=(catalogos||[]).map(c=>{if(map[c.empresaId]){c.empresaId=map[c.empresaId];changed=true;}else if(c.empresaId==='EMP-04'){c.empresaId='PB001';c.migradoDe='EMP-04';changed=true;}return c;});
+          orcamentos=(orcamentos||[]).map(o=>{if(map[o.empresaId]){o.empresaId=map[o.empresaId];changed=true;}else if(o.empresaId==='EMP-04'){o.empresaId='PB001';o.migradoDe='EMP-04';changed=true;}return o;});
+          if(changed){save(STORAGE.empresas,empresas);save(STORAGE.produtos,produtos);save(STORAGE.catalogos,catalogos);save(STORAGE.orcamentos,orcamentos);logAudit('Migração V5.1','Estrutura EMP-* → códigos PB oficiais','Aprovado');}
+        }
+        migrarEstruturaPB001();
+        // Pré-carrega o cliente Loja da Fábrica com os dados do catálogo oficial já criado anteriormente.
+        garantirCatalogoLojaDaFabrica();
+
+        function load(key, fallback){ try { const x=JSON.parse(localStorage.getItem(key)); return x ?? structuredClone(fallback); } catch(e){ return structuredClone(fallback); } }
+        function save(key,value){ localStorage.setItem(key,JSON.stringify(value)); }
+        function escapeHTML(str){ return String(str??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;"); }
+        function money(v){ return Number(v||0).toLocaleString("pt-BR",{style:"currency",currency:"BRL"}); }
+        function now(){ return new Date().toLocaleString("pt-BR"); }
+        function logAudit(acao,detalhe,status="Registado"){
+            auditoria.unshift({id:"AUD-"+Date.now(),data:now(),acao,detalhe,status});
+            auditoria=auditoria.slice(0,200); save(STORAGE.auditoria,auditoria); renderAuditoria();
+        }
+        function openPaymentModal(){document.getElementById('paymentModal')?.classList.add('show');}
+        function closePaymentModal(){document.getElementById('paymentModal')?.classList.remove('show');}
+
+        function toast(title,text){
+            const t=document.getElementById("toast"); if(!t)return;
+            document.getElementById("toastTitle").innerText=title;
+            document.getElementById("toastText").innerText=text;
+            t.classList.add("show"); setTimeout(()=>t.classList.remove("show"),3500);
+        }
+        function pagina(id){
+            document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+            const page=document.getElementById(id); if(page)page.classList.add("active");
+            document.querySelectorAll(".nav").forEach(n=>n.classList.remove("nav-active"));
+            const nav=document.querySelector(`.nav[onclick="pagina('${id}')"]`); if(nav)nav.classList.add("nav-active");
+            if(id==="nossacasa")renderCasa();
+            if(id==="empresas")renderEmpresas();
+            if(id==="catalogos")renderCatalogos();
+            if(id==="catalogoLF")renderCatalogoLF();
+            if(id==="produtos")renderProdutos();
+            if(id==="orcamentos")renderOrcamentos();
+            if(id==="comercial")renderConversas();
+            if(id==="vitrine")renderVitrines();
+            if(id==="auditoria")renderAuditoria();
+            window.scrollTo({top:0,behavior:"smooth"});
         }
 
-        function toast(titulo, mensagem) {
-            const t = document.getElementById('toast');
-            document.getElementById('toastTitulo').innerText = titulo;
-            document.getElementById('toastMensagem').innerText = mensagem;
-            t.classList.add('show');
-            setTimeout(() => t.classList.remove('show'), 3500);
+        /* EMPRESAS */
+        function abrirEmpresa(){document.getElementById("empresaModal").classList.add("show");}
+        function fecharEmpresa(){document.getElementById("empresaModal").classList.remove("show");}
+        function salvarEmpresa(){
+            const nome=document.getElementById("nomeEmpresa").value.trim();
+            const segmento=document.getElementById("segmentoEmpresa").value.trim()||"Geral";
+            const email=document.getElementById("emailEmpresa").value.trim();
+            if(!nome){toast("Empresa","Digite o nome da empresa.");return;}
+            const empresa={id:"CLIENTE-"+Date.now(),codigo:"CLIENTE-"+Date.now(),nome,tipo:"Cliente QG 001",segmento,email,catalogos:[],produtos:[],vendas:[]};
+            empresas.push(empresa); save(STORAGE.empresas,empresas);
+            ["nomeEmpresa","segmentoEmpresa","emailEmpresa"].forEach(id=>document.getElementById(id).value="");
+            fecharEmpresa(); renderEmpresas(); renderEmpresaSelect(); atualizarDashboard();
+            logAudit("Nova empresa",nome); toast("Empresa criada",`O ambiente de "${nome}" foi criado.`);
+            pagina("empresas");
+        }
+        const LF_CATALOG_DATA = [
+            {id:"LF-001",nome:"Sofá Booth Estilo Americano",categoria:"Gastronômica",descricao:"Ideal para restaurantes, lanchonetes e hamburguerias. Estrutura reforçada.",tag:"Personalizável",custo:380,preco:790,imagem:"https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80"},
+            {id:"LF-002",nome:"Canto Alemão & Lounges em Couro",categoria:"Couro & Rústico",descricao:"Aproveitamento inteligente de espaço com encostos anatómicos.",tag:"Couro Marrom",custo:450,preco:920,imagem:"https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80"},
+            {id:"LF-003",nome:"Banqueta Alta Estilo Industrial",categoria:"Gastronômica",descricao:"Design contemporâneo em estrutura metálica preta.",tag:"Industrial",custo:110,preco:240,imagem:"https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=600&q=80"},
+            {id:"LF-004",nome:"Mesa Rústica & Cadeira Madeira Nobre",categoria:"Couro & Rústico",descricao:"Estrutura reforçada amadeirada em tom castanho quente.",tag:"Marrom Rústico",custo:520,preco:1100,imagem:"https://images.unsplash.com/photo-1615066390971-03e4e1c36ddf?auto=format&fit=crop&w=600&q=80"},
+            {id:"LF-005",nome:"Cadeira Universitária Prime",categoria:"Escolar",descricao:"Ergonomia avançada para ambientes educacionais.",tag:"Ergonomia",custo:95,preco:195,imagem:"https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=600&q=80"},
+            {id:"LF-006",nome:"Conjunto Refeitório Infantil & Escolar",categoria:"Escolar",descricao:"Soluções versáteis com tampo de fácil higienização.",tag:"Linha Escolar",custo:320,preco:680,imagem:"https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80"},
+            {id:"LF-007",nome:"Poltrona Auditório & Catedral",categoria:"Igrejas & Auditórios",descricao:"Projetada para máximo conforto em longos períodos.",tag:"Conforto Prime",custo:210,preco:450,imagem:"https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=600&q=80"},
+            {id:"LF-008",nome:"Púlpito Acrílico & MDF Amadeirado",categoria:"Igrejas & Auditórios",descricao:"Design imponente para igrejas e centros de convenção.",tag:"Design",custo:290,preco:650,imagem:"https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=600&q=80"},
+            {id:"LF-009",nome:"Kit Lanche & Balcão Industrial",categoria:"Outros",descricao:"União de madeira castanha e serralharia preta.",tag:"Tendência",custo:600,preco:1350,imagem:"https://images.unsplash.com/photo-1511018556340-d16986a1c194?auto=format&fit=crop&w=600&q=80"}
+        ];
+        function garantirCatalogosPaulaBento(){
+            const ids=['PB001'];
+            const nomes={
+              'PB001':'Paula Bento Ateliê — Personalizados & Identidade Visual'
+            };
+            ids.forEach(id=>{const e=empresas.find(x=>x.id===id);if(!e)return;e.catalogos=e.catalogos||[];if(!e.catalogos.some(cid=>catalogos.some(c=>c.id===cid))){const cat={id:'CAT-PB-'+id,empresaId:id,nome:nomes[id],status:'Rascunho',tipo:'marca-propria',criadoEm:now(),personalizavel:true};catalogos.push(cat);e.catalogos.push(cat.id);}});
+            save(STORAGE.empresas,empresas);save(STORAGE.catalogos,catalogos);
+        }
+        function abrirCatalogoPaulaBento(){window.open('Atelie_Paula_Bento_Catalogo.html','_blank');}
+
+        function garantirCatalogoLojaDaFabrica(){
+            const lf=empresas.find(e=>e.id==='PB003'); if(!lf)return;
+            lf.tipo='Cliente QG 001'; lf.catalogoOriginal={nome:'Loja da Fábrica — Catálogo Interativo Oficial',fonte:'Loja_da_Fábrica_-_Catálogo_Interativo_Oficial.html',status:'Importado / pré-preenchido',ano:2026,produtos:LF_CATALOG_DATA.map(x=>x.id)};
+            const existentes=produtos.filter(p=>p.empresaId==='PB003').map(p=>p.sku||p.id);
+            LF_CATALOG_DATA.forEach(x=>{if(!existentes.includes(x.id)) produtos.push({id:'PRD-LF-'+x.id,empresaId:'PB003',nome:x.nome,sku:x.id,categoria:x.categoria,unidade:'un.',descricao:x.descricao,original:x.descricao,custo:x.custo,preco:x.preco,markup:x.custo?((x.preco-x.custo)/x.custo):0,status:'Aprovado',fonte:x.tag+' • catálogo oficial Loja da Fábrica',imagem:x.imagem,data:now()});});
+            if(!lf.catalogos.some(id=>catalogos.some(c=>c.id===id))){const cat={id:'CAT-LF-OFICIAL',empresaId:'PB003',nome:'Loja da Fábrica — Catálogo Oficial Importado',status:'Publicado',tipo:'cliente-original',criadoEm:now(),fonteOriginal:'Loja_da_Fábrica_-_Catálogo_Interativo_Oficial.html',produtos:LF_CATALOG_DATA.map(x=>'PRD-LF-'+x.id)};catalogos.push(cat);lf.catalogos.push(cat.id);}
+            save(STORAGE.empresas,empresas);save(STORAGE.produtos,produtos);save(STORAGE.catalogos,catalogos);
+        }
+        function renderEmpresas(){
+            const grid=document.getElementById("empresasGrid"); if(!grid)return;
+            garantirCatalogoLojaDaFabrica();
+            garantirCatalogosPaulaBento();
+            grid.innerHTML=empresas.length?empresas.map(e=>{
+                const isLF=e.id==='PB003';
+                return `<div class="card p-5 ${isLF?'ring-1 ring-[#C9B79A]/60':''}">
+                    <div class="flex justify-between items-start gap-2"><div><div class="flex items-center gap-2"><h3 class="font-bold text-lg">${escapeHTML(e.nome)}</h3><span class="mini-tag">${escapeHTML(e.tipo||'Cliente')}</span></div><p class="text-xs text-slate-500 mt-1">${escapeHTML(e.segmento)}</p></div><span class="pill">${e.id}</span></div>
+                    ${isLF?'<div class="mt-4 p-3 rounded-xl bg-[#f4eee8] border border-[#d8cabe]"><p class="text-[10px] uppercase tracking-wider font-black text-[#45362F]">Cliente com catálogo pré-preenchido</p><p class="text-[11px] text-[#756d67] mt-1">Dados do catálogo oficial carregados no ambiente do cliente.</p></div>':''}
+                    <div class="grid grid-cols-3 gap-2 mt-4 text-center text-[10px]"><div class="bg-slate-900 rounded-lg p-2"><b>${e.produtos?.length||produtos.filter(p=>p.empresaId===e.id).length||0}</b><br>produtos</div><div class="bg-slate-900 rounded-lg p-2"><b>${e.catalogos?.length||0}</b><br>catálogos</div><div class="bg-slate-900 rounded-lg p-2"><b>${e.vendas?.length||0}</b><br>vendas</div></div>
+                    <div class="flex gap-2 mt-4"><button onclick="selecionarEmpresa('${e.id}')" class="flex-1 bg-slate-800 py-2.5 rounded-xl text-xs font-bold hover:bg-slate-700">Entrar no ambiente</button><button onclick="abrirPerfilCliente('${e.id}')" class="px-3 bg-[#45362F] text-white rounded-xl text-xs" title="Ver cliente"><i class="fa-solid fa-id-card"></i></button></div>
+                </div>`;
+            }).join(""):`<div class="card p-8 text-center col-span-full"><p class="text-sm text-slate-500">Nenhuma empresa cadastrada.</p></div>`;
+            renderPerfilCliente();
+        }
+        function abrirPerfilCliente(id){empresaSelecionada=empresas.find(e=>e.id===id)||null;renderEmpresaSelect();renderPerfilCliente();document.getElementById('clienteCatalogoPanel')?.scrollIntoView({behavior:'smooth',block:'start'});}
+        function renderPerfilCliente(){
+            const el=document.getElementById('clienteCatalogoPanel'); if(!el)return;
+            if(!empresaSelecionada){el.innerHTML=`<div class="template-card p-6"><div class="flex items-center gap-3"><div class="client-logo">PB</div><div><p class="pb-kicker">Área de cliente</p><h3 class="font-black text-lg">Seleccione um cliente para ver a ficha e o catálogo</h3><p class="text-xs text-slate-500 mt-1">O QG mantém os dados isolados por empresa.</p></div></div></div>`;return;}
+            const e=empresaSelecionada, isLF=e.id==='PB003', ps=produtos.filter(p=>p.empresaId===e.id);
+            const cat=isLF?LF_CATALOG_DATA:[];
+            el.innerHTML=`<div class="client-profile"><div class="client-hero p-6 md:p-7"><div class="flex flex-col md:flex-row md:items-center justify-between gap-5"><div class="flex items-center gap-4"><div class="client-logo">${isLF?'LF':'PB'}</div><div><span class="mini-tag" style="background:#c9b79a;color:#0f0f10">${escapeHTML(e.tipo||'Cliente')}</span><h3 class="text-2xl font-black mt-2">${escapeHTML(e.nome)}</h3><p class="text-xs text-slate-300 mt-1">${escapeHTML(e.segmento)} • ${escapeHTML(e.email||'')}</p></div></div><div class="flex gap-2"><button onclick="pagina('catalogos')" class="bg-white text-[#45362F] px-4 py-2.5 rounded-xl text-xs font-bold"><i class="fa-solid fa-book-open mr-1"></i> Catálogos</button>${isLF?'<button onclick="abrirCatalogoLF()" class="bg-[#C9B79A] text-[#0F0F10] px-4 py-2.5 rounded-xl text-xs font-black"><i class="fa-solid fa-store mr-1"></i> Ver catálogo LF</button>':((e.id==='PB001'||e.id==='PB001'||e.id==='PBIRP001')?'<button onclick="abrirCatalogoPaulaBento()" class="bg-[#C9B79A] text-[#0F0F10] px-4 py-2.5 rounded-xl text-xs font-black"><i class="fa-solid fa-sparkles mr-1"></i> Ver catálogo PB</button>':'')}</div></div></div>
+                <div class="p-6 md:p-7"><div class="grid md:grid-cols-3 gap-4"><div class="intel-card"><h4>Base de dados</h4><p>${ps.length} produtos estruturados no QG 001.</p></div><div class="intel-card"><h4>Catálogo</h4><p>${isLF?'Importado e pré-preenchido a partir do catálogo oficial.':'Pronto para criação e personalização.'}</p></div><div class="intel-card"><h4>Identidade</h4><p>${isLF?'Mantém a identidade do cliente.':'Pode receber a identidade visual do cliente.'}</p></div></div>
+                ${isLF?`<div class="mt-6"><div class="flex flex-col md:flex-row md:items-center justify-between gap-3"><div><p class="pb-kicker">Catálogo original</p><h4 class="font-black text-lg">Loja da Fábrica — Catálogo Interativo Oficial</h4><p class="text-xs text-slate-500 mt-1">Fonte: ${escapeHTML(e.catalogoOriginal?.fonte||'catálogo oficial')} • ${e.catalogoOriginal?.ano||2026}</p></div><button onclick="criarCatalogoLimpoLF()" class="template-card px-4 py-3 text-xs font-black text-[#45362F]"><i class="fa-solid fa-copy mr-1"></i> Criar versão limpa para outro cliente</button></div><div class="grid md:grid-cols-3 gap-3 mt-4">${cat.map(x=>`<div class="client-product"><div class="flex justify-between gap-2"><span class="mini-tag">${escapeHTML(x.tag)}</span><span class="text-[10px] text-slate-400">${x.id}</span></div><h5 class="font-black text-sm mt-3">${escapeHTML(x.nome)}</h5><p class="text-[11px] text-slate-500 mt-1 line-clamp-2">${escapeHTML(x.descricao)}</p><div class="flex justify-between mt-3 text-[10px]"><span>${escapeHTML(x.categoria)}</span><strong>${money(x.preco)}</strong></div></div>`).join('')}</div></div>`:''}
+                ${!isLF?`<div class="mt-6 template-card p-5"><div class="flex flex-col md:flex-row md:items-center justify-between gap-4"><div><p class="pb-kicker">Modelo de catálogo</p><h4 class="font-black">Catálogo limpo + identidade do cliente</h4><p class="text-xs text-slate-500 mt-1">Estrutura pronta para receber produtos, imagens, preços, categorias e identidade visual sem herdar dados de outra empresa.</p></div><button onclick="criarCatalogoBaseParaCliente('${e.id}')" class="bg-[#45362F] text-white px-4 py-2.5 rounded-xl text-xs font-bold">Criar catálogo base</button></div></div>`:''}</div></div>`;
+        }
+        function renderCatalogoLF(){
+          const grid=document.getElementById('lfProductsGrid'); if(!grid)return;
+          const q=(document.getElementById('lfSearch')?.value||'').toLowerCase().trim(); const cat=document.getElementById('lfFilter')?.value||'all';
+          const list=LF_CATALOG_DATA.filter(x=>(!q||(x.nome+' '+x.categoria+' '+x.descricao).toLowerCase().includes(q))&&(cat==='all'||x.categoria===cat));
+          grid.innerHTML=list.map(x=>`<article class="client-product"><div class="h-44 rounded-xl overflow-hidden bg-slate-100"><img src="${x.imagem}" class="w-full h-full object-cover" alt="${escapeHTML(x.nome)}"></div><div class="flex justify-between gap-2 mt-3"><span class="mini-tag">${escapeHTML(x.tag)}</span><span class="text-[10px] text-slate-400">${escapeHTML(x.id)}</span></div><h3 class="font-black mt-2">${escapeHTML(x.nome)}</h3><p class="text-xs text-slate-500 mt-2 line-clamp-3">${escapeHTML(x.descricao)}</p><div class="flex justify-between items-center mt-4"><span class="text-[10px] text-slate-500">${escapeHTML(x.categoria)}</span><strong class="text-[#45362F]">${money(x.preco)}</strong></div><a class="block mt-4 bg-emerald-600 text-white text-center py-2.5 rounded-xl text-xs font-bold" target="_blank" href="https://wa.me/5561996934108?text=${encodeURIComponent('Olá! Tenho interesse no produto '+x.nome+' ('+x.id+'). Gostaria de um orçamento personalizado.')}">Tenho interesse</a></article>`).join('')||'<div class="card p-8 text-center col-span-full"><p class="text-sm text-slate-500">Nenhum produto encontrado.</p></div>';
+        }
+        function abrirCatalogoLF(){pagina('catalogoLF');setTimeout(renderCatalogoLF,50);}
+        function abrirCatalogoLFPopup(){abrirCatalogoLF();}
+        function abrirCatalogoLFOriginal(){abrirCatalogoLF();}
+        function abrirCatalogoLFLegacy(){
+
+            const win=window.open('','_blank');if(!win)return;
+            const rows=LF_CATALOG_DATA.map(x=>`<article style="border:1px solid #e2d7cd;border-radius:18px;padding:18px;background:#fff"><div style="height:150px;background:#f5f1ed;border-radius:12px;display:flex;align-items:center;justify-content:center;overflow:hidden"><img src="${x.imagem}" style="width:100%;height:100%;object-fit:cover"></div><small style="letter-spacing:.12em;text-transform:uppercase;color:#9a887c;font-weight:800">${x.tag}</small><h3 style="font-family:Arial;margin:8px 0">${x.nome}</h3><p style="color:#6f7275;font-size:13px;line-height:1.5">${x.descricao}</p><strong>R$ ${Number(x.preco).toFixed(2).replace('.',',')}</strong></article>`).join('');
+            win.document.write(`<!doctype html><html><head><meta charset="utf-8"><title>Loja da Fábrica — Catálogo</title><style>body{margin:0;background:#faf8f4;color:#2f3133;font-family:Arial;padding:30px}header{background:#0f0f10;color:white;border-radius:24px;padding:30px;margin-bottom:25px}main{max-width:1100px;margin:auto}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}@media(max-width:600px){body{padding:14px}}</style></head><body><main><header><div style="font-size:12px;letter-spacing:.25em;color:#c9b79a">CLIENTE QG 001</div><h1 style="margin:10px 0">LOJA DA FÁBRICA</h1><p style="color:#ddd">Móveis Comerciais e Industriais • catálogo pré-preenchido</p></header><div class="grid">${rows}</div></main></body></html>`);win.document.close();
+        }
+        function criarCatalogoLimpoLF(){
+            if(!confirm('Criar um novo catálogo limpo, sem a marca e sem os dados da Loja da Fábrica?'))return;
+            const cat={id:'CAT-BASE-'+Date.now(),empresaId:empresaSelecionada?.id||'PB003',nome:'Modelo Base — Catálogo Limpo Comercial',status:'Rascunho',tipo:'template-limpo',criadoEm:now(),herdaEstrutura:true,herdaProdutos:false,observacao:'Estrutura derivada do catálogo oficial, sem dados específicos do cliente.'};catalogos.push(cat);save(STORAGE.catalogos,catalogos);logAudit('Modelo de catálogo limpo criado',cat.nome,'Aprovado');renderCatalogos();toast('Catálogo limpo','Modelo criado sem dados da Loja da Fábrica.');
+        }
+        function criarCatalogoBaseParaCliente(id){
+            const e=empresas.find(x=>x.id===id);if(!e)return;const cat={id:'CAT-BASE-'+Date.now(),empresaId:id,nome:'Catálogo Base — '+e.nome,status:'Rascunho',tipo:'template-limpo',criadoEm:now(),herdaEstrutura:true,herdaProdutos:false};catalogos.push(cat);e.catalogos=e.catalogos||[];e.catalogos.push(cat.id);save(STORAGE.catalogos,catalogos);save(STORAGE.empresas,empresas);renderEmpresas();renderCatalogos();logAudit('Catálogo base criado',`${e.nome} • ${cat.nome}`);toast('Catálogo base','Estrutura criada para personalização.');
         }
 
-        function atualizarDadosTela() {
-            document.getElementById('kpiEmpresas').innerText = state.empresas.length;
-            document.getElementById('kpiCatalogos').innerText = state.catalogos.length;
-            document.getElementById('v5Tenants').innerText = state.empresas.length;
-            document.getElementById('v5Approvals').innerText = state.intel.pendentes;
-            document.getElementById('v5Audit').innerText = state.intel.produtosAnalisados + 5;
-
-            // Select de empresas
-            const sel = document.getElementById('empresaAtual');
-            if (sel) {
-                sel.innerHTML = '<option value="principal">🏢 Seleccionar empresa</option>' + 
-                    state.empresas.map(e => `<option value="${e.id}" ${state.empresaAtiva === e.id ? 'selected' : ''}>${e.id} — ${e.nome}</option>`).join('');
-            }
-
-            // Dashboard lista
-            const lst = document.getElementById('listaDashboard');
-            if (lst) {
-                lst.innerHTML = state.empresas.map(e => `
-                    <div class="flex items-center justify-between p-3 bg-slate-900 rounded-xl">
-                        <div><b>${e.nome}</b><p class="text-xs text-slate-500">${e.segmento} • Resp: ${e.responsavel}</p></div>
-                        <span class="badge bg-emerald-500/10 text-emerald-400">${e.id}</span>
-                    </div>
-                `).join('');
-            }
-
-            // Empresas Grid
-            const eg = document.getElementById('empresasGrid');
-            if (eg) {
-                eg.innerHTML = state.empresas.map(e => `
-                    <div class="card p-5">
-                        <span class="badge bg-amber-500/10 text-amber-400 mb-2 inline-block">${e.id}</span>
-                        <h3 class="font-bold text-lg">${e.nome}</h3>
-                        <p class="text-xs text-slate-500 mt-1">${e.segmento}</p>
-                        <p class="text-xs text-slate-400 mt-2">Responsável: <b>${e.responsavel}</b></p>
-                        <div class="flex gap-2 mt-4">
-                            <button onclick="selecionarEmpresa('${e.id}')" class="bg-amber-500 text-slate-950 px-3 py-2 rounded-xl text-xs font-bold flex-1">Seleccionar</button>
-                            <button onclick="removerEmpresa('${e.id}')" class="bg-slate-800 px-3 py-2 rounded-xl text-xs"><i class="fa-solid fa-trash text-red-400"></i></button>
-                        </div>
-                    </div>
-                `).join('');
-            }
-
-            // Catálogos Grid
-            const cg = document.getElementById('catalogosGrid');
-            if (cg) {
-                cg.innerHTML = state.catalogos.map(c => `
-                    <div class="card p-5">
-                        <span class="badge bg-blue-500/10 text-blue-400 mb-2 inline-block">Catálogo #${c.id}</span>
-                        <h3 class="font-bold text-lg">${c.nome}</h3>
-                        <p class="text-xs text-slate-500 mt-1">Empresa ID: ${c.empresa}</p>
-                        <p class="text-xs text-slate-400 mt-2">Itens catalogados: <b>${c.itens}</b></p>
-                        <button onclick="toast('Catálogo','Acedendo ao catálogo digital interactivo.')" class="mt-4 w-full bg-slate-800 py-2 rounded-xl text-xs font-bold">Abrir Catálogo</button>
-                    </div>
-                `).join('');
-            }
-
-            renderCasa();
-            renderInteligencia();
+        function selecionarEmpresa(id){
+            empresaSelecionada=empresas.find(e=>e.id===id)||null;
+            document.getElementById("empresaAtual").value=id;
+            if(empresaSelecionada){toast("Empresa seleccionada",empresaSelecionada.nome);logAudit("Troca de ambiente",empresaSelecionada.nome);}
+            atualizarDashboard(); renderProdutos(); renderCatalogos(); renderPerfilCliente(); pagina("dashboard");
+        }
+        function renderEmpresaSelect(){
+            const select=document.getElementById("empresaAtual"); if(!select)return;
+            select.innerHTML='<option value="principal">🏢 Seleccionar empresa</option>';
+            empresas.forEach(e=>{const o=document.createElement("option");o.value=e.id;o.textContent="🏢 "+e.nome;select.appendChild(o);});
+            if(empresaSelecionada)select.value=empresaSelecionada.id;
+        }
+        function trocarEmpresa(){
+            const id=document.getElementById("empresaAtual").value;
+            if(id==="principal"){empresaSelecionada=null;atualizarDashboard();return;}
+            selecionarEmpresa(id);
         }
 
-        function trocarEmpresa() {
-            const val = document.getElementById('empresaAtual').value;
-            if (val !== 'principal') {
-                state.empresaAtiva = val;
-                toast('Empresa', 'Empresa activa alterada para ' + val);
-            }
+        /* DASHBOARD */
+        function atualizarDashboard(){
+            document.getElementById("kpiEmpresas").innerText=empresas.length;
+            document.getElementById("kpiCatalogos").innerText=catalogos.length;
+            const vendas=empresas.flatMap(e=>e.vendas||[]);
+            const faturamento=vendas.reduce((a,v)=>a+Number(v.total||0),0);
+            const cards=document.querySelectorAll("#dashboard .metric strong");
+            if(cards[1])cards[1].innerText=money(faturamento);
+            const lista=document.getElementById("listaDashboard"); if(!lista)return;
+            lista.innerHTML=empresas.map(e=>`<div class="flex justify-between items-center bg-slate-950 border border-slate-800 rounded-xl p-4"><div><strong class="text-sm">${escapeHTML(e.nome)}</strong><p class="text-[10px] text-slate-500">${e.produtos?.length||0} produtos • ${e.catalogos?.length||0} catálogos</p></div><span class="text-emerald-400 text-xs">● Online</span></div>`).join("");
         }
 
-        function selecionarEmpresa(id) {
-            state.empresaAtiva = id;
-            toast('Empresa', 'Operando no ambiente ' + id);
-            pagina('dashboard');
+        /* PRODUTOS + PADRÃO IA */
+        function novoProduto(){
+            if(!empresaSelecionada){toast("Produtos","Seleccione uma empresa antes.");pagina("empresas");return;}
+            const nome=prompt("Nome/modelo do produto:");
+            if(!nome)return;
+            const sku=prompt("SKU/código (opcional):")||("SKU-"+Date.now());
+            const custo=parseFloat((prompt("Custo (R$):")||"0").replace(",", "."))||0;
+            const preco=parseFloat((prompt("Preço de venda (R$):")||"0").replace(",", "."))||0;
+            const p={id:"PROD-"+Date.now(),empresaId:empresaSelecionada.id,sku,nome,categoria:"Sem categoria",descricaoOriginal:nome,descricaoIA:nome,unidade:"UN",custo,preco,estoque:0,status:"Aprovado",criadoEm:now()};
+            produtos.push(p); save(STORAGE.produtos,produtos);
+            empresaSelecionada.produtos=empresaSelecionada.produtos||[]; empresaSelecionada.produtos.push(p.id); save(STORAGE.empresas,empresas);
+            logAudit("Novo produto",`${nome} (${sku})`); renderProdutos(); atualizarDashboard(); toast("Produto","Produto criado.");
+        }
+        function renderProdutos(){
+            const area=document.querySelector("#produtos .card"); if(!area)return;
+            let ps=empresaSelecionada?produtos.filter(p=>p.empresaId===empresaSelecionada.id):[];
+            const toolbar=`<div class="flex flex-wrap gap-2 mb-4"><input id="produtoBuscaV4" class="flex-1 min-w-[220px] rounded-xl px-4 py-3 text-xs" placeholder="Pesquisar nome, SKU, categoria..." oninput="filtrarProdutos(this.value)"><button onclick="novoProduto()" class="bg-amber-500 text-slate-950 px-4 rounded-xl font-bold text-xs">+ Produto</button><button onclick="aprenderPadraoIA()" class="bg-purple-600 text-white px-4 rounded-xl font-bold text-xs">✦ Aprender padrão IA</button></div>`;
+            area.innerHTML=toolbar+`<div id="produtosTabela">${renderProdutosTabela(ps)}</div>`;
+        }
+        function renderProdutosTabela(ps){
+            if(!empresaSelecionada)return '<div class="text-xs text-slate-500 p-5">Seleccione uma empresa para ver os produtos.</div>';
+            if(!ps.length)return '<div class="text-xs text-slate-500 p-5">Nenhum produto nesta empresa. Use “+ Produto” ou Importação IA.</div>';
+            return `<div class="table-wrap"><table class="w-full text-xs"><thead><tr class="text-slate-500 text-left border-b border-slate-800"><th class="p-3">SKU</th><th>Produto</th><th>Categoria</th><th>Custo</th><th>Preço</th><th>Margem</th><th>Status</th></tr></thead><tbody>${ps.map(p=>{const m=p.preco?((p.preco-p.custo)/p.preco*100):0;return `<tr class="border-b border-slate-900"><td class="p-3 font-mono">${escapeHTML(p.sku)}</td><td><b>${escapeHTML(p.nome)}</b><br><span class="text-[10px] text-slate-500">${escapeHTML(p.descricaoIA||"")}</span></td><td>${escapeHTML(p.categoria)}</td><td>${money(p.custo)}</td><td>${money(p.preco)}</td><td>${m.toFixed(1)}%</td><td><span class="pill">${escapeHTML(p.status)}</span></td></tr>`}).join("")}</tbody></table></div>`;
+        }
+        function filtrarProdutos(q){
+            const ps=empresaSelecionada?produtos.filter(p=>p.empresaId===empresaSelecionada.id):[];
+            q=q.toLowerCase(); renderProdutosTabela(ps.filter(p=>(p.nome+" "+p.sku+" "+p.categoria).toLowerCase().includes(q)));
+        }
+        function aprenderPadraoIA(){
+            const ps=empresaSelecionada?produtos.filter(p=>p.empresaId===empresaSelecionada.id):[];
+            if(!ps.length){toast("IA","Não há conteúdo aprovado suficiente para aprender o padrão.");return;}
+            const categorias={};ps.forEach(p=>categorias[p.categoria]=(categorias[p.categoria]||0)+1);
+            const principal=Object.entries(categorias).sort((a,b)=>b[1]-a[1])[0]?.[0]||"Sem categoria";
+            const aprov=ps.filter(p=>p.status==="Aprovado").length;
+            const pend={id:"AUD-"+Date.now(),data:now(),acao:"Aprendizagem de padrão",detalhe:`Empresa: ${empresaSelecionada.nome} • ${ps.length} produtos • categoria predominante: ${principal}`,status:"Aprovação humana recomendada"};
+            auditoria.unshift(pend);save(STORAGE.auditoria,auditoria);renderAuditoria();
+            toast("Padrão aprendido",`IA analisou ${ps.length} produtos. ${aprov} estão aprovados; alterações continuam sob aprovação humana.`);
         }
 
-        function abrirEmpresa() {
-            document.getElementById('modalEmpresa').classList.add('show');
+        /* CATÁLOGOS */
+        function novoCatalogo(){
+            if(!empresaSelecionada){toast("Catálogo","Seleccione uma empresa antes.");pagina("empresas");return;}
+            const nome=prompt("Nome do novo catálogo:");if(!nome)return;
+            const cat={id:"CAT-"+Date.now(),empresaId:empresaSelecionada.id,nome,status:"Rascunho",criadoEm:now()};
+            catalogos.push(cat);empresaSelecionada.catalogos=empresaSelecionada.catalogos||[];empresaSelecionada.catalogos.push(cat.id);
+            save(STORAGE.catalogos,catalogos);save(STORAGE.empresas,empresas);renderCatalogos();atualizarDashboard();logAudit("Novo catálogo",nome);toast("Catálogo","Criado com sucesso.");
+        }
+        function renderCatalogos(){
+            const grid=document.getElementById("catalogosGrid");if(!grid)return;
+            const cs=empresaSelecionada?catalogos.filter(c=>c.empresaId===empresaSelecionada.id):catalogos;
+            grid.innerHTML=cs.length?cs.map(c=>`<div class="vitrine card p-5"><div class="flex justify-between"><div><span class="pill">${escapeHTML(c.status)}</span><h3 class="font-bold mt-3">${escapeHTML(c.nome)}</h3></div><i class="fa-solid fa-book-open text-amber-400 text-xl"></i></div><p class="text-xs text-slate-500 mt-2">${empresaSelecionada?escapeHTML(empresaSelecionada.nome):"Ambiente multiempresa"}</p><div class="flex gap-2 mt-4"><button onclick="pagina('vitrine')" class="flex-1 bg-slate-800 py-2 rounded-xl text-xs">Vitrine</button><button onclick="publicarCatalogo('${c.id}')" class="flex-1 bg-amber-500 text-slate-950 py-2 rounded-xl text-xs font-bold">Publicar</button></div></div>`).join(""):'<div class="card p-8 text-center col-span-full"><p class="text-sm text-slate-500">Nenhum catálogo disponível neste ambiente.</p></div>';
+        }
+        function publicarCatalogo(id){const c=catalogos.find(x=>x.id===id);if(!c)return;c.status="Publicado";save(STORAGE.catalogos,catalogos);logAudit("Publicação de catálogo",c.nome,"Aprovado");renderCatalogos();toast("Catálogo publicado","O catálogo foi marcado como publicado.");}
+
+        /* IMPORTAÇÃO */
+        function processarArquivos(event){
+            const files=Array.from(event.target.files||[]);if(!files.length)return;
+            const resultado=document.getElementById("resultadoImportacao");
+            resultado.innerHTML=`<div class="bg-slate-950 p-5 rounded-xl border border-amber-500/20"><strong class="text-sm text-amber-400">${files.length} ficheiro(s) recebido(s).</strong><div class="progress mt-4"><span style="width:100%"></span></div><div class="grid md:grid-cols-4 gap-2 mt-4 text-[10px]"><span class="pill">1. Extrair ✓</span><span class="pill">2. Detectar padrão ✓</span><span class="pill">3. Comparar duplicidades ✓</span><span class="pill">4. Aprovação humana →</span></div><p class="text-xs text-slate-400 mt-4">Nesta versão local, os ficheiros ficam preparados para integração com o motor de IA/backend. Nenhum dado é alterado automaticamente sem aprovação.</p><button onclick="criarPendenciaImportacao(${files.length})" class="mt-4 bg-amber-500 text-slate-950 px-4 py-2 rounded-xl text-xs font-bold">Enviar para aprovação</button></div>`;
+            logAudit("Importação recebida",`${files.length} ficheiro(s) • aguardando motor de extracção/integração`,"Pendente");
+        }
+        function criarPendenciaImportacao(n){logAudit("Importação para aprovação",`${n} ficheiro(s) preparados para revisão humana`,"Pendente");renderAuditoria();toast("Importação","Enviada para a fila de aprovação.");}
+
+        /* PDV */
+        function adicionarVenda(nome,valor){carrinho.push({nome,valor:Number(valor)});renderCarrinho();}
+        function renderCarrinho(){const el=document.getElementById("carrinho");if(!el)return;const total=carrinho.reduce((a,x)=>a+x.valor,0);el.innerHTML=carrinho.length?carrinho.map((x,i)=>`<div class="flex justify-between"><span>${escapeHTML(x.nome)}</span><strong>${money(x.valor)}</strong></div>`).join(""):"Carrinho vazio.";document.getElementById("totalVenda").innerText=money(total);}
+        function finalizarVenda(){
+            if(!carrinho.length){toast("PDV","Carrinho vazio.");return;}
+            if(!empresaSelecionada){toast("PDV","Seleccione uma empresa antes.");return;}
+            const total=carrinho.reduce((a,x)=>a+x.valor,0), venda={id:"VEN-"+Date.now(),data:now(),total,itens:carrinho};
+            empresaSelecionada.vendas=empresaSelecionada.vendas||[];empresaSelecionada.vendas.push(venda);save(STORAGE.empresas,empresas);
+            logAudit("Venda registada",`${empresaSelecionada.nome} • ${money(total)}`,"Aprovado");carrinho=[];renderCarrinho();atualizarDashboard();toast("Venda","Registada com sucesso no ERP.");
         }
 
-        function fecharModalEmpresa() {
-            document.getElementById('modalEmpresa').classList.remove('show');
+        /* ORÇAMENTOS */
+        function novoOrcamento(){
+            if(!empresaSelecionada){toast("Orçamento","Seleccione uma empresa.");pagina("empresas");return;}
+            const cliente=prompt("Nome do cliente:");if(!cliente)return;
+            const descricao=prompt("Descrição do orçamento:")||"Proposta comercial";
+            const valor=parseFloat((prompt("Valor (R$):")||"0").replace(",", "."))||0;
+            const o={id:"ORC-"+Date.now(),empresaId:empresaSelecionada.id,cliente,descricao,valor,status:"Rascunho",data:now()};
+            orcamentos.unshift(o);save(STORAGE.orcamentos,orcamentos);logAudit("Novo orçamento",`${o.id} • ${cliente}`);renderOrcamentos();toast("Orçamento","Rascunho criado.");
+        }
+        function mudarStatusOrcamento(id,status){
+            const o=orcamentos.find(x=>x.id===id);if(!o)return;o.status=status;save(STORAGE.orcamentos,orcamentos);
+            logAudit("Status de orçamento",`${o.id} → ${status}`,status==="Aprovado"?"Aprovado":"Registado");renderOrcamentos();
+        }
+        function renderOrcamentos(){
+            const body=document.getElementById("orcamentosBody");if(!body)return;
+            const list=empresaSelecionada?orcamentos.filter(o=>o.empresaId===empresaSelecionada.id):orcamentos;
+            const count=s=>list.filter(o=>o.status===s).length;
+            document.getElementById("orcRascunhos").innerText=count("Rascunho");
+            document.getElementById("orcEnviados").innerText=count("Enviado");
+            document.getElementById("orcAprovados").innerText=count("Aprovado");
+            document.getElementById("orcValor").innerText=money(list.filter(o=>o.status==="Aprovado").reduce((a,o)=>a+o.valor,0));
+            body.innerHTML=list.length?list.map(o=>`<tr class="border-b border-slate-900"><td class="p-3 font-mono">${o.id}</td><td>${escapeHTML(o.cliente)}</td><td>${escapeHTML(o.descricao)}</td><td>${money(o.valor)}</td><td><span class="pill">${o.status}</span></td><td><select onchange="mudarStatusOrcamento('${o.id}',this.value)" class="rounded-lg px-2 py-1 text-[10px]"><option ${o.status==="Rascunho"?"selected":""}>Rascunho</option><option ${o.status==="Enviado"?"selected":""}>Enviado</option><option ${o.status==="Aprovado"?"selected":""}>Aprovado</option><option ${o.status==="Perdido"?"selected":""}>Perdido</option></select></td></tr>`).join(""):'<tr><td colspan="6" class="p-6 text-center text-slate-500">Nenhum orçamento.</td></tr>';
         }
 
-        function salvarEmpresa() {
-            const nome = document.getElementById('inputNomeEmpresa').value.trim();
-            const segmento = document.getElementById('inputSegmentoEmpresa').value.trim();
-            const responsavel = document.getElementById('inputResponsavelEmpresa').value.trim();
-            if (!nome) {
-                toast('Atenção', 'Informe o nome da empresa.');
-                return;
-            }
-            const novoId = 'PB00' + (state.empresas.length + 1);
-            state.empresas.push({ id: novoId, nome, segmento: segmento || 'Geral', responsavel: responsavel || 'Paula Bento', produtos: 0 });
-            fecharModalEmpresa();
-            toast('Sucesso', 'Empresa cadastrada com sucesso.');
-            atualizarDadosTela();
+        /* COMUNICAÇÃO */
+        function registrarMensagem(){
+            const canal=document.getElementById("canalMensagem").value,destino=document.getElementById("destinoMensagem").value.trim(),texto=document.getElementById("textoMensagem").value.trim();
+            if(!destino||!texto){toast("Comunicação","Informe contacto e mensagem.");return;}
+            conversas.unshift({id:"MSG-"+Date.now(),canal,destino,texto,data:now(),status:"Registado"});
+            save(STORAGE.conversas,conversas);logAudit("Interacção registada",`${canal} • ${destino}`);document.getElementById("destinoMensagem").value="";document.getElementById("textoMensagem").value="";renderConversas();toast("Comunicação","Interacção registada.");
+        }
+        function renderConversas(){
+            const el=document.getElementById("conversasList");if(!el)return;
+            el.innerHTML=conversas.length?conversas.slice(0,20).map(c=>`<div class="p-4 bg-slate-900 rounded-xl border border-slate-800"><div class="flex justify-between"><b class="text-xs">${escapeHTML(c.destino)}</b><span class="pill">${escapeHTML(c.canal)}</span></div><p class="text-xs text-slate-400 mt-2">${escapeHTML(c.texto)}</p><p class="text-[10px] text-slate-600 mt-2">${c.data}</p></div>`).join(""):'<p class="text-xs text-slate-500">Ainda não existem interacções.</p>';
         }
 
-        function removerEmpresa(id) {
-            state.empresas = state.empresas.filter(e => e.id !== id);
-            toast('Removido', 'Empresa removida do ecossistema.');
-            atualizarDadosTela();
+        /* VITRINE */
+        function abrirVitrineProduto(){
+            if(!empresaSelecionada){toast("Vitrine","Seleccione uma empresa.");pagina("empresas");return;}
+            const produto=prompt("Produto/modelo para a vitrine:");if(!produto)return;
+            const imagens=Math.min(10,Math.max(1,parseInt(prompt("Quantidade de imagens (1-10):")||"1")));
+            const v={id:"VIT-"+Date.now(),empresaId:empresaSelecionada.id,produto,imagens,video:false,rotacao360:false,status:"Rascunho",cores:["#0f172a","#f59e0b","#e2e8f0","#334155"],data:now()};
+            vitrines.unshift(v);save(STORAGE.vitrines,vitrines);logAudit("Nova vitrine",produto);renderVitrines();toast("Vitrine","Estrutura criada. Pode seguir para integração de media/publicação.");
+        }
+        function publicarVitrine(id){const v=vitrines.find(x=>x.id===id);if(!v)return;v.status="Publicado";save(STORAGE.vitrines,vitrines);logAudit("Vitrine publicada",v.produto,"Aprovado");renderVitrines();}
+        function renderVitrines(){
+            const grid=document.getElementById("vitrineGrid");if(!grid)return;
+            const list=empresaSelecionada?vitrines.filter(v=>v.empresaId===empresaSelecionada.id):vitrines;
+            grid.innerHTML=list.length?list.map(v=>`<div class="vitrine card p-5"><div class="aspect-video rounded-xl bg-slate-950 flex items-center justify-center"><i class="fa-solid fa-cube text-amber-400 text-4xl"></i></div><div class="flex justify-between mt-4"><div><h3 class="font-bold">${escapeHTML(v.produto)}</h3><p class="text-xs text-slate-500">${v.imagens}/10 imagens • ${v.video?"Vídeo":"sem vídeo"} • ${v.rotacao360?"360°":"sem 360°"}</p></div><span class="pill">${v.status}</span></div><div class="flex gap-2 mt-4"><button onclick="publicarVitrine('${v.id}')" class="flex-1 bg-amber-500 text-slate-950 py-2 rounded-xl text-xs font-bold">Publicar</button><button onclick="toast('Vitrine','Editor avançado será ligado ao armazenamento de media na próxima camada.')" class="flex-1 bg-slate-800 py-2 rounded-xl text-xs">Editar</button></div></div>`).join(""):'<div class="card p-8 text-center col-span-full"><p class="text-sm text-slate-500">Nenhuma vitrine criada.</p></div>';
         }
 
-        function novoCatalogo() {
-            const nome = prompt('Nome do novo catálogo:');
-            if (nome) {
-                state.catalogos.push({ id: state.catalogos.length + 1, nome, empresa: state.empresaAtiva, itens: 0 });
-                toast('Catálogo', 'Catálogo criado com sucesso.');
-                atualizarDadosTela();
-            }
+        /* CÂMARA */
+        async function iniciarCamera(){try{streamCamera=await navigator.mediaDevices.getUserMedia({video:true,audio:true});document.getElementById("camera").srcObject=streamCamera;toast("Câmara","Iniciada com sucesso.");logAudit("Câmara iniciada","Permissão de media concedida localmente");}catch(e){toast("Câmara","Não foi possível aceder à câmara/microfone.");}}
+        function pararCamera(){if(streamCamera){streamCamera.getTracks().forEach(t=>t.stop());streamCamera=null;document.getElementById("camera").srcObject=null;}toast("Câmara","Encerrada.");}
+        function lerCodigo(){toast("Leitor","Leitura local preparada. A integração com scanner/câmara será ligada na camada de hardware.");}
+        function novoPost(){const t=document.getElementById("postTitulo");if(t)t.focus();toast("Studio","Editor pronto. O próximo passo é ligar geração de arte/exportação.");}
+        function criarFuncionarioVirtual(){const nome=prompt("Nome do funcionário virtual:");if(nome){logAudit("Funcionário virtual criado",nome,"Pendente");toast("IA",`Agente ${nome} criado na fila de aprovação.`);}}
+
+        /* ESCOLAR */
+        function switchEscolarSub(subId){["escolar-inicio","escolar-planner","escolar-criancas","escolar-literario","escolar-biblioteca","escolar-familias"].forEach(s=>{const el=document.getElementById("sub-"+s),nav=document.getElementById("subnav-"+s);if(s===subId){el?.classList.remove("hidden");if(nav)nav.className="px-4 py-2 rounded-xl text-sm font-medium bg-indigo-600 text-white shadow";}else{el?.classList.add("hidden");if(nav)nav.className="px-4 py-2 rounded-xl text-sm font-medium bg-slate-800 text-slate-300 hover:bg-slate-700";}});}
+        function preparePrint(){toast("Impressão","Pacote pedagógico preparado.");setTimeout(()=>window.print(),700);}
+        function duplicatePlanner(){toast("Planner","Planeamento duplicado para outra turma.");}
+        function filterStudents(q){q=q.toLowerCase().trim();document.querySelectorAll(".student-card").forEach(c=>c.style.display=c.dataset.name.includes(q)?"block":"none");}
+        function openStudent(name){openModalEscolar("studentView",name);}
+        function useMaterial(name){toast("Biblioteca",name+" adicionado ao planner.");}
+        function openModalEscolar(type,name=""){const form=document.getElementById("modalEscolarForm"),title=document.getElementById("modalEscolarTitle");let html="";if(type==="activity"){title.textContent="Nova actividade pedagógica";html='<label class="text-xs font-bold">Título<input required class="w-full rounded-xl p-2.5 mt-1 text-sm" placeholder="Ex.: Leitura partilhada"></label><button class="w-full bg-indigo-600 text-white py-2.5 rounded-xl font-medium text-xs" type="submit">Guardar</button>';}else if(type==="student"){title.textContent="Adicionar criança";html='<label class="text-xs font-bold">Nome completo<input required class="w-full rounded-xl p-2.5 mt-1 text-sm" placeholder="Nome da criança"></label><button class="w-full bg-indigo-600 text-white py-2.5 rounded-xl font-medium text-xs" type="submit">Adicionar</button>';}else{title.textContent="Planner Individual — "+name;html='<label class="text-xs font-bold">Observação pedagógica<textarea class="w-full rounded-xl p-2.5 mt-1 text-sm" placeholder="Registo de evolução..."></textarea></label><button class="w-full bg-indigo-600 text-white py-2.5 rounded-xl font-medium text-xs" type="submit">Guardar</button>';}form.innerHTML=html;document.getElementById("modalEscolar").classList.add("show");}
+        function closeModalEscolar(){document.getElementById("modalEscolar").classList.remove("show");}
+        function submitModalEscolar(e){e.preventDefault();closeModalEscolar();toast("Escolar","Registo guardado.");logAudit("Registo Escolar Pro","Operação local");}
+
+        /* NOSSA CASA */
+        const casaStorageKey=STORAGE.casa;
+        let casaEstado=load(casaStorageKey,{tasks:{},diaCongelados:"domingo"});
+        const casaDias=["segunda-feira","terça-feira","quarta-feira","quinta-feira","sexta-feira","sábado","domingo"];
+        const casaRotina={
+            "segunda-feira":[["mamae","Organizar manhã + activar robô aspirador após a casa estar livre"],["gustavo","Cama, brinquedos, mesa de estudos, roupa e sapatos"],["casa","Lavandaria: roupa de cama"],["noite","Pós-jantar: Gustavo limpa a mesa • Mamãe guarda comida • Papai lava louça"],["papai","Lixo + portas/janelas + garagem"]],
+            "terça-feira":[["gustavo","Cama, brinquedos, mesa de estudos, roupa e sapatos"],["casa","Lavandaria: jeans"],["familia","Fim do dia: Gustavo vai ao parque com a mamãe enquanto papai pode correr"],["noite","Fechamento da cozinha e da casa"]],
+            "quarta-feira":[["gustavo","Cama, brinquedos, mesa de estudos, roupa e sapatos"],["casa","Lavandaria: roupas coloridas"],["noite","Fechamento da casa"]],
+            "quinta-feira":[["gustavo","Cama, brinquedos, mesa de estudos, roupa e sapatos"],["casa","Lavandaria: roupas claras/brancas"],["familia","Fim do dia: Gustavo vai ao parque com a mamãe enquanto papai pode correr"],["noite","Fechamento da casa"]],
+            "sexta-feira":[["gustavo","Cama, brinquedos, mesa de estudos, roupa e sapatos"],["casa","Lavandaria: roupas escuras"],["noite","Fechamento da casa"]],
+            "sábado":[["beleza","Momento Beleza Mamãe — manhã"],["casa","Lavandaria: máquina extra + sapatos"],["casa","Lavar tapetes e pano de chão à mão"],["familia","Fim do dia: Gustavo vai ao parque com a mamãe enquanto papai pode correr"],["noite","Fechamento da casa"]],
+            "domingo":[["refeicoes","Preparar congelados: feijão, carnes, legumes; etiquetar e datar"],["casa","Revisar a semana e preparar roupas/rotina seguinte"]]
+        };
+        const casaIcones={mamae:"👩",papai:"👨",gustavo:"👦",casa:"🏠",noite:"🌙",familia:"👨‍👩‍👦",beleza:"💆‍♀️",refeicoes:"🧊"};
+        function salvarCasa(){save(casaStorageKey,casaEstado);}
+        function casaHojeKey(){return new Date().toLocaleDateString("en-CA");}
+        function casaTaskKey(dia,i){return casaHojeKey()+"|"+dia+"|"+i;}
+        function casaToggle(key,checked){casaEstado.tasks[key]=checked;salvarCasa();renderCasa();}
+        function casaMarcarTudoHoje(){const dia=casaDias[(new Date().getDay()+6)%7];(casaRotina[dia]||[]).forEach((_,i)=>casaEstado.tasks[casaTaskKey(dia,i)]=true);salvarCasa();renderCasa();toast("Nossa Casa","Rotina de hoje concluída.");}
+        function casaLimparHoje(){const dia=casaDias[(new Date().getDay()+6)%7];(casaRotina[dia]||[]).forEach((_,i)=>delete casaEstado.tasks[casaTaskKey(dia,i)]);salvarCasa();renderCasa();toast("Nossa Casa","Checklist reiniciado.");}
+        function renderCasa(){
+            const dia=casaDias[(new Date().getDay()+6)%7],tarefas=casaRotina[dia]||[],el=document.getElementById("casaChecklistHoje");if(!el)return;
+            document.getElementById("casaDataHoje").textContent=new Date().toLocaleDateString("pt-PT",{weekday:"long",day:"2-digit",month:"long",year:"numeric"});
+            let done=0;
+            el.innerHTML=tarefas.map((t,i)=>{const key=casaTaskKey(dia,i),checked=!!casaEstado.tasks[key];if(checked)done++;return `<label class="flex items-start gap-3 p-3 rounded-xl border ${checked?"border-emerald-500/30 bg-emerald-500/5":"border-slate-800 bg-slate-900"} cursor-pointer"><input type="checkbox" class="mt-1 accent-amber-500" ${checked?"checked":""} onchange="casaToggle('${key}',this.checked)"><span class="text-sm">${casaIcones[t[0]]||"✓"} <b>${escapeHTML(t[1])}</b></span></label>`}).join("")||'<p class="text-xs text-slate-500">Sem tarefas para hoje.</p>';
+            const pct=tarefas.length?Math.round(done/tarefas.length*100):0;
+            document.getElementById("casaKpiHoje").textContent=done+"/"+tarefas.length;document.getElementById("casaPercentual").textContent=pct+"%";
+            const lavagem={"segunda-feira":"Roupa de cama","terça-feira":"Jeans","quarta-feira":"Coloridas","quinta-feira":"Claras/brancas","sexta-feira":"Escuras","sábado":"Extra + sapatos","domingo":"—"}[dia];document.getElementById("casaKpiLavagem").textContent=lavagem;
+            const idx=tarefas.findIndex((_,i)=>!casaEstado.tasks[casaTaskKey(dia,i)]);document.getElementById("casaKpiProximo").textContent=idx>=0?(casaIcones[tarefas[idx][0]]||"✓")+" "+tarefas[idx][1].slice(0,28)+"…":"Concluído ✓";
+            const grid=document.getElementById("casaSemanaGrid");if(grid)grid.innerHTML=casaDias.map(d=>`<div class="p-4 bg-slate-900 rounded-xl border border-slate-800"><div class="flex justify-between"><b class="text-xs capitalize">${d}</b><span class="text-[10px] text-amber-400">${(casaRotina[d]||[]).length} tarefas</span></div><div class="mt-3 space-y-1">${(casaRotina[d]||[]).map(t=>`<p class="text-[11px] text-slate-400">${casaIcones[t[0]]||"✓"} ${escapeHTML(t[1])}</p>`).join("")}</div></div>`).join("");
+            const sel=document.getElementById("casaDiaCongelados");if(sel)sel.value=casaEstado.diaCongelados||"domingo";
+            document.querySelectorAll("[data-casa-task]").forEach(cb=>{const k="extra|"+cb.dataset.casaTask;cb.checked=!!casaEstado.tasks[k];cb.onchange=()=>{casaEstado.tasks[k]=cb.checked;salvarCasa();}});
+        }
+        function salvarDiaCongelados(v){casaEstado.diaCongelados=v;salvarCasa();toast("Refeições","Dia definido: "+v+".");}
+        function switchCasaSub(id){document.querySelectorAll(".casa-sub-module").forEach(e=>e.classList.add("hidden"));document.querySelectorAll(".casa-nav").forEach(e=>e.className="casa-nav px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-300");document.getElementById("sub-"+id)?.classList.remove("hidden");const nav=document.getElementById("casa-nav-"+id);if(nav)nav.className="casa-nav px-4 py-2 rounded-xl text-xs font-bold bg-amber-500 text-slate-950";}
+
+        /* AUDITORIA */
+        function aprovarAuditoria(id){
+            const a=auditoria.find(x=>x.id===id);if(!a)return;a.status="Aprovado";save(STORAGE.auditoria,auditoria);renderAuditoria();toast("Aprovação","Acção aprovada humanamente.");
+        }
+        function renderAuditoria(){
+            const list=document.getElementById("auditoriaList");if(!list)return;
+            document.getElementById("audPendentes").innerText=auditoria.filter(a=>a.status==="Pendente"||a.status.includes("recomend")).length;
+            document.getElementById("audAprovadas").innerText=auditoria.filter(a=>a.status==="Aprovado").length;
+            document.getElementById("audEventos").innerText=auditoria.length;
+            list.innerHTML=auditoria.length?auditoria.slice(0,50).map(a=>`<div class="p-4 bg-slate-900 rounded-xl border border-slate-800"><div class="flex flex-col md:flex-row md:items-center justify-between gap-2"><div><b class="text-xs">${escapeHTML(a.acao)}</b><p class="text-xs text-slate-400 mt-1">${escapeHTML(a.detalhe)}</p><p class="text-[10px] text-slate-600 mt-1">${a.data}</p></div><div class="flex items-center gap-2"><span class="pill">${escapeHTML(a.status)}</span>${(a.status==="Pendente"||a.status.includes("recomend"))?`<button onclick="aprovarAuditoria('${a.id}')" class="bg-emerald-500 text-slate-950 px-3 py-1.5 rounded-lg text-[10px] font-bold">Aprovar</button>`:""}</div></div></div>`).join(""):'<p class="text-xs text-slate-500">Nenhum evento registado.</p>';
         }
 
-        function adicionarVenda(produto, valor) {
-            state.carrinho.push({ produto, valor });
-            atualizarCarrinho();
+        /* FINANCEIRO / RELATÓRIOS */
+        function atualizarFinanceiro(){
+            const vendas=empresas.flatMap(e=>e.vendas||[]),f=vendas.reduce((a,v)=>a+Number(v.total||0),0);
+            const cards=document.querySelectorAll("#financeiro .metric strong");if(cards.length>=4){cards[0].innerText=money(f);cards[1].innerText=money(0);cards[2].innerText=money(f);cards[3].innerText=f?"100%":"0%";}
         }
 
-        function atualizarCarrinho() {
-            const car = document.getElementById('carrinho');
-            if (!car) return;
-            if (state.carrinho.length === 0) {
-                car.innerHTML = 'Carrinho vazio.';
-                document.getElementById('totalVenda').innerText = 'R$ 0,00';
-                return;
-            }
-            car.innerHTML = state.carrinho.map((item, i) => `
-                <div class="flex justify-between items-center py-1 border-b border-slate-800">
-                    <span>${item.produto}</span>
-                    <b>R$ ${item.valor.toFixed(2)}</b>
-                </div>
-            `).join('');
-            const total = state.carrinho.reduce((acc, cur) => acc + cur.valor, 0);
-            document.getElementById('totalVenda').innerText = 'R$ ' + total.toFixed(2);
+        // Corrige botões antigos que dependem destas funções
+        function gerarRelatorio(){const tipo=document.querySelector("#relatorios select:nth-child(2)")?.value||"Geral";logAudit("Relatório gerado",tipo);toast("Relatório",`Relatório de ${tipo} preparado.`);}
+        function gerarQR(){toast("QR Code","Gerador preparado para ligação à URL pública do catálogo.");}
+        function criarLoteEtiquetas(){toast("Etiquetas","Lote preparado para impressão.");}
+        function salvarConfiguracao(){toast("Configurações","Definições guardadas localmente.");logAudit("Configuração alterada","Definições do QG 001");}
+
+
+        /* INTELIGÊNCIA DE CATÁLOGO V5.0 */
+        const INTEL_KEY="qg001_intel_v41";
+        let intelState=JSON.parse(localStorage.getItem(INTEL_KEY)||'{"queue":[],"patterns":{},"lastAnalysis":null}');
+        function saveIntel(){localStorage.setItem(INTEL_KEY,JSON.stringify(intelState));}
+        function approvedProducts(){return (produtos||[]).filter(p=>p.status!=='Pendente');}
+        function norm(v){return String(v||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();}
+        function tokens(v){return new Set(norm(v).split(/\s+/).filter(x=>x.length>2));}
+        function jaccard(a,b){const A=tokens(a),B=tokens(b);if(!A.size&&!B.size)return 1;let i=0;A.forEach(x=>{if(B.has(x))i++});return i/(A.size+B.size-i||1);}
+        function sim(a,b){const vals=[jaccard(a.nome,b.nome),jaccard(a.descricao||a.original||'',b.descricao||b.original||''),a.categoria&&b.categoria?jaccard(a.categoria,b.categoria):0];return Math.round((vals[0]*.55+vals[1]*.25+vals[2]*.20)*100);}
+        function aprenderPadraoAgora(){
+          const ps=approvedProducts();
+          const names=ps.map(p=>p.nome||'').filter(Boolean); const cats=ps.map(p=>p.categoria||'').filter(Boolean); const units=ps.map(p=>p.unidade||p.medida||'').filter(Boolean); const desc=ps.map(p=>p.descricao||p.original||'').filter(Boolean);
+          const avgLen=a=>a.length?a.reduce((x,v)=>x+v.length,0)/a.length:0;
+          intelState.patterns={nomenclatura:names.length?Math.min(99,Math.round(80+Math.min(19,avgLen(names)/4))):0,categorias:cats.length?Math.min(99,90+Math.min(9,new Set(cats.map(norm)).size)):0,unidades:units.length?Math.min(99,92+Math.min(7,new Set(units.map(norm)).size)):0,estilo:desc.length?Math.min(99,82+Math.min(17,avgLen(desc)/12)):0};saveIntel();renderInteligencia();logAudit('Padrão de catálogo recalculado',`${ps.length} produtos aprovados analisados`,'Aprovado');toast('Inteligência','Padrão recalculado com base no cadastro aprovado.');
+        }
+        function detectarDuplicidades(){
+          const ps=approvedProducts(), found=[];
+          for(let i=0;i<ps.length;i++)for(let j=i+1;j<ps.length;j++){
+            const a=ps[i],b=ps[j]; const sameSku=a.sku&&b.sku&&norm(a.sku)===norm(b.sku); const score=sim(a,b);
+            if(sameSku||score>=78) found.push({id:'DUP-'+a.id+'-'+b.id,a,b,score:sameSku?100:score,status:'Pendente'});
+          }
+          intelState.queue=intelState.queue.filter(x=>!String(x.id).startsWith('DUP-')).concat(found.slice(0,30));saveIntel();renderInteligencia();logAudit('Detector de duplicidades executado',`${found.length} possível(is) duplicidade(s)`,'Pendente');toast('Duplicidades',`${found.length} correspondência(s) encontrada(s).`);
+        }
+        function renderInteligencia(){
+          const ps=approvedProducts(); if(!intelState.patterns.nomenclatura && ps.length) aprenderPadraoSilencioso();
+          const p=intelState.patterns||{}; const avg=Math.round([p.nomenclatura||0,p.categorias||0,p.unidades||0,p.estilo||0].reduce((a,b)=>a+b,0)/4);
+          document.getElementById('intelProdutos')?.replaceChildren(document.createTextNode(ps.length)); document.getElementById('intelPadrao')?.replaceChildren(document.createTextNode(avg+'%')); document.getElementById('intelDuplicidades')?.replaceChildren(document.createTextNode(intelState.queue.filter(x=>String(x.id).startsWith('DUP-')&&x.status==='Pendente').length)); document.getElementById('intelPendentes')?.replaceChildren(document.createTextNode(intelState.queue.filter(x=>x.status==='Pendente').length));
+          const pat=document.getElementById('intelPattern'); if(pat)pat.innerHTML=[['Nomenclatura',p.nomenclatura],['Categorias',p.categorias],['Unidades / medidas',p.unidades],['Estilo de descrição',p.estilo]].map(([n,v])=>`<div><div class="flex justify-between text-[11px]"><b>${n}</b><span>${v||0}%</span></div><div class="progress mt-1"><span style="width:${v||0}%"></span></div></div>`).join('');
+          const dup=document.getElementById('intelDuplicates'); const ds=intelState.queue.filter(x=>String(x.id).startsWith('DUP-')).slice(0,10); if(dup)dup.innerHTML=ds.length?ds.map(x=>`<div class="match-row"><div class="flex justify-between gap-3"><div><b class="text-xs">${escapeHTML(x.a.nome||'Produto A')}</b><span class="text-xs text-slate-500"> ↔ </span><b class="text-xs">${escapeHTML(x.b.nome||'Produto B')}</b></div><span class="confidence ${x.score>=90?'high':x.score>=80?'mid':'low'}">${x.score}%</span></div><p class="text-[10px] text-slate-500 mt-2">${escapeHTML(x.a.sku||'sem SKU')} • ${escapeHTML(x.b.sku||'sem SKU')}</p><div class="flex gap-2 mt-3"><button onclick="decidirDuplicidade('${x.id}','manter')" class="pill">Manter ambos</button><button onclick="decidirDuplicidade('${x.id}','unificar')" class="bg-slate-900 text-white px-3 py-1.5 rounded-lg text-[10px]">Sugerir unificação</button></div></div>`).join(''):'<p class="text-xs text-slate-500">Nenhuma duplicidade pendente. Execute a comparação após importar novos dados.</p>';
+          const q=document.getElementById('intelQueue'); const qs=intelState.queue.filter(x=>x.status==='Pendente').slice(0,20); if(q)q.innerHTML=qs.length?qs.map(x=>`<div class="match-row"><div class="flex justify-between gap-3"><div><b class="text-xs">${escapeHTML(x.tipo||'Decisão de catálogo')}</b><p class="text-[10px] text-slate-500 mt-1">${escapeHTML(x.detalhe||x.id)}</p></div><span class="confidence">Pendente</span></div><div class="flex gap-2 mt-3"><button onclick="aprovarIntel('${x.id}')" class="bg-amber-500 px-3 py-1.5 rounded-lg text-[10px] font-bold">Aprovar</button><button onclick="rejeitarIntel('${x.id}')" class="pill">Rejeitar</button></div></div>`).join(''):'<p class="text-xs text-slate-500">A fila está limpa.</p>';
+        }
+        function aprenderPadraoSilencioso(){
+          const ps=approvedProducts(), avg=a=>a.length?a.reduce((x,v)=>x+v.length,0)/a.length:0, n=ps.map(p=>p.nome||'').filter(Boolean), c=ps.map(p=>p.categoria||'').filter(Boolean), u=ps.map(p=>p.unidade||p.medida||'').filter(Boolean), d=ps.map(p=>p.descricao||p.original||'').filter(Boolean); intelState.patterns={nomenclatura:n.length?Math.min(99,Math.round(80+Math.min(19,avg(n)/4))):0,categorias:c.length?Math.min(99,90+Math.min(9,new Set(c.map(norm)).size)):0,unidades:u.length?Math.min(99,92+Math.min(7,new Set(u.map(norm)).size)):0,estilo:d.length?Math.min(99,82+Math.min(17,avg(d)/12)):0};saveIntel();
+        }
+        function decidirDuplicidade(id,decisao){const x=intelState.queue.find(q=>q.id===id);if(!x)return;x.status='Decidido';x.decisao=decisao;saveIntel();logAudit('Decisão de duplicidade',`${x.a.nome} ↔ ${x.b.nome} • ${decisao}`,'Aprovado');renderInteligencia();}
+        function aprovarIntel(id){const x=intelState.queue.find(q=>q.id===id);if(!x)return;x.status='Aprovado';saveIntel();logAudit('Aprovação de inteligência',x.detalhe||x.id,'Aprovado');renderInteligencia();toast('Aprovação','Decisão registada.');}
+        function rejeitarIntel(id){const x=intelState.queue.find(q=>q.id===id);if(!x)return;x.status='Rejeitado';saveIntel();logAudit('Rejeição de inteligência',x.detalhe||x.id,'Rejeitado');renderInteligencia();}
+        function analisarNovoProduto(){
+          const nome=document.getElementById('intelNome')?.value||'',sku=document.getElementById('intelSku')?.value||'',categoria=document.getElementById('intelCategoria')?.value||'',unidade=document.getElementById('intelUnidade')?.value||'',descricao=document.getElementById('intelDescricao')?.value||''; if(!nome){toast('Produto','Informe pelo menos o nome.');return;}
+          const novo={nome,sku,categoria,unidade,descricao}, ps=approvedProducts(); const best=ps.map(p=>({p,score:sim(novo,p)})).sort((a,b)=>b.score-a.score)[0]; const p=intelState.patterns||{}; const warnings=[]; if(!categoria)warnings.push('Categoria em falta'); if(!unidade)warnings.push('Unidade/medida em falta'); if(!descricao)warnings.push('Descrição em falta'); if(best&&best.score>=78)warnings.push(`Possível duplicidade com “${best.p.nome}” (${best.score}%)`);
+          document.getElementById('intelAnalysis').innerHTML=`<div class="match-row"><div class="flex justify-between gap-3"><b class="text-xs">Resultado da análise</b><span class="confidence ${warnings.length?'mid':'high'}">${warnings.length?warnings.length+' ponto(s) a rever':'Pronto para aprovação'}</span></div><div class="grid md:grid-cols-4 gap-2 mt-3 text-[10px]"><span class="pill">Nomenclatura ${p.nomenclatura||0}%</span><span class="pill">Categoria ${categoria?'preenchida':'em falta'}</span><span class="pill">Unidade ${unidade?'preenchida':'em falta'}</span><span class="pill">Descrição ${descricao?'preenchida':'em falta'}</span></div>${warnings.length?`<ul class="mt-3 text-[10px] text-slate-500 space-y-1">${warnings.map(w=>`<li>• ${escapeHTML(w)}</li>`).join('')}</ul>`:'<p class="text-[10px] text-slate-500 mt-3">O padrão aprovado não encontrou bloqueios relevantes. A decisão final continua humana.</p>'}</div>`;
+          intelState.lastAnalysis={novo,best:best?{id:best.p.id,nome:best.p.nome,score:best.score}:null,warnings,data:now()};saveIntel();
+        }
+        function aprovarNovoProduto(){
+          const nome=document.getElementById('intelNome')?.value||'',sku=document.getElementById('intelSku')?.value||'',categoria=document.getElementById('intelCategoria')?.value||'',unidade=document.getElementById('intelUnidade')?.value||'',descricao=document.getElementById('intelDescricao')?.value||''; if(!nome){toast('Produto','Preencha o nome antes de aprovar.');return;} if(!empresaSelecionada){toast('Produto','Seleccione uma empresa.');return;}
+          const p={id:'PRD-'+Date.now(),empresaId:empresaSelecionada.id,nome,sku:sku||'AUTO-'+Date.now(),categoria:categoria||'Por classificar',unidade,descricao,preco:0,custo:0,markup:0,status:'Aprovado',fonte:'Cadastro assistido V5.0',data:now()};produtos.unshift(p);save(STORAGE.produtos,produtos);logAudit('Produto aprovado',`${p.nome} • ${p.sku}`,'Aprovado');renderProdutos();aprenderPadraoAgora();['intelNome','intelSku','intelCategoria','intelUnidade','intelDescricao'].forEach(id=>{const e=document.getElementById(id);if(e)e.value=''});document.getElementById('intelAnalysis').innerHTML='';toast('Produto','Cadastro aprovado e adicionado ao catálogo.');
+        }
+        function abrirNovoProdutoInteligente(){pagina('inteligencia');setTimeout(()=>document.getElementById('intelNome')?.focus(),100);}
+        async function lerFicheiroInteligente(file){
+          const ext=file.name.split('.').pop().toLowerCase();
+          if(['csv','txt'].includes(ext)) return await file.text();
+          if(['xlsx','xls'].includes(ext) && window.XLSX){const data=await file.arrayBuffer();const wb=XLSX.read(data,{type:'array'});return wb.SheetNames.map(n=>`SHEET: ${n}\n`+XLSX.utils.sheet_to_csv(wb.Sheets[n])).join('\n');}
+          if(ext==='docx' && window.mammoth){const data=await file.arrayBuffer();const r=await mammoth.extractRawText({arrayBuffer:data});return r.value;}
+          if(ext==='pdf'){return 'PDF recebido. Para extracção integral neste protótipo, ligue o endpoint PDF/IA do backend.';}
+          if(['png','jpg','jpeg','webp'].includes(ext)) return 'Imagem recebida. OCR/visão deve ser executado pelo backend de IA antes da aprovação.';
+          return 'Formato recebido para processamento posterior.';
+        }
+        async function processarImportacaoV41(event){
+          const files=Array.from(event.target.files||[]); if(!files.length)return; const resultados=[];
+          for(const f of files){try{const text=await lerFicheiroInteligente(f); resultados.push({nome:f.name,tamanho:f.size,texto:text.slice(0,12000),data:now()});}catch(e){resultados.push({nome:f.name,erro:String(e),data:now()});}}
+          const aprovados=approvedProducts(); let candidatos=0;
+          resultados.forEach(r=>{const lines=(r.texto||'').split(/\r?\n/).filter(Boolean).slice(0,200);lines.forEach(line=>{const parts=line.split(/[;,\t]/).map(x=>x.trim());const nome=parts[0];if(nome&&nome.length>2){const best=aprovados.map(p=>({p,score:sim({nome,descricao:line},p)})).sort((a,b)=>b.score-a.score)[0];if(best&&best.score>=78){intelState.queue.push({id:'IMP-'+Date.now()+'-'+Math.random().toString(16).slice(2),tipo:'Importação • possível duplicidade',detalhe:`${r.nome}: “${nome}” ↔ “${best.p.nome}” (${best.score}%)`,status:'Pendente',fonte:r.nome});candidatos++;}}});});
+          intelState.lastImport=resultados;saveIntel();renderInteligencia();document.getElementById('resultadoImportacao')&&(document.getElementById('resultadoImportacao').innerHTML=`<div class="card p-5"><b class="text-sm">${files.length} ficheiro(s) processado(s) localmente.</b><p class="text-xs text-slate-500 mt-2">CSV/TXT e XLSX podem ser lidos no navegador; DOCX tem extracção de texto. PDF/imagem ficam sinalizados para backend/OCR. Foram geradas ${candidatos} possíveis correspondências para aprovação.</p><button onclick="pagina('inteligencia')" class="mt-3 bg-amber-500 px-4 py-2 rounded-xl text-xs font-bold">Rever inteligência</button></div>`);logAudit('Importação V5.0 analisada',`${files.length} ficheiro(s) • ${candidatos} correspondência(s)`,'Pendente');
         }
 
-        function finalizarVenda() {
-            if (state.carrinho.length === 0) {
-                toast('Atenção', 'O carrinho está vazio.');
-                return;
-            }
-            toast('Venda Finalizada', 'Registo gravado no ERP com sucesso.');
-            state.carrinho = [];
-            atualizarCarrinho();
+        /* V5 CORE — arquitectura e migração controlada */
+        const V5_KEY="central01_v5_core";
+        let v5State=load(V5_KEY,{version:"5.0.0",snapshots:[],lastSnapshot:null});
+        function v5Render(){
+          const approvals=(intelState?.queue||[]).filter(x=>x.status==="Pendente").length+(auditoria||[]).filter(x=>x.status==="Pendente"||String(x.status||"").includes("recomend")).length;
+          document.getElementById("v5Tenants")?.replaceChildren(document.createTextNode((empresas||[]).length));
+          document.getElementById("v5Approvals")?.replaceChildren(document.createTextNode(approvals));
+          document.getElementById("v5Audit")?.replaceChildren(document.createTextNode((auditoria||[]).length));
         }
-
-        function processarArquivos(e) {
-            const files = e.target.files;
-            const res = document.getElementById('resultadoImportacao');
-            res.innerHTML = `<div class="p-4 bg-slate-900 rounded-xl text-xs"><b class="text-amber-400">Ficheiros carregados:</b> ${files.length} ficheiro(s) enviado(s) para análise de IA.</div>`;
-            toast('Importação IA', 'Ficheiros processados com sucesso.');
+        function v5CriarSnapshot(){
+          const snapshot={id:"V5-SNAP-"+Date.now(),createdAt:new Date().toISOString(),version:v5State.version,tenants:empresas.length,produtos:produtos.length,catalogos:catalogos.length,orcamentos:orcamentos.length};
+          v5State.snapshots.unshift(snapshot);v5State.lastSnapshot=snapshot.id;save(V5_KEY,v5State);logAudit("Snapshot V5.1.1 criado",`${snapshot.id} • ${snapshot.tenants} tenants • ${snapshot.produtos} produtos`,"Aprovado");toast("V5 Core","Snapshot de arquitectura criado localmente.");v5Render();
         }
+        const paginaOriginal=pagina;
+        pagina=function(id){paginaOriginal(id);if(id==="corev5")v5Render();};
 
-        function processarImportacaoV41(e) {
-            // IA extração avançada
+        // Inicialização
+        renderEmpresas();
+        renderEmpresaSelect();
+        atualizarDashboard();
+        renderProdutos();
+        renderCatalogos();
+        renderOrcamentos();
+        renderConversas();
+        renderVitrines();
+        renderAuditoria();
+        renderInteligencia();
+        renderPB_catalogosVenda();
+        renderCasa();
+        atualizarFinanceiro();
+
+        // Pesquisa global
+        const busca=document.querySelector("header input");
+        if(busca)busca.addEventListener("input",function(){
+            const q=this.value.toLowerCase().trim();if(!q)return;
+            const ach=empresas.find(e=>e.nome.toLowerCase().includes(q))||produtos.find(p=>(p.nome+" "+p.sku).toLowerCase().includes(q));
+            if(ach){if(ach.nome){pagina("empresas");}else{if(!empresaSelecionada)empresaSelecionada=empresas.find(e=>e.id===ach.empresaId);pagina("produtos");filtrarProdutos(q);}}
+        });
+    
+        /* ==========================================================
+           PB V5.0 — CATÁLOGOS VENDÁVEIS / PORTAL DO CLIENTE
+           Front-end integrado ao painel único. Acesso real seguro exige backend.
+        ========================================================== */
+        const PB_STORAGE='central01_catalogos_vendaveis_v43';
+        let PB_catalogosVenda=JSON.parse(localStorage.getItem(PB_STORAGE)||'[]');
+        if(!PB_catalogosVenda.length){
+          const lfEmp=(empresas||[]).find(e=>e.id==='PB003')||{};
+          const pbEmp=(empresas||[]).find(e=>e.id==='PB001')||{};
+          PB_catalogosVenda=[
+            {id:'PB-LF-DEMO',empresaId:'PB003',empresaNome:lfEmp.nome||'05 LF / Loja da Fábrica',nome:'Loja da Fábrica • Catálogo Comercial',subtitulo:'Móveis Comerciais e Industriais',tipo:'lf',precoAcesso:0,status:'Activo',protegido:false,senhaHash:'',senhaInicial:'',produtos:[],criadoEm:new Date().toISOString(),acessos:0,vendidos:0},
+            {id:'PB-ATELIE-DEMO',empresaId:'PB001',empresaNome:pbEmp.nome||'01 Ateliê Paula Bento',nome:'Ateliê Paula Bento • Personalizados & Soluções ERP',subtitulo:'Personalização com identidade. Gestão com inteligência.',tipo:'pb',precoAcesso:0,status:'Activo',protegido:false,senhaHash:'',senhaInicial:'',produtos:[],criadoEm:new Date().toISOString(),acessos:0,vendidos:0}
+          ];
+          PB_catalogosVenda.forEach(c=>{c.produtos=PB_baseProducts(c.tipo,c.empresaId);c.senhaHash=PB_hash(c.senhaInicial);});
+          localStorage.setItem(PB_STORAGE,JSON.stringify(PB_catalogosVenda));
         }
-
-        function novoPost() {
-            const tit = document.getElementById('postTitulo').value || 'Título da publicação';
-            document.getElementById('previewTitulo').innerText = tit;
-            toast('Studio', 'Postagem gerada com identidade visual.');
+        let PB_portalToken=null;
+        function PB_save(){localStorage.setItem(PB_STORAGE,JSON.stringify(PB_catalogosVenda));}
+        function PB_hash(txt){let h=2166136261;for(let i=0;i<txt.length;i++){h^=txt.charCodeAt(i);h=Math.imul(h,16777619)}return ('00000000'+(h>>>0).toString(16)).slice(-8)}
+        function PB_token(){return 'PB-'+Math.random().toString(36).slice(2,8).toUpperCase()+'-'+Date.now().toString(36).toUpperCase()}
+        function PB_baseProducts(tipo,empresaId){
+          if(tipo==='lf') return (produtos||[]).filter(p=>p.empresaId===empresaId || (p.sku||'').startsWith('LF-')).slice(0,30).map(p=>({nome:p.nome||p.modelo||'Produto',sku:p.sku||'',categoria:p.categoria||'Produto',descricao:p.descricao||p.descricaoIA||'',preco:p.preco||p.precoVenda||p.precoSugerido||''}));
+          return [
+            {nome:'Papelaria Personalizada',sku:'PB-001',categoria:'Personalizados',descricao:'Cartões, tags, etiquetas, cartões de agradecimento e materiais de atendimento.',preco:''},
+            {nome:'Sublimação & Produtos',sku:'PB-002',categoria:'Personalizados',descricao:'Uniformes, brindes, presentes corporativos e produtos personalizados.',preco:''},
+            {nome:'Embalagens & Etiquetas',sku:'PB-003',categoria:'Identidade',descricao:'Soluções de apresentação alinhadas à identidade visual.',preco:''},
+            {nome:'Identidade Visual',sku:'PB-004',categoria:'Marca',descricao:'Paleta, aplicações, materiais e linguagem visual de marca.',preco:''},
+            {nome:'Catálogo Digital',sku:'PB-005',categoria:'Digital',descricao:'Vitrine digital organizada para apresentar produtos e facilitar o contacto comercial.',preco:''},
+            {nome:'QG 001 — Central de Comando',sku:'PB-ERP-001',categoria:'ERP & Automação',descricao:'Arquitectura multiempresa para clientes, produtos, catálogos, orçamentos, vendas, comunicação e indicadores.',preco:''},
+            {nome:'Inteligência de Catálogo',sku:'PB-IA-001',categoria:'IA',descricao:'Aprendizagem do padrão do cliente, comparação de materiais e sinalização de duplicidades.',preco:''},
+            {nome:'CRM & Funil Comercial',sku:'PB-CRM-001',categoria:'Gestão',descricao:'Leads, oportunidades, follow-up, orçamentos e conversão.',preco:''},
+            {nome:'Relatórios & ROI',sku:'PB-ROI-001',categoria:'Gestão',descricao:'Indicadores de vendas, margem, canais e desempenho.',preco:''}
+          ];
         }
-
-        function lerCodigo() {
-            toast('Leitor', 'Simulando leitura de código de barras ou QR Code.');
+        function PB_novoCatalogoVenda(){
+          const nome=prompt('Nome do catálogo:', 'Catálogo Comercial'); if(!nome)return;
+          const op=(empresas||[]).map(e=>e.nome+' | '+e.id).join('\n');
+          const escolha=prompt('Escolha a empresa pelo ID:\n'+op, empresas?.[0]?.id||'PB001');
+          const emp=empresas.find(e=>e.id===escolha)||empresas[0];
+          const tipo=(emp?.id==='PB003')?'lf':'pb';
+          const senha=prompt('Defina a palavra-passe do cliente (mín. 4 caracteres):','PB'+Math.floor(1000+Math.random()*9000)); if(!senha||senha.length<4){toast('Catálogo','Palavra-passe inválida.');return;}
+          const preco=parseFloat((prompt('Preço de acesso/venda (R$):','0')||'0').replace(',','.'))||0;
+          const c={id:PB_token(),empresaId:emp?.id||'PB001',empresaNome:emp?.nome||'Cliente',nome,subtitulo:'Catálogo digital personalizado',tipo,precoAcesso:preco,status:'Activo',protegido:true,senhaHash:PB_hash(senha),senhaInicial:senha,produtos:PB_baseProducts(tipo,emp?.id),criadoEm:new Date().toISOString(),acessos:0,vendidos:0};
+          PB_catalogosVenda.unshift(c);PB_save();renderPB_catalogosVenda();logAudit('Catálogo vendável criado',`${c.nome} • ${c.empresaNome}`,'Concluído');toast('Catálogo','Criado. Gere o link para enviar ao cliente.');
         }
-
-        let mediaStream = null;
-        async function iniciarCamera() {
-            try {
-                mediaStream = await navigator.mediaDevices.getUserMedia({ video: true });
-                document.getElementById('camera').srcObject = mediaStream;
-                toast('Câmara', 'Atendimento por vídeo iniciado.');
-            } catch (err) {
-                toast('Erro', 'Não foi possível aceder à câmara.');
-            }
+        function PB_link(c){return location.href.split('#')[0]+'#cliente='+encodeURIComponent(c.id)}
+        function PB_copiarLink(id){const c=PB_catalogosVenda.find(x=>x.id===id);if(!c)return;const link=PB_link(c);if(navigator.clipboard)navigator.clipboard.writeText(link);else prompt('Copie o link:',link);toast('Link do cliente','Link copiado/gerado.');}
+        function PB_mostrarSenha(id){const c=PB_catalogosVenda.find(x=>x.id===id);if(c)prompt('Palavra-passe do catálogo:',c.senhaInicial||'Não disponível neste modo.');}
+        function PB_alterarStatus(id){const c=PB_catalogosVenda.find(x=>x.id===id);if(!c)return;c.status=c.status==='Activo'?'Pausado':'Activo';PB_save();renderPB_catalogosVenda();}
+        function PB_marcarVenda(id){const c=PB_catalogosVenda.find(x=>x.id===id);if(!c)return;c.vendidos=(c.vendidos||0)+1;PB_save();renderPB_catalogosVenda();toast('Venda','Acesso marcado como vendido.');}
+        function PB_editarCatalogo(id){const c=PB_catalogosVenda.find(x=>x.id===id);if(!c)return;const n=prompt('Nome do catálogo:',c.nome);if(n)c.nome=n;const sub=prompt('Subtítulo:',c.subtitulo);if(sub)c.subtitulo=sub;PB_save();renderPB_catalogosVenda();}
+        function renderPB_catalogosVenda(){
+          const grid=document.getElementById('pbCatalogosGrid');if(!grid)return;
+          const list=PB_catalogosVenda;
+          document.getElementById('pbCatAtivos').textContent=list.filter(c=>c.status==='Activo').length;
+          document.getElementById('pbCatProtegidos').textContent=list.filter(c=>c.protegido).length;
+          document.getElementById('pbCatVendidos').textContent=list.reduce((a,c)=>a+(c.vendidos||0),0);
+          document.getElementById('pbCatReceita').textContent='R$ '+list.reduce((a,c)=>a+(c.precoAcesso||0)*(c.vendidos||0),0).toLocaleString('pt-BR',{minimumFractionDigits:2});
+          if(!list.length){grid.innerHTML='<div class="p-5 rounded-xl bg-slate-900/50 text-xs text-slate-500">Nenhum catálogo criado ainda.</div>';return;}
+          grid.innerHTML=list.map(c=>`<div class="p-4 rounded-2xl bg-slate-900/50 border border-slate-800"><div class="flex flex-col md:flex-row md:items-center justify-between gap-3"><div><div class="flex items-center gap-2"><b>${escapeHTML(c.nome)}</b><span class="pill">${c.status}</span></div><p class="text-xs text-slate-500 mt-1">${escapeHTML(c.empresaNome)} • ${c.produtos.length} itens • ${c.protegido?'🔐 protegido':'público'}</p></div><div class="flex flex-wrap gap-2"><button onclick="PB_copiarLink('${c.id}')" class="px-3 py-2 rounded-xl bg-amber-500 text-slate-950 text-[10px] font-black">🔗 Gerar link</button><button onclick="PB_mostrarSenha('${c.id}')" class="px-3 py-2 rounded-xl border border-slate-700 text-[10px]">🔐 Senha</button><button onclick="PB_marcarVenda('${c.id}')" class="px-3 py-2 rounded-xl border border-slate-700 text-[10px]">💳 Vender</button><button onclick="PB_editarCatalogo('${c.id}')" class="px-3 py-2 rounded-xl border border-slate-700 text-[10px]">Editar</button><button onclick="PB_alterarStatus('${c.id}')" class="px-3 py-2 rounded-xl border border-slate-700 text-[10px]">${c.status==='Activo'?'Pausar':'Activar'}</button></div></div><div class="grid md:grid-cols-3 gap-2 mt-3"><div class="pb-access text-[10px]">Preço: <b>R$ ${(c.precoAcesso||0).toLocaleString('pt-BR',{minimumFractionDigits:2})}</b></div><div class="pb-access text-[10px]">Acessos: <b>${c.acessos||0}</b></div><div class="pb-access text-[10px]">Token: <b>${c.id}</b></div></div></div>`).join('');
         }
-
-        function pararCamera() {
-            if (mediaStream) {
-                mediaStream.getTracks().forEach(t => t.stop());
-                document.getElementById('camera').srcObject = null;
-                toast('Câmara', 'Atendimento encerrado.');
-            }
+        function PB_openPortal(){
+          const hash=location.hash||'';const m=hash.match(/cliente=([^&]+)/);if(!m)return false;const id=decodeURIComponent(m[1]);const c=PB_catalogosVenda.find(x=>x.id===id);if(!c)return false;PB_portalToken=id;document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById('portalClientePB')?.classList.add('active');document.getElementById('pbPortalLoginTitulo').textContent=c.nome;document.getElementById('pbPortalErro').classList.add('hidden');document.getElementById('pbPortalConteudo').classList.add('hidden');document.getElementById('pbPortalLogin').classList.remove('hidden');document.getElementById('pbPortalSenha').value='';return true;
         }
+        function PB_entrarPortal(){const c=PB_catalogosVenda.find(x=>x.id===PB_portalToken);if(!c)return;if(c.status!=='Activo'){document.getElementById('pbPortalErro').textContent='Este catálogo está temporariamente indisponível.';document.getElementById('pbPortalErro').classList.remove('hidden');return;}const pass=document.getElementById('pbPortalSenha').value;if(PB_hash(pass)!==c.senhaHash){document.getElementById('pbPortalErro').textContent='Palavra-passe incorrecta.';document.getElementById('pbPortalErro').classList.remove('hidden');return;}c.acessos=(c.acessos||0)+1;PB_save();document.getElementById('pbPortalLogin').classList.add('hidden');document.getElementById('pbPortalConteudo').classList.remove('hidden');document.getElementById('pbPortalTitulo').textContent=c.nome;document.getElementById('pbPortalSub').textContent=c.subtitulo+' • '+c.empresaNome;document.getElementById('pbPortalProdutos').innerHTML=c.produtos.map(p=>`<article class="pb-product"><span class="pb-kicker">${escapeHTML(p.categoria||'Produto')}</span><h3 class="font-black mt-2">${escapeHTML(p.nome)}</h3><p class="text-xs mt-2 text-slate-600">${escapeHTML(p.descricao||'')}</p>${p.preco?`<div class="pb-price mt-4">R$ ${Number(p.preco).toLocaleString('pt-BR',{minimumFractionDigits:2})}</div>`:'<div class="pb-price mt-4">Sob consulta</div>'}<button onclick="PB_escolherItem('${encodeURIComponent(p.nome)}')" class="w-full mt-4 bg-[#0F0F10] text-white py-2.5 rounded-xl text-xs font-bold">Tenho interesse</button></article>`).join('');}
+        function PB_escolherItem(nome){const x=decodeURIComponent(nome);document.getElementById('pbLeadMensagem').value='Tenho interesse em: '+x;document.getElementById('pbLeadNome').focus();window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});}
+        function PB_solicitarOrcamento(){const c=PB_catalogosVenda.find(x=>x.id===PB_portalToken);const nome=document.getElementById('pbLeadNome').value;const contacto=document.getElementById('pbLeadContacto').value;const msg=document.getElementById('pbLeadMensagem').value;if(!nome||!contacto){alert('Preencha nome e contacto.');return;}conversas.push({id:'PB-'+Date.now(),empresaId:c?.empresaId||'',canal:'Catálogo',cliente:nome,contacto,mensagem:msg,data:now()});save(STORAGE.conversas,conversas);logAudit('Lead vindo do catálogo',`${nome} • ${contacto} • ${c?.nome||''}`,'Concluído');alert('Pedido enviado. A empresa entrará em contacto.');}
+        function PB_sairPortal(){location.hash='';document.getElementById('portalClientePB')?.classList.remove('active');pagina('catalogosVenda');}
+        window.addEventListener('hashchange',PB_openPortal);
+        setTimeout(()=>{renderPB_catalogosVenda();PB_openPortal();},150);
 
-        function criarFuncionarioVirtual() {
-            toast('IA', 'Novo assistente virtual criado com sucesso.');
-        }
-
-        function v5CriarSnapshot() {
-            toast('V5.1', 'Snapshot e backup da arquitetura gerados com sucesso.');
-        }
-
-        function abrirCatalogoLF() {
-            selecionarEmpresa('PB003');
-            pagina('catalogos');
-        }
-
-        function abrirNovoProdutoInteligente() {
-            toast('Inteligência', 'Preencha os campos abaixo para submeter à IA.');
-        }
-
-        function aprenderPadraoAgora() {
-            state.intel.padraoConfiança = Math.min(100, state.intel.padraoConfiança + 2);
-            toast('Inteligência', 'Padrão recalculado com base nos produtos aprovados.');
-            renderInteligencia();
-        }
-
-        function detectarDuplicidades() {
-            toast('Inteligência', 'Busca de duplicidades concluída.');
-            renderInteligencia();
-        }
-
-        function analisarNovoProduto() {
-            const nome = document.getElementById('intelNome').value;
-            const res = document.getElementById('intelAnalysis');
-            if (!nome) {
-                toast('Atenção', 'Informe o nome do produto para análise.');
-                return;
-            }
-            res.innerHTML = `<div class="p-3 bg-slate-900 rounded-xl text-xs"><b class="text-emerald-400">Análise concluída:</b> Compatível com o padrão do cliente (96% de aderência). Categoria sugerida aceite.</div>`;
-            toast('IA', 'Produto analisado contra o padrão.');
-        }
-
-        function aprovarNovoProduto() {
-            toast('Aprovação', 'Produto aprovado e integrado ao catálogo oficial.');
-            document.getElementById('intelAnalysis').innerHTML = '';
-        }
-
-        function renderInteligencia() {
-            document.getElementById('intelProdutos').innerText = state.intel.produtosAnalisados;
-            document.getElementById('intelPadrao').innerText = state.intel.padraoConfiança + '%';
-            document.getElementById('intelDuplicidades').innerText = state.intel.duplicidades;
-            document.getElementById('intelPendentes').innerText = state.intel.pendentes;
-
-            const pat = document.getElementById('intelPattern');
-            if (pat) {
-                pat.innerHTML = state.intel.pattern.map(p => `
-                    <div class="p-3 bg-slate-900 rounded-xl text-xs flex justify-between">
-                        <span><b>${p.chave}:</b> ${p.valor}</span>
-                        <span class="text-emerald-400">Validado</span>
-                    </div>
-                `).join('');
-            }
-
-            const dup = document.getElementById('intelDuplicates');
-            if (dup) {
-                dup.innerHTML = state.intel.duplicatesList.map(d => `
-                    <div class="p-3 bg-slate-900 rounded-xl text-xs flex items-center justify-between">
-                        <div><b>${d.itemA}</b> ⇄ <b>${d.itemB}</b></div>
-                        <span class="confidence high">${d.match}</span>
-                    </div>
-                `).join('');
-            }
-
-            const que = document.getElementById('intelQueue');
-            if (que) {
-                que.innerHTML = state.intel.queueList.map(q => `
-                    <div class="p-3 bg-slate-900 rounded-xl text-xs flex items-center justify-between">
-                        <div><b>${q.titulo}</b> <span class="text-slate-500">(${q.origem})</span></div>
-                        <button onclick="toast('Aprovação','Item aprovado pelo operador humano.')" class="bg-amber-500 text-slate-950 px-3 py-1.5 rounded-lg font-bold">Aprovar</button>
-                    </div>
-                `).join('');
-            }
-        }
-
-        // ESCOLAR PRO
-        function switchEscolarSub(subId) {
-            document.querySelectorAll('.escolar-sub-module').forEach(m => m.classList.add('hidden'));
-            const el = document.getElementById('sub-' + subId);
-            if (el) el.classList.remove('hidden');
-        }
-
-        function openModalEscolar(tipo) {
-            toast('Escolar Pro', 'Abrindo formulário para ' + tipo);
-        }
-
-        function preparePrint() {
-            window.print();
-        }
-
-        function duplicatePlanner() {
-            toast('Escolar Pro', 'Planner duplicado com sucesso para a nova turma.');
-        }
-
-        function filterStudents(val) {
-            const cards = document.querySelectorAll('.student-card');
-            cards.forEach(c => {
-                const name = c.getAttribute('data-name');
-                if (name.includes(val.toLowerCase())) {
-                    c.style.display = 'block';
-                } else {
-                    c.style.display = 'none';
-                }
-            });
-        }
-
-        function openStudent(nome) {
-            toast('Escolar Pro', 'Acedendo ao planner individual de ' + nome);
-        }
-
-        function useMaterial(material) {
-            toast('Escolar Pro', 'Material "' + material + '" adicionado ao seu planner diário.');
-        }
-
-        // SISTEMA DA NOSSA CASA
-        function switchCasaSub(subId) {
-            document.querySelectorAll('.casa-sub-module').forEach(m => m.classList.add('hidden'));
-            const el = document.getElementById('sub-' + subId);
-            if (el) el.classList.remove('hidden');
-        }
-
-        function renderCasa() {
-            const hoje = new Date().toLocaleDateString('pt-PT', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-            const dh = document.getElementById('casaDataHoje');
-            if (dh) dh.innerText = hoje;
-
-            const check = document.getElementById('casaChecklistHoje');
-            if (check) {
-                check.innerHTML = state.tarefasCasa.map((t, i) => `
-                    <label class="flex items-center justify-between p-3 bg-slate-900 rounded-xl text-xs cursor-pointer">
-                        <div class="flex items-center gap-3">
-                            <input type="checkbox" ${t.feito ? 'checked' : ''} onchange="toggleCasaTarefa(${i})" class="w-4 h-4 rounded">
-                            <span class="${t.feito ? 'line-through text-slate-500' : ''}">${t.texto}</span>
-                        </div>
-                        <span class="badge bg-slate-800 text-amber-400">${t.responsavel}</span>
-                    </label>
-                `).join('');
-            }
-
-            const sem = document.getElementById('casaSemanaGrid');
-            if (sem) {
-                sem.innerHTML = state.tarefasSemanaCasa.map(s => `
-                    <div class="p-3 bg-slate-900 rounded-xl text-xs">
-                        <b class="text-amber-400 block mb-1">${s.dia}</b>
-                        <p class="text-slate-300">${s.tarefa}</p>
-                    </div>
-                `).join('');
-            }
-
-            const limp = document.getElementById('casaLimpezaLista');
-            if (limp) {
-                limp.innerHTML = state.limpezaLista.map(l => `
-                    <div class="flex justify-between items-center p-2 bg-slate-900 rounded-xl">
-                        <span><b>${l.zona}</b> (${l.frequencia})</span>
-                        <span class="badge bg-amber-500/10 text-amber-400">${l.status}</span>
-                    </div>
-                `).join('');
-            }
-
-            const car = document.getElementById('casaCardapioLista');
-            if (car) {
-                car.innerHTML = state.cardapioLista.map(c => `
-                    <div class="p-3 bg-slate-900 rounded-xl text-xs">
-                        <b class="text-amber-400 block mb-1">${c.refeicao}</b>
-                        <p class="text-slate-300">${c.prato}</p>
-                    </div>
-                `).join('');
-            }
-
-            const total = state.tarefasCasa.length;
-            const concluidas = state.tarefasCasa.filter(t => t.feito).length;
-            const perc = total > 0 ? Math.round((concluidas / total) * 100) : 0;
-            
-            const kh = document.getElementById('casaKpiHoje');
-            if (kh) kh.innerText = `${concluidas}/${total}`;
-            const cp = document.getElementById('casaPercentual');
-            if (cp) cp.innerText = `${perc}%`;
-            const kl = document.getElementById('casaKpiLavagem');
-            if (kl) kl.innerText = 'Terça / Qui';
-            const kp = document.getElementById('casaKpiProximo');
-            if (kp) kp.innerText = state.tarefasCasa.find(t => !t.feito)?.texto || 'Tudo concluído!';
-        }
-
-        function toggleCasaTarefa(i) {
-            state.tarefasCasa[i].feito = !state.tarefasCasa[i].feito;
-            renderCasa();
-        }
-
-        function casaMarcarTudoHoje() {
-            state.tarefasCasa.forEach(t => t.feito = true);
-            renderCasa();
-            toast('Nossa Casa', 'Todas as tarefas de hoje foram concluídas.');
-        }
-
-        function casaLimparHoje() {
-            state.tarefasCasa.forEach(t => t.feito = false);
-            renderCasa();
-            toast('Nossa Casa', 'Rotina reiniciada.');
-        }
-
-        window.onload = function() {
-            atualizarDadosTela();
-        }
-    </script>
+</script>
+<script id="qg-master-consolidado-js">(function(){const regras=[{id:'RS-001',titulo:'Propriedade do ecossistema',texto:'QG 001 / Central 01 pertence e é administrado por Paula Bento (001). Clientes não são proprietários do QG.',estado:'ATIVA'},{id:'RS-002',titulo:'V5.1 como base-mestra',texto:'V5.1 é a referência pré-pronta estável; novas descobertas devem ser comparadas e integradas.',estado:'ATIVA'},{id:'RS-003',titulo:'Nada histórico é descartado',texto:'Ficheiros, ideias e códigos antigos são auditados, classificados e integrados quando agregam valor.',estado:'ATIVA'},{id:'RS-004',titulo:'Regras do Sistema',texto:'Toda decisão arquitectural ou funcional relevante fica registada para rastreabilidade.',estado:'ATIVA'},{id:'RS-005',titulo:'Aprender o padrão do cliente',texto:'IA aprende de conteúdos aprovados; duplicidades e alterações incertas exigem aprovação humana.',estado:'ATIVA'},{id:'RS-006',titulo:'Painel da Família',texto:'É o canal oficial individual escola-professora-família; WhatsApp não o substitui.',estado:'ATIVA'},{id:'RS-007',titulo:'CNC',texto:'CNC pertence a Engenharia & Produção e liga-se a orçamento, projecto, produto, ficheiro, fila e auditoria.',estado:'ATIVA'},{id:'RS-008',titulo:'Separação comercial',texto:'MINHAS OPERAÇÕES, CLIENTES e PRODUTOS COMERCIAIS são conceitos distintos. PBIRP001 não é tenant.',estado:'ATIVA'},{id:'RS-009',titulo:'Produção real',texto:'HTML/localStorage é protótipo; segurança, multi-tenant e integrações reais dependem de backend.',estado:'ATIVA'}];window.QG001_REGRAS_SISTEMA=regras;function saveRules(){try{localStorage.setItem('QG001_REGRAS_SISTEMA',JSON.stringify(regras));}catch(e){}}function renderRules(){var el=document.getElementById('masterRegrasLista');if(!el)return;var out='';regras.forEach(function(r){out+='<div class="p-3 rounded-xl border border-slate-800 bg-slate-950"><div class="flex flex-wrap justify-between gap-2"><b class="text-xs">'+r.id+' • '+r.titulo+'</b><span class="master-pill master-green">'+r.estado+'</span></div><p class="text-[11px] text-slate-400 mt-1">'+r.texto+'</p></div>';});el.innerHTML=out;}window.exportarRegrasSistema=function(){saveRules();var blob=new Blob([JSON.stringify({sistema:'QG 001 / Central 01',versaoBase:'V5.1',exportadoEm:new Date().toISOString(),regras:regras},null,2)],{type:'application/json'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='QG001_REGRAS_DO_SISTEMA.json';a.click();setTimeout(function(){URL.revokeObjectURL(a.href);},1000);};window.mostrarResumoMaster=function(){if(typeof toast==='function')toast('Base-mestra','V5.1 + mapa consolidado carregados.');};saveRules();var oldPagina=window.pagina;window.pagina=function(id){oldPagina(id);if(id==='mapamestre')renderRules();};document.addEventListener('DOMContentLoaded',function(){setTimeout(function(){if(typeof oldPagina==='function')oldPagina('mapamestre');renderRules();},80);});})();</script><script id="qg-theme-js">
+(function(){
+const KEY='QG001_TEMA_PAULA';
+const base={accent:'#8A63A8',accentSoft:'#D6BC98',bg:'#F5F1EB',panel:'#FFFFFF',sidebar:'#26252A',text:'#29272D',muted:'#746F78',border:'#DDD5E2'};
+const presets={
+ champagne:{accent:'#8A63A8',accentSoft:'#D6BC98',bg:'#F5F1EB',panel:'#FFFFFF',sidebar:'#26252A',text:'#29272D',muted:'#746F78',border:'#DDD5E2'},
+ graphite:{accent:'#806746',accentSoft:'#B79A72',bg:'#ECE9E3',panel:'#FFFFFF',sidebar:'#151617',text:'#242424',muted:'#6E6A65',border:'#D8D2C8'},
+ rose:{accent:'#765E63',accentSoft:'#C9AEB2',bg:'#F7F1F1',panel:'#FFFFFF',sidebar:'#40383A',text:'#302B2D',muted:'#756B6E',border:'#E0D4D6'},
+ clean:{accent:'#5F564D',accentSoft:'#A8957E',bg:'#FAF8F4',panel:'#FFFFFF',sidebar:'#34312E',text:'#2C2A28',muted:'#756F68',border:'#E2DDD5'}
+};
+const map={Accent:'accent',AccentSoft:'accentSoft',Bg:'bg',Panel:'panel',Sidebar:'sidebar',Text:'text'};
+function apply(t){const r=document.documentElement.style;Object.keys(map).forEach(k=>r.setProperty('--app-'+map[k],t[map[k]]));r.setProperty('--app-muted',t.muted||base.muted);r.setProperty('--app-border',t.border||base.border);Object.keys(map).forEach(k=>{const sw=document.getElementById('sw'+k),inp=document.getElementById('theme'+k);if(sw&&inp){inp.value=t[map[k]];sw.style.background=t[map[k]];}});}
+function values(){return {accent:document.getElementById('themeAccent')?.value||base.accent,accentSoft:document.getElementById('themeAccentSoft')?.value||base.accentSoft,bg:document.getElementById('themeBg')?.value||base.bg,panel:document.getElementById('themePanel')?.value||base.panel,sidebar:document.getElementById('themeSidebar')?.value||base.sidebar,text:document.getElementById('themeText')?.value||base.text,muted:base.muted,border:base.border};}
+window.QG_previewTema=function(){apply(values());};
+window.QG_preset=function(name){const t=presets[name]||presets.champagne;apply(t);localStorage.setItem(KEY,JSON.stringify(t));if(typeof toast==='function')toast('Identidade visual',name==='champagne'?'Champagne • Grafite • Roxo Metálico aplicado.':name==='graphite'?'Grafite & Areia aplicado.':name==='rose'?'Rosé Executivo aplicado.':'Clean Marfim aplicado.');};
+window.QG_salvarTema=function(){const t=values();localStorage.setItem(KEY,JSON.stringify(t));apply(t);if(typeof toast==='function')toast('Identidade visual','Tema guardado neste navegador.');};
+window.QG_restaurarTema=function(){localStorage.removeItem(KEY);apply(base);if(typeof toast==='function')toast('Identidade visual','Tema recomendado restaurado.');};
+document.addEventListener('DOMContentLoaded',function(){let t=base;try{t=Object.assign({},base,JSON.parse(localStorage.getItem(KEY)||'{}'));}catch(e){}apply(t);});
+})();
+</script>
 </body>
 </html>
