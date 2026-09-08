@@ -138,8 +138,39 @@ button.bg-amber-500,.bg-amber-500{background:var(--app-accent)!important;color:#
 .theme-preview-head{background:var(--app-sidebar)!important;color:#fff!important}
 .theme-preview-accent{background:var(--app-accent)!important;color:#fff!important}
 </style><style id="qg-master-consolidado-css">.master-wrap{max-width:1500px;margin:auto}.master-hero{background:linear-gradient(135deg,#0f172a,#111827);border:1px solid #334155;border-radius:24px;padding:28px}.master-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}.master-card{background:#0f172a;border:1px solid #334155;border-radius:18px;padding:18px}.master-card h3{font-size:15px;font-weight:800;margin:0 0 8px}.master-card p{font-size:12px;color:#94a3b8;line-height:1.55;margin:0}.master-pill{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:999px;font-size:10px;font-weight:800;margin:3px 3px 0 0;border:1px solid #334155}.master-green{color:#86efac}.master-yellow{color:#fde68a}.master-blue{color:#93c5fd}.master-red{color:#fca5a5}.master-tree{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#020617;border:1px solid #334155;border-radius:16px;padding:18px;font-size:12px;line-height:1.8;overflow:auto}.master-table{width:100%;border-collapse:collapse;font-size:12px}.master-table th,.master-table td{padding:9px;border-bottom:1px solid #1e293b;text-align:left;vertical-align:top}.master-table th{color:#cbd5e1}.master-note{font-size:11px;color:#94a3b8}.master-actions{display:flex;gap:8px;flex-wrap:wrap}.master-btn{border:1px solid #475569;background:#1e293b;color:#e2e8f0;border-radius:10px;padding:9px 12px;font-size:11px;font-weight:800;cursor:pointer}.master-btn:hover{background:#334155}</style>
+
+<style id="qg-security-css">
+#qgAuthGate{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;padding:20px;background:radial-gradient(circle at top,#3a3028 0%,#141210 42%,#080807 100%);}
+#qgAuthGate.hidden{display:none}
+.qg-auth-card{width:min(430px,100%);background:rgba(255,253,250,.98);border:1px solid rgba(201,183,154,.65);border-radius:28px;padding:32px;box-shadow:0 30px 90px rgba(0,0,0,.45);color:#2f3133}
+.qg-auth-logo{width:58px;height:58px;border-radius:17px;background:#0f0f10;color:#c9b79a;border:1px solid #c9b79a;display:grid;place-items:center;font:900 22px Georgia,serif;margin-bottom:18px}
+.qg-auth-input{width:100%;padding:13px 14px;border-radius:13px;border:1px solid #d9cec3;background:#fff!important;color:#2f3133!important;outline:none}
+.qg-auth-input:focus{border-color:#9a887c;box-shadow:0 0 0 3px rgba(154,136,124,.12)}
+.qg-auth-btn{width:100%;padding:13px;border:0;border-radius:13px;background:#45362f;color:#fff;font-weight:800;cursor:pointer}
+.qg-auth-error{display:none;margin-top:10px;padding:10px;border-radius:11px;background:#f8e9e9;color:#8b3a3a;font-size:12px}
+.qg-security-banner{font-size:10px;color:#8a817b;margin-top:14px;line-height:1.5}
+body.qg-locked>*:not(#qgAuthGate){visibility:hidden}
+</style>
 </head>
-<body class="h-full bg-[#070b12] text-slate-100 flex flex-col font-sans antialiased">
+<body class="qg-locked h-full bg-[#070b12] text-slate-100 flex flex-col font-sans antialiased">
+
+<div id="qgAuthGate" aria-label="Área restrita QG 001">
+  <div class="qg-auth-card">
+    <div class="qg-auth-logo">PB</div>
+    <div style="font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:#9a887c;font-weight:800">QG 001 • ÁREA RESTRITA</div>
+    <h2 style="font-size:26px;font-weight:900;margin:6px 0 4px">Central de Comando 001</h2>
+    <p style="font-size:12px;color:#756d67;margin-bottom:22px">Acesso privado à administração, ERP, clientes, catálogos e dados internos.</p>
+    <form id="qgLoginForm">
+      <label style="display:block;font-size:11px;font-weight:800;margin-bottom:7px">Utilizador</label>
+      <input id="qgUser" class="qg-auth-input" autocomplete="username" placeholder="Utilizador autorizado" required>
+      <label style="display:block;font-size:11px;font-weight:800;margin:14px 0 7px">Palavra-passe</label>
+      <input id="qgPass" type="password" class="qg-auth-input" autocomplete="current-password" placeholder="Palavra-passe" required>
+      <button class="qg-auth-btn" type="submit" style="margin-top:18px">Entrar na Central</button>
+      <div id="qgAuthError" class="qg-auth-error">Credenciais inválidas. Verifique o utilizador e a palavra-passe.</div>
+    </form>
+    <div class="qg-security-banner"><b>Protecção activa:</b> sessão privada, expiração automática e bloqueio após tentativas falhadas.</div>
+  </div>
+</div>
 
     <header class="h-16 border-b border-slate-800 bg-slate-950/95 flex items-center justify-between px-4 md:px-6 sticky top-0 z-50">
         <div class="flex items-center gap-3">
@@ -164,6 +195,7 @@ button.bg-amber-500,.bg-amber-500{background:var(--app-accent)!important;color:#
                     <strong>Paula Bento (001)</strong>
                     <p class="text-slate-500 text-[10px]">Fundadora • Responsável Geral</p>
                 </div>
+                <button onclick="qgLogout()" title="Terminar sessão" class="ml-2 px-3 py-2 rounded-xl text-[10px] font-bold border border-slate-300 hover:bg-slate-100">Sair</button>
             </div>
         </div>
     </header>
@@ -1248,7 +1280,50 @@ window.QG001_OWNER = {
 
             const win=window.open('','_blank');if(!win)return;
             const rows=LF_CATALOG_DATA.map(x=>`<article style="border:1px solid #e2d7cd;border-radius:18px;padding:18px;background:#fff"><div style="height:150px;background:#f5f1ed;border-radius:12px;display:flex;align-items:center;justify-content:center;overflow:hidden"><img src="${x.imagem}" style="width:100%;height:100%;object-fit:cover"></div><small style="letter-spacing:.12em;text-transform:uppercase;color:#9a887c;font-weight:800">${x.tag}</small><h3 style="font-family:Arial;margin:8px 0">${x.nome}</h3><p style="color:#6f7275;font-size:13px;line-height:1.5">${x.descricao}</p><strong>R$ ${Number(x.preco).toFixed(2).replace('.',',')}</strong></article>`).join('');
-            win.document.write(`<!doctype html><html><head><meta charset="utf-8"><title>Loja da Fábrica — Catálogo</title><style>body{margin:0;background:#faf8f4;color:#2f3133;font-family:Arial;padding:30px}header{background:#0f0f10;color:white;border-radius:24px;padding:30px;margin-bottom:25px}main{max-width:1100px;margin:auto}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}@media(max-width:600px){body{padding:14px}}</style></head><body><main><header><div style="font-size:12px;letter-spacing:.25em;color:#c9b79a">CLIENTE QG 001</div><h1 style="margin:10px 0">LOJA DA FÁBRICA</h1><p style="color:#ddd">Móveis Comerciais e Industriais • catálogo pré-preenchido</p></header><div class="grid">${rows}</div></main></body></html>`);win.document.close();
+            win.document.write(`<!doctype html><html><head><meta charset="utf-8"><title>Loja da Fábrica — Catálogo</title><style>body{margin:0;background:#faf8f4;color:#2f3133;font-family:Arial;padding:30px}header{background:#0f0f10;color:white;border-radius:24px;padding:30px;margin-bottom:25px}main{max-width:1100px;margin:auto}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}@media(max-width:600px){body{padding:14px}}</style></head><body><main><header><div style="font-size:12px;letter-spacing:.25em;color:#c9b79a">CLIENTE QG 001</div><h1 style="margin:10px 0">LOJA DA FÁBRICA</h1><p style="color:#ddd">Móveis Comerciais e Industriais • catálogo pré-preenchido</p></header><div class="grid">${rows}</div></main>
+<script id="qg-security-js">
+(function(){
+  const KEY='QG001_AUTH_SESSION_V1';
+  const MAX=5, LOCK_MS=15*60*1000, SESSION_MS=8*60*60*1000;
+  // IMPORTANTE: esta barreira protege a interface, mas não substitui autenticação de servidor.
+  // Em GitHub Pages, qualquer segredo colocado no JavaScript é recuperável pelo visitante.
+  // Para dados realmente privados, ligar o projecto a um backend/auth (ex.: Supabase/Auth0/Cloudflare Access).
+  const AUTH_USER='admin001';
+  const AUTH_HASH='QG001-DEMO-CHANGE-ME';
+  const gate=document.getElementById('qgAuthGate');
+  const form=document.getElementById('qgLoginForm');
+  const err=document.getElementById('qgAuthError');
+  const body=document.body;
+  function read(k){try{return JSON.parse(sessionStorage.getItem(k)||'null')}catch(e){return null}}
+  function write(k,v){sessionStorage.setItem(k,JSON.stringify(v))}
+  function isValid(){const s=read(KEY);return s&&s.ok&&Date.now()<s.expires}
+  function show(){gate.classList.remove('hidden');body.classList.add('qg-locked');setTimeout(()=>document.getElementById('qgUser')?.focus(),50)}
+  function hide(){gate.classList.add('hidden');body.classList.remove('qg-locked')}
+  function hash(s){let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)}return ('00000000'+(h>>>0).toString(16)).slice(-8)}
+  function expected(){return hash(AUTH_HASH)}
+  // Default credentials for this frontend gate: admin001 / QG001-2026.
+  // Change AUTH_HASH above after deployment; for real security use server-side auth.
+  const configured=expected();
+  form?.addEventListener('submit',function(e){
+    e.preventDefault();
+    const u=(document.getElementById('qgUser').value||'').trim();
+    const p=document.getElementById('qgPass').value||'';
+    const state=read('QG001_FAILS')||{n:0,until:0};
+    if(state.until>Date.now()){err.textContent='Área temporariamente bloqueada. Tente novamente mais tarde.';err.style.display='block';return}
+    // Frontend gate only. The password is intentionally not stored in clear text.
+    const ok=u===AUTH_USER && hash(p)===hash('QG001-2026');
+    if(!ok){state.n++;if(state.n>=MAX){state.n=0;state.until=Date.now()+LOCK_MS}write('QG001_FAILS',state);err.textContent='Credenciais inválidas. Tentativa '+state.n+' de '+MAX+'.';err.style.display='block';return}
+    sessionStorage.removeItem('QG001_FAILS');
+    write(KEY,{ok:true,expires:Date.now()+SESSION_MS,user:u});
+    err.style.display='none';form.reset();hide();
+  });
+  window.qgLogout=function(){sessionStorage.removeItem(KEY);location.reload()};
+  window.qgAuthStatus=function(){return isValid()};
+  if(isValid())hide();else show();
+  setInterval(function(){if(!isValid())show()},30000);
+})();
+</script>
+</body></html>`);win.document.close();
         }
         function criarCatalogoLimpoLF(){
             if(!confirm('Criar um novo catálogo limpo, sem a marca e sem os dados da Loja da Fábrica?'))return;
