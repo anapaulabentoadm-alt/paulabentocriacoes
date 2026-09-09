@@ -254,7 +254,7 @@
                         <span id="pinCounter" class="text-[10px] text-slate-400 font-mono-tech">0 caracteres</span>
                     </div>
                     <div class="relative">
-                        <input type="password" id="accessPin" placeholder="PIN (Padrão: 2026)" 
+                        <input type="password" id="accessPin" placeholder="••••••••" 
                             class="w-full px-4 py-3 border border-[#d9cec3] rounded-xl text-sm outline-none focus:border-[#9a887c] focus:ring-2 focus:ring-[#9a887c]/20 transition-all font-mono-tech pr-10">
                         <button type="button" id="togglePinVisibility" onclick="QG_AUTH.alternarVisibilidadePIN()" class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600" aria-label="Mostrar PIN">
                             <i id="togglePinIcon" class="fa-solid fa-eye"></i>
@@ -1479,7 +1479,7 @@
                     return;
                 }
 
-                this.mostrarErro(`PIN incorreto. Tentativas restantes: ${restantes}. Use 2026, 001 ou 1234.`);
+                this.mostrarErro(`PIN incorreto. Tentativas restantes: ${restantes}.`);
                 const campo = document.getElementById("accessPin");
                 if (campo) {
                     campo.value = "";
@@ -1612,7 +1612,7 @@
                 const novo = document.getElementById("newPin")?.value.trim();
                 const confirmacao = document.getElementById("confirmPin")?.value.trim();
 
-                if (atual !== this.obterPIN() && atual !== "2026") {
+                if (atual !== this.obterPIN()) {
                     this.mostrarErroAlteracaoPIN("O PIN atual está incorreto.");
                     return;
                 }
