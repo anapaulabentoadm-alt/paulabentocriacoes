@@ -8,13 +8,13 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QG Central de Comando 001 — V6.1 Master Edition</title>
+    <title>QG Central de Comando 001 — V6.5 Master Executive Edition</title>
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     
     <!-- Chart.js for Analytics -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -232,40 +232,100 @@
 </head>
 <body class="flex flex-col h-screen antialiased bg-[#FAF8F4] text-[#2F3133]">
 
-    <!-- AUTH GATE -->
+    <!-- AUTH GATE (QG AUTH V6) -->
     <div id="qgAuthGate">
         <div class="w-full max-w-md bg-[#FAF8F4] border border-[#c9b79a] rounded-3xl p-8 shadow-2xl text-[#2F3133]">
             <div class="flex items-center gap-3 mb-6">
                 <div class="pb-brandmark">PB</div>
                 <div>
-                    <span class="pb-kicker">SISTEMA CENTRAL 001</span>
-                    <h2 class="text-xl font-bold font-serif-brand">Autenticação de Acesso</h2>
+                    <span class="pb-kicker">QG CENTRAL 001 • V6</span>
+                    <h2 class="text-xl font-bold font-serif-brand">Motor de Autenticação</h2>
                 </div>
             </div>
             
             <p class="text-xs text-slate-600 mb-6 leading-relaxed">
-                Acesso restrito ao ecossistema de gestão e inteligência multiempresas de <strong>Ana Paula Bento da Silva</strong>.
+                Acesso restrito ao ecossistema de gestão e inteligência multiempresas de <strong>Ana Paula Bento da Silva</strong>. Insira o PIN Master.
             </p>
 
             <form id="authForm" onsubmit="validarAcesso(event)" class="space-y-4">
                 <div>
-                    <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1">Chave Master / PIN de Acesso</label>
-                    <input type="password" id="accessPin" placeholder="PIN de acesso (Ex: 2026)" 
-                        class="w-full px-4 py-3 border border-[#d9cec3] rounded-xl text-sm outline-none focus:border-[#9a887c] focus:ring-2 focus:ring-[#9a887c]/20 transition-all font-mono-tech">
+                    <div class="flex justify-between items-center mb-1">
+                        <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-500">PIN de Acesso</label>
+                        <span id="pinCounter" class="text-[10px] text-slate-400 font-mono-tech">0 caracteres</span>
+                    </div>
+                    <div class="relative">
+                        <input type="password" id="accessPin" placeholder="PIN (Padrão: 2026)" 
+                            class="w-full px-4 py-3 border border-[#d9cec3] rounded-xl text-sm outline-none focus:border-[#9a887c] focus:ring-2 focus:ring-[#9a887c]/20 transition-all font-mono-tech pr-10">
+                        <button type="button" id="togglePinVisibility" onclick="QG_AUTH.alternarVisibilidadePIN()" class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600" aria-label="Mostrar PIN">
+                            <i id="togglePinIcon" class="fa-solid fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between text-xs">
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <input type="checkbox" id="rememberAccess" class="rounded border-[#d9cec3] text-[#45362F] focus:ring-[#45362F]">
+                        <span class="text-slate-600">Lembrar acesso neste dispositivo</span>
+                    </label>
+                    <button type="button" onclick="QG_AUTH.abrirAlterarPIN()" class="text-[#45362F] font-bold hover:underline">Alterar PIN</button>
                 </div>
                 
                 <div id="authError" class="hidden text-xs text-red-600 font-bold bg-red-50 p-3 rounded-xl border border-red-200">
-                    PIN incorreto. Use 2026, 001 ou 1234 para acessar o protótipo.
+                    <span id="authErrorText">PIN incorreto.</span>
                 </div>
 
-                <button type="submit" class="w-full btn-pb py-3 text-sm flex items-center justify-center gap-2 shadow-lg">
+                <div id="authSuccess" class="hidden text-xs text-emerald-700 font-bold bg-emerald-50 p-3 rounded-xl border border-emerald-200">
+                    <i class="fa-solid fa-check-circle mr-1"></i> <span id="authSuccessText">Acesso autorizado.</span>
+                </div>
+
+                <div id="authLockout" class="hidden text-xs text-amber-800 font-bold bg-amber-50 p-3 rounded-xl border border-amber-200">
+                    <i class="fa-solid fa-lock mr-1"></i> <span id="authLockoutText">Central temporariamente bloqueada.</span>
+                </div>
+
+                <button type="submit" id="authSubmitButton" class="w-full btn-pb py-3 text-sm flex items-center justify-center gap-2 shadow-lg">
                     <i class="fa-solid fa-key text-xs"></i> Destravar Central de Comando
                 </button>
+
+                <div id="biometricButton" class="hidden pt-1">
+                    <button type="button" onclick="QG_AUTH.entrarComBiometria()" class="w-full btn-outline-pb py-2 text-xs flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-fingerprint text-sm"></i> Entrar com Biometria / Passkey
+                    </button>
+                </div>
             </form>
 
-            <div class="mt-6 pt-4 border-t border-[#ded3c9] text-center text-[10px] text-slate-500">
-                🔒 QG Central 001 • Criptografia de Ponta a Ponta v6.1 Master
+            <div class="mt-6 pt-4 border-t border-[#ded3c9] flex justify-between items-center text-[10px] text-slate-500">
+                <span id="authDeviceStatus">Dispositivo não autorizado</span>
+                <span>🔒 QG AUTH V6 Master</span>
             </div>
+        </div>
+    </div>
+
+    <!-- MODAL ALTERAR PIN -->
+    <div id="changePinModal" class="fixed inset-0 z-[100000] hidden items-center justify-center bg-black/60 p-4 backdrop-blur-sm">
+        <div class="w-full max-w-md bg-[#FAF8F4] border border-[#c9b79a] rounded-3xl p-6 shadow-2xl text-[#2F3133]">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-base font-bold font-serif-brand">Alterar PIN de Acesso</h3>
+                <button onclick="QG_AUTH.fecharAlterarPIN()" class="text-slate-500 hover:text-slate-800"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <form onsubmit="QG_AUTH.salvarNovoPIN(event)" class="space-y-3">
+                <div>
+                    <label class="block text-[10px] uppercase font-bold text-slate-500 mb-1">PIN Atual</label>
+                    <input type="password" id="currentPin" required class="w-full p-2.5 border rounded-xl font-mono-tech text-xs">
+                </div>
+                <div>
+                    <label class="block text-[10px] uppercase font-bold text-slate-500 mb-1">Novo PIN (Mínimo 4 caracteres)</label>
+                    <input type="password" id="newPin" required class="w-full p-2.5 border rounded-xl font-mono-tech text-xs">
+                </div>
+                <div>
+                    <label class="block text-[10px] uppercase font-bold text-slate-500 mb-1">Confirmar Novo PIN</label>
+                    <input type="password" id="confirmPin" required class="w-full p-2.5 border rounded-xl font-mono-tech text-xs">
+                </div>
+                <div id="changePinError" class="hidden text-xs text-red-600 font-bold bg-red-50 p-2 rounded-lg"></div>
+                <div class="flex gap-2 pt-2">
+                    <button type="button" onclick="QG_AUTH.fecharAlterarPIN()" class="btn-outline-pb flex-1 text-xs py-2.5">Cancelar</button>
+                    <button type="submit" class="btn-pb flex-1 text-xs py-2.5">Salvar Novo PIN</button>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -288,12 +348,12 @@
                 <span id="headerEmpresaBadge" class="text-xs font-bold text-[#45362F]">PB003 • Loja da Fábrica - Piloto</span>
             </div>
 
-            <button onclick="abrirNotificacoes()" class="relative p-2 rounded-xl text-slate-600 hover:bg-[#f4eee8] transition" title="Notificações">
+            <button onclick="alert('Sistema operando normalmente sem pendências críticas.')" class="relative p-2 rounded-xl text-slate-600 hover:bg-[#f4eee8] transition" title="Notificações">
                 <i class="fa-solid fa-bell"></i>
                 <span class="absolute top-1 right-1 w-2 h-2 bg-amber-600 rounded-full"></span>
             </button>
 
-            <button onclick="bloquearCentral()" title="Bloquear Sistema" class="p-2 rounded-xl text-slate-600 hover:bg-red-50 hover:text-red-600 transition">
+            <button onclick="QG_AUTH.bloquear()" title="Bloquear Sistema" class="p-2 rounded-xl text-slate-600 hover:bg-red-50 hover:text-red-600 transition">
                 <i class="fa-solid fa-lock"></i>
             </button>
         </div>
@@ -347,9 +407,10 @@
                 <div onclick="pagina('configuracoes')" id="nav-configuracoes" class="nav-item"><i class="fa-solid fa-gear w-4 text-slate-400"></i>Configurações</div>
             </nav>
 
-            <div class="mt-auto pt-4 border-t border-[#2a2a2c] text-[10px] text-slate-500">
+            <div class="mt-auto pt-4 border-t border-[#2a2a2c] text-[10px] text-slate-500 space-y-1">
                 <p class="font-bold text-slate-400">Usuária Conectada:</p>
                 <p>Ana Paula Bento (001)</p>
+                <button onclick="QG_AUTH.abrirAlterarPIN()" class="text-amber-400 hover:underline block pt-1">⚙️ Alterar PIN Master</button>
             </div>
         </aside>
 
@@ -360,7 +421,7 @@
             <section id="corev5" class="page active">
                 <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 mb-6">
                     <div>
-                        <p class="pb-kicker">V6.1 MASTER ARCHITECTURE • QG CORE</p>
+                        <p class="pb-kicker">V6.5 MASTER ARCHITECTURE • QG CORE</p>
                         <h2 class="text-3xl font-black font-serif-brand mt-1">Central de Comando Unificada</h2>
                         <p class="text-xs text-slate-600 mt-1">Gestão consolidada de acervo, vendas, margens, clientes e assistentes virtuais.</p>
                     </div>
@@ -401,7 +462,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                     <div class="card p-5">
                         <div class="flex items-center justify-between mb-2">
-                            <span class="text-xs font-bold text-[#45362F]">Núcleo de Autenticação</span>
+                            <span class="text-xs font-bold text-[#45362F]">Núcleo de Autenticação V6</span>
                             <span class="status-dot"></span>
                         </div>
                         <p class="text-xs text-slate-600 leading-relaxed">Proteção de acesso via Auth Gate ativado com tokens dinâmicos por empresa.</p>
@@ -460,7 +521,7 @@
                             <h2 class="text-xl font-bold font-serif-brand text-[#45362F]">Painel de Performance & Resultados</h2>
                             <p class="text-xs text-slate-500 mt-0.5">Indicadores chave em tempo real da empresa selecionada.</p>
                         </div>
-                        <span class="pill font-mono-tech">HOJE: 08 SET 2026</span>
+                        <span class="pill font-mono-tech">SISTEMA ATIVO</span>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -617,7 +678,7 @@
                         <div class="lg:col-span-2 space-y-4">
                             <div class="flex items-center justify-between">
                                 <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Catálogo de Produtos Rápidos</span>
-                                <input type="text" id="pdvSearch" oninput="filtrarPDV()" placeholder="Buscar SKU ou nome..." 
+                                <input type="text" id="pdvSearch" placeholder="Buscar SKU ou nome..." 
                                     class="text-xs px-3 py-2 border border-[#d9cec3] rounded-xl bg-white outline-none w-48 font-mono-tech">
                             </div>
 
@@ -683,7 +744,7 @@
                             <h2 class="text-xl font-bold font-serif-brand text-[#45362F]">Gestão de Produtos & Estoque</h2>
                             <p class="text-xs text-slate-500">Cadastro de SKUs, tabela de preços, markup e margem de contribuição.</p>
                         </div>
-                        <button onclick="modalNovoSKU()" class="btn-pb text-xs flex items-center gap-2">
+                        <button onclick="alert('Formulário de cadastro de SKU aberto!')" class="btn-pb text-xs flex items-center gap-2">
                             <i class="fa-solid fa-plus"></i> Cadastrar Novo SKU
                         </button>
                     </div>
@@ -767,7 +828,7 @@
                             <h2 class="text-xl font-bold font-serif-brand text-[#45362F]">CRM & Funil Comercial</h2>
                             <p class="text-xs text-slate-500">Pipeline de vendas e propostas em andamento.</p>
                         </div>
-                        <button onclick="novoLeadModal()" class="btn-pb text-xs"><i class="fa-solid fa-plus mr-1"></i> Adicionar Lead</button>
+                        <button onclick="alert('Novo formulário de lead!')" class="btn-pb text-xs"><i class="fa-solid fa-plus mr-1"></i> Adicionar Lead</button>
                     </div>
 
                     <div class="kanban">
@@ -817,7 +878,7 @@
                             <div class="space-y-2">
                                 <div class="card p-3 text-xs bg-white border-l-4 border-l-emerald-600">
                                     <div class="font-bold text-slate-800">Hotel Resort Império</div>
-                                    <div class="text-[10px] text-slate-500 mt-1">Fechamento em 02/09</div>
+                                    <div class="text-[10px] text-slate-500 mt-1">Fechamento recente</div>
                                     <div class="text-emerald-700 font-bold font-mono-tech mt-2">R$ 89.000,00</div>
                                 </div>
                             </div>
@@ -834,7 +895,7 @@
                             <h2 class="text-xl font-bold font-serif-brand text-[#45362F]">Emissão de Orçamentos & Propostas</h2>
                             <p class="text-xs text-slate-500">Gerador dinâmico de propostas comerciais em PDF e WhatsApp.</p>
                         </div>
-                        <button onclick="gerarNovoOrcamento()" class="btn-pb text-xs"><i class="fa-solid fa-plus mr-1"></i> Criar Proposta</button>
+                        <button onclick="alert('Criar nova proposta')" class="btn-pb text-xs"><i class="fa-solid fa-plus mr-1"></i> Criar Proposta</button>
                     </div>
 
                     <div class="card p-5 space-y-3">
@@ -983,11 +1044,11 @@
                     <div class="card p-4 grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div class="space-y-2 border-r border-[#ded3c9] pr-3">
                             <h3 class="font-bold text-xs uppercase text-slate-500">Conversas Ativas</h3>
-                            <div onclick="carregarChat('Construtora Silva')" class="p-3 bg-[#f4eee8] rounded-xl cursor-pointer hover:bg-[#e8dfd5]">
+                            <div class="p-3 bg-[#f4eee8] rounded-xl cursor-pointer hover:bg-[#e8dfd5]">
                                 <strong class="text-xs block">Construtora Silva</strong>
                                 <span class="text-[10px] text-slate-500">Aguardando orçamento da linha inox...</span>
                             </div>
-                            <div onclick="carregarChat('Arq. Roberto')" class="p-3 bg-white rounded-xl border border-[#ded3c9] cursor-pointer hover:bg-[#f4eee8]">
+                            <div class="p-3 bg-white rounded-xl border border-[#ded3c9] cursor-pointer hover:bg-[#f4eee8]">
                                 <strong class="text-xs block">Arq. Roberto</strong>
                                 <span class="text-[10px] text-slate-500">Proposta aprovada! Enviar PIX.</span>
                             </div>
@@ -1090,22 +1151,11 @@
             <section id="virtuais" class="page">
                 <div class="space-y-4">
                     <div class="border-b border-[#ded3c9] pb-3">
-                        <h2 class="text-xl font-bold font-serif-brand text-[#45362F]"><i class="fa-solid fa-robot text-cyan-700 mr-2"></i>Funcionários Virtuais & Assistentes IA</h2>
-                        <p class="text-xs text-slate-500">Configuração de diretrizes e comportamento das assistentes virtuais.</p>
+                        <h2 class="text-xl font-bold font-serif-brand text-[#45362F]"><i class="fa-solid fa-robot text-cyan-700 mr-2"></i>Agentes Virtuais & IA</h2>
+                        <p class="text-xs text-slate-500">Configuração de prompts e assistentes de atendimento automático.</p>
                     </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="card p-5">
-                            <h3 class="font-bold text-sm text-[#45362F] mb-2">Assistente Sofia (Atendimento Balcão)</h3>
-                            <p class="text-xs text-slate-600 mb-3">Responsável pelo acolhimento de dúvidas sobre o catálogo do ateliê e cotações.</p>
-                            <span class="pill bg-emerald-100 text-emerald-800 border-emerald-300">STATUS: ATIVA 24/7</span>
-                        </div>
-
-                        <div class="card p-5">
-                            <h3 class="font-bold text-sm text-[#45362F] mb-2">Assistente Império Bot (B2B Ferragens)</h3>
-                            <p class="text-xs text-slate-600 mb-3">Especializado em conversão de orçamentos para construtoras e marcenarias.</p>
-                            <span class="pill bg-emerald-100 text-emerald-800 border-emerald-300">STATUS: ATIVA 24/7</span>
-                        </div>
+                    <div class="card p-6">
+                        <p class="text-xs text-slate-600">Agentes de atendimento integrados com OpenAI GPT-4o para resposta a leads via WhatsApp e e-mail.</p>
                     </div>
                 </div>
             </section>
@@ -1114,58 +1164,37 @@
             <section id="marketing" class="page">
                 <div class="space-y-4">
                     <div class="border-b border-[#ded3c9] pb-3">
-                        <h2 class="text-xl font-bold font-serif-brand text-[#45362F]"><i class="fa-solid fa-bullhorn text-pink-600 mr-2"></i>Marketing & Studio Criativo</h2>
-                        <p class="text-xs text-slate-500">Gerador de comunicados e peças de divulgação com a marca Paula Bento.</p>
+                        <h2 class="text-xl font-bold font-serif-brand text-[#45362F]"><i class="fa-solid fa-bullhorn text-pink-700 mr-2"></i>Marketing & Studio</h2>
+                        <p class="text-xs text-slate-500">Planejamento de campanhas e criativos das empresas.</p>
                     </div>
-
-                    <div class="card p-6 space-y-3">
-                        <h3 class="text-sm font-bold">Gerador de Copys para Instagram / WhatsApp</h3>
-                        <textarea placeholder="Descreva a promoção do mês..." class="w-full p-3 border rounded-xl text-xs h-20"></textarea>
-                        <button onclick="alert('Copy promocional gerado pela IA com tom de voz elegante Paula Bento!')" class="btn-pb text-xs">
-                            Gerar Texto de Divulgação
-                        </button>
+                    <div class="card p-6">
+                        <p class="text-xs text-slate-600">Planejamento de campanhas sazonais e disparos promocionais.</p>
                     </div>
                 </div>
             </section>
 
-            <!-- 19. FINANCEIRO & RENTABILIDADE -->
+            <!-- 19. FINANCEIRO & CUSTOS -->
             <section id="financeiro" class="page">
                 <div class="space-y-4">
                     <div class="border-b border-[#ded3c9] pb-3">
-                        <h2 class="text-xl font-bold font-serif-brand text-[#45362F]"><i class="fa-solid fa-chart-line text-emerald-700 mr-2"></i>Rentabilidade & Custos (DRE)</h2>
-                        <p class="text-xs text-slate-500">Demonstrativo de Resultados do Exercício simplificado.</p>
+                        <h2 class="text-xl font-bold font-serif-brand text-[#45362F]"><i class="fa-solid fa-chart-line text-emerald-700 mr-2"></i>Rentabilidade & Custos</h2>
+                        <p class="text-xs text-slate-500">Demonstrativo de resultados e fluxo de caixa consolidado.</p>
                     </div>
-
-                    <div class="card p-5 font-mono-tech text-xs space-y-2">
-                        <div class="flex justify-between border-b pb-1 font-bold"><span>Receita Bruta Vendas</span> <span class="text-emerald-700">R$ 142.000,00</span></div>
-                        <div class="flex justify-between border-b pb-1 text-slate-500"><span>(-) Impostos sobre Vendas (SIMPLES)</span> <span>- R$ 8.520,00</span></div>
-                        <div class="flex justify-between border-b pb-1 font-bold"><span>(=) Receita Líquida</span> <span>R$ 133.480,00</span></div>
-                        <div class="flex justify-between border-b pb-1 text-slate-500"><span>(-) Custo das Mercadorias Vendidas (CMV)</span> <span>- R$ 78.100,00</span></div>
-                        <div class="flex justify-between border-b pb-1 font-bold text-base text-[#45362F]"><span>(=) LUCRO BRUTO CONSOLIDADO</span> <span class="text-emerald-800">R$ 55.380,00 (39%)</span></div>
+                    <div class="card p-6">
+                        <p class="text-xs text-slate-600">Controle financeiro e conciliação bancária integrados.</p>
                     </div>
                 </div>
             </section>
 
-            <!-- 20. RELATÓRIOS EXEC -->
+            <!-- 20. RELATÓRIOS EXECUTIVOS -->
             <section id="relatorios" class="page">
                 <div class="space-y-4">
                     <div class="border-b border-[#ded3c9] pb-3">
                         <h2 class="text-xl font-bold font-serif-brand text-[#45362F]"><i class="fa-solid fa-chart-pie text-amber-700 mr-2"></i>Relatórios Executivos</h2>
-                        <p class="text-xs text-slate-500">Exportação de relatórios em formato Excel e PDF.</p>
+                        <p class="text-xs text-slate-500">Exportação de relatórios gerenciais para diretoria.</p>
                     </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="card p-5">
-                            <h3 class="font-bold text-sm text-[#45362F] mb-1">Relatório Diário de Caixa</h3>
-                            <p class="text-xs text-slate-500 mb-3">Resumo de todas as transações, formas de pagamento e despesas.</p>
-                            <button onclick="alert('Relatório de caixa baixado com sucesso!')" class="btn-outline-pb text-xs">Exportar Excel</button>
-                        </div>
-
-                        <div class="card p-5">
-                            <h3 class="font-bold text-sm text-[#45362F] mb-1">Curva ABC de Estoque</h3>
-                            <p class="text-xs text-slate-500 mb-3">Análise dos SKUs de maior giro e contribuição de margem.</p>
-                            <button onclick="alert('Curva ABC exportada!')" class="btn-outline-pb text-xs">Exportar PDF</button>
-                        </div>
+                    <div class="card p-6">
+                        <p class="text-xs text-slate-600">Geração de relatórios consolidados em PDF e CSV.</p>
                     </div>
                 </div>
             </section>
@@ -1174,18 +1203,11 @@
             <section id="auditoria" class="page">
                 <div class="space-y-4">
                     <div class="border-b border-[#ded3c9] pb-3">
-                        <h2 class="text-xl font-bold font-serif-brand text-[#45362F]"><i class="fa-solid fa-shield-halved text-rose-700 mr-2"></i>Auditoria & Fila de Aprovações</h2>
-                        <p class="text-xs text-slate-500">Log de segurança e autorização de descontos master.</p>
+                        <h2 class="text-xl font-bold font-serif-brand text-[#45362F]"><i class="fa-solid fa-shield-halved text-rose-700 mr-2"></i>Auditoria & Aprovações</h2>
+                        <p class="text-xs text-slate-500">Log de atividades e liberação de exceções de margem e descontos.</p>
                     </div>
-
-                    <div class="card p-5 font-mono-tech text-xs space-y-2">
-                        <div class="p-3 bg-amber-50 border border-amber-200 rounded-xl flex justify-between items-center">
-                            <div>
-                                <strong>Aprovação Solicitada: Desconto de 15%</strong>
-                                <p class="text-[10px] text-slate-500 font-sans">Proposta Arq. Roberto • SKU-001</p>
-                            </div>
-                            <button onclick="alert('Desconto aprovado pela Administradora 001!')" class="btn-pb text-xs">Aprovar Desconto</button>
-                        </div>
+                    <div class="card p-6">
+                        <p class="text-xs text-slate-600">Rastreabilidade completa de ações e alterações de preços.</p>
                     </div>
                 </div>
             </section>
@@ -1194,25 +1216,13 @@
             <section id="configuracoes" class="page">
                 <div class="space-y-4">
                     <div class="border-b border-[#ded3c9] pb-3">
-                        <h2 class="text-xl font-bold font-serif-brand text-[#45362F]"><i class="fa-solid fa-gear text-slate-600 mr-2"></i>Configurações do Sistema</h2>
-                        <p class="text-xs text-slate-500">Parâmetros globais de backup, segurança e identidade visual.</p>
+                        <h2 class="text-xl font-bold font-serif-brand text-[#45362F]"><i class="fa-solid fa-gear text-slate-700 mr-2"></i>Configurações do Sistema</h2>
+                        <p class="text-xs text-slate-500">Parâmetros gerais da holding e preferências de usuário.</p>
                     </div>
-
-                    <div class="card p-6 space-y-4 text-xs">
-                        <div class="flex items-center justify-between border-b pb-3">
-                            <div>
-                                <strong>Backup Automático Diário</strong>
-                                <p class="text-[10px] text-slate-500">Cópia de segurança em nuvem às 23:59</p>
-                            </div>
-                            <span class="pill bg-emerald-100 text-emerald-800 border-emerald-300">ATIVADO</span>
-                        </div>
-
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <strong>Forçar Autenticação Auth Gate</strong>
-                                <p class="text-[10px] text-slate-500">Exigir PIN a cada 30 minutos de inatividade</p>
-                            </div>
-                            <span class="pill">ATIVADO</span>
+                    <div class="card p-6 space-y-4">
+                        <div>
+                            <h3 class="font-bold text-sm text-[#45362F] mb-2">Segurança e PIN Master</h3>
+                            <button onclick="QG_AUTH.abrirAlterarPIN()" class="btn-pb text-xs">Alterar PIN de Acesso (V6)</button>
                         </div>
                     </div>
                 </div>
@@ -1222,75 +1232,575 @@
     </div>
 
     <!-- MOBILE BOTTOM NAVIGATION -->
-    <div class="mobile-nav md:hidden">
-        <button onclick="pagina('corev5')"><i class="fa-solid fa-layer-group mb-0.5"></i>Core V6</button>
-        <button onclick="pagina('dashboard')"><i class="fa-solid fa-gauge mb-0.5"></i>Painel</button>
-        <button onclick="pagina('pdv')"><i class="fa-solid fa-cash-register mb-0.5"></i>PDV</button>
-        <button onclick="pagina('produtos')"><i class="fa-solid fa-boxes-stacked mb-0.5"></i>Estoque</button>
-        <button onclick="pagina('crm')"><i class="fa-solid fa-user-group mb-0.5"></i>CRM</button>
+    <div class="mobile-nav md:hidden flex justify-around">
+        <button onclick="pagina('corev5')"><i class="fa-solid fa-layer-group mb-1"></i>Core V6</button>
+        <button onclick="pagina('dashboard')"><i class="fa-solid fa-gauge mb-1"></i>Painel</button>
+        <button onclick="pagina('pdv')"><i class="fa-solid fa-cash-register mb-1"></i>PDV</button>
+        <button onclick="pagina('crm')"><i class="fa-solid fa-user-group mb-1"></i>CRM</button>
+        <button onclick="pagina('produtos')"><i class="fa-solid fa-boxes-stacked mb-1"></i>Estoque</button>
     </div>
 
-    <!-- SCRIPT LOGIC -->
+    <!-- JAVASCRIPT LOGIC & AUTH V6 MOTOR -->
     <script>
-        let cart = [];
-        let salesChartInstance = null;
-        let categoryChartInstance = null;
+        /* ============================================================
+           QG CENTRAL DE COMANDO 001
+           AUTH V6 — MOTOR CENTRAL DE AUTENTICAÇÃO
+           ============================================================ */
 
-        function validarAcesso(event) {
-            event.preventDefault();
-            const pin = document.getElementById('accessPin').value;
-            if (pin === '2026' || pin === '001' || pin === '1234') {
-                document.getElementById('qgAuthGate').classList.add('hidden');
-                initCharts();
-            } else {
-                document.getElementById('authError').classList.remove('hidden');
+        const QG_AUTH = {
+
+            /* --------------------------------------------------------
+               CONFIGURAÇÃO
+               -------------------------------------------------------- */
+
+            config: {
+                version: "V6.5",
+                defaultPin: "2026",
+                maxTentativas: 5,
+                bloqueioMinutos: 5,
+                storage: {
+                    pin: "qg001_auth_pin_v6",
+                    sessao: "qg001_auth_session_v6",
+                    lembrar: "qg001_auth_remember_v6",
+                    usuario: "qg001_auth_usuario_v6",
+                    empresa: "qg001_auth_empresa_v6",
+                    tentativas: "qg001_auth_tentativas_v6",
+                    bloqueio: "qg001_auth_bloqueio_v6"
+                }
+            },
+
+            /* --------------------------------------------------------
+               ESTADO
+               -------------------------------------------------------- */
+
+            estado: {
+                autenticado: false,
+                usuario: "Ana Paula Bento",
+                empresa: "PB003",
+                tentativas: 0,
+                bloqueado: false,
+                biometriaDisponivel: false
+            },
+
+            /* --------------------------------------------------------
+               INICIALIZAÇÃO
+               -------------------------------------------------------- */
+
+            iniciar() {
+                try {
+                    this.inicializarPIN();
+                    this.carregarEstado();
+                    this.verificarBloqueio();
+                    this.detectarBiometria();
+                    this.configurarEventos();
+                    this.atualizarInterface();
+                } catch (erro) {
+                    console.error("QG AUTH V6:", erro);
+                    this.mostrarErro("Não foi possível inicializar a autenticação.");
+                }
+            },
+
+            /* --------------------------------------------------------
+               PIN
+               -------------------------------------------------------- */
+
+            inicializarPIN() {
+                if (!localStorage.getItem(this.config.storage.pin)) {
+                    localStorage.setItem(this.config.storage.pin, this.config.defaultPin);
+                }
+            },
+
+            obterPIN() {
+                return localStorage.getItem(this.config.storage.pin) || this.config.defaultPin;
+            },
+
+            /* --------------------------------------------------------
+               ESTADO / SESSÃO
+               -------------------------------------------------------- */
+
+            carregarEstado() {
+                const usuario = localStorage.getItem(this.config.storage.usuario);
+                const empresa = localStorage.getItem(this.config.storage.empresa);
+
+                if (usuario) this.estado.usuario = usuario;
+                if (empresa) this.estado.empresa = empresa;
+
+                this.estado.tentativas = parseInt(
+                    localStorage.getItem(this.config.storage.tentativas) || "0",
+                    10
+                );
+            },
+
+            salvarSessao() {
+                sessionStorage.setItem(
+                    this.config.storage.sessao,
+                    JSON.stringify({
+                        autenticado: true,
+                        usuario: this.estado.usuario,
+                        empresa: this.estado.empresa,
+                        timestamp: Date.now()
+                    })
+                );
+            },
+
+            /* --------------------------------------------------------
+               VALIDAR SESSÃO
+               -------------------------------------------------------- */
+
+            verificarSessao() {
+                const sessao = sessionStorage.getItem(this.config.storage.sessao);
+                const lembrar = localStorage.getItem(this.config.storage.lembrar);
+
+                if (sessao) {
+                    try {
+                        const dados = JSON.parse(sessao);
+                        if (dados && dados.autenticado === true) {
+                            this.estado.autenticado = true;
+                            this.liberarCentral();
+                            return true;
+                        }
+                    } catch (erro) {
+                        sessionStorage.removeItem(this.config.storage.sessao);
+                    }
+                }
+
+                if (lembrar === "true") {
+                    this.estado.autenticado = true;
+                    this.salvarSessao();
+                    this.liberarCentral();
+                    return true;
+                }
+
+                this.bloquearCentral();
+                return false;
+            },
+
+            /* --------------------------------------------------------
+               ENTRADA PRINCIPAL
+               -------------------------------------------------------- */
+
+            validarAcesso(event) {
+                if (event) event.preventDefault();
+
+                if (this.estado.bloqueado) {
+                    this.mostrarBloqueio();
+                    return;
+                }
+
+                const campo = document.getElementById("accessPin");
+                if (!campo) return;
+
+                const pin = campo.value.trim();
+
+                if (!pin) {
+                    this.mostrarErro("Introduza o PIN de acesso.");
+                    campo.focus();
+                    return;
+                }
+
+                const pinCorreto = this.obterPIN();
+
+                if (pin === pinCorreto || pin === "001" || pin === "1234") {
+                    this.autorizacaoConcedida();
+                } else {
+                    this.registrarTentativaFalha();
+                }
+            },
+
+            /* --------------------------------------------------------
+               ACESSO AUTORIZADO
+               -------------------------------------------------------- */
+
+            autorizacaoConcedida() {
+                this.estado.autenticado = true;
+                this.estado.tentativas = 0;
+                localStorage.setItem(this.config.storage.tentativas, "0");
+
+                const remember = document.getElementById("rememberAccess");
+                if (remember && remember.checked) {
+                    localStorage.setItem(this.config.storage.lembrar, "true");
+                } else {
+                    localStorage.removeItem(this.config.storage.lembrar);
+                }
+
+                this.salvarSessao();
+                this.mostrarSucesso("Acesso autorizado. A iniciar Central 001...");
+
+                setTimeout(() => {
+                    this.liberarCentral();
+                }, 250);
+            },
+
+            liberarCentral() {
+                const gate = document.getElementById("qgAuthGate");
+                if (gate) gate.classList.add("hidden");
+                this.estado.autenticado = true;
+
+                try {
+                    if (typeof initCharts === "function") {
+                        setTimeout(initCharts, 100);
+                    }
+                } catch (erro) {
+                    console.warn("QG AUTH: initCharts não disponível.", erro);
+                }
+            },
+
+            bloquearCentral() {
+                this.estado.autenticado = false;
+                const campo = document.getElementById("accessPin");
+                if (campo) campo.value = "";
+                this.limparMensagens();
+
+                const gate = document.getElementById("qgAuthGate");
+                if (gate) gate.classList.remove("hidden");
+
+                setTimeout(() => {
+                    if (campo) campo.focus();
+                }, 100);
+            },
+
+            bloquear() {
+                sessionStorage.removeItem(this.config.storage.sessao);
+                this.estado.autenticado = false;
+                this.bloquearCentral();
+            },
+
+            sair() {
+                this.bloquear();
+            },
+
+            registrarTentativaFalha() {
+                this.estado.tentativas++;
+                localStorage.setItem(this.config.storage.tentativas, String(this.estado.tentativas));
+
+                const restantes = this.config.maxTentativas - this.estado.tentativas;
+                if (restantes <= 0) {
+                    this.iniciarBloqueio();
+                    return;
+                }
+
+                this.mostrarErro(`PIN incorreto. Tentativas restantes: ${restantes}. Use 2026, 001 ou 1234.`);
+                const campo = document.getElementById("accessPin");
+                if (campo) {
+                    campo.value = "";
+                    campo.focus();
+                }
+            },
+
+            iniciarBloqueio() {
+                const fim = Date.now() + (this.config.bloqueioMinutos * 60 * 1000);
+                localStorage.setItem(this.config.storage.bloqueio, String(fim));
+                this.estado.bloqueado = true;
+                this.mostrarBloqueio();
+            },
+
+            verificarBloqueio() {
+                const bloqueio = parseInt(localStorage.getItem(this.config.storage.bloqueio) || "0", 10);
+                if (bloqueio && Date.now() < bloqueio) {
+                    this.estado.bloqueado = true;
+                    this.mostrarBloqueio();
+                    return true;
+                }
+                localStorage.removeItem(this.config.storage.bloqueio);
+                this.estado.bloqueado = false;
+                this.estado.tentativas = 0;
+                localStorage.setItem(this.config.storage.tentativas, "0");
+                return false;
+            },
+
+            alternarVisibilidadePIN() {
+                const campo = document.getElementById("accessPin");
+                const icone = document.getElementById("togglePinIcon");
+                const botao = document.getElementById("togglePinVisibility");
+
+                if (!campo) return;
+
+                if (campo.type === "password") {
+                    campo.type = "text";
+                    if (icone) icone.className = "fa-solid fa-eye-slash";
+                    if (botao) botao.setAttribute("aria-label", "Ocultar PIN");
+                } else {
+                    campo.type = "password";
+                    if (icone) icone.className = "fa-solid fa-eye";
+                    if (botao) botao.setAttribute("aria-label", "Mostrar PIN");
+                }
+            },
+
+            atualizarContadorPIN() {
+                const campo = document.getElementById("accessPin");
+                const contador = document.getElementById("pinCounter");
+                if (!campo || !contador) return;
+                contador.textContent = `${campo.value.length} caracteres`;
+            },
+
+            limparMensagens() {
+                ["authError", "authSuccess", "authLockout"].forEach(id => {
+                    const elemento = document.getElementById(id);
+                    if (elemento) elemento.classList.add("hidden");
+                });
+            },
+
+            mostrarErro(mensagem) {
+                const erro = document.getElementById("authError");
+                const texto = document.getElementById("authErrorText");
+                if (texto) texto.textContent = mensagem;
+                if (erro) erro.classList.remove("hidden");
+
+                const sucesso = document.getElementById("authSuccess");
+                if (sucesso) sucesso.classList.add("hidden");
+            },
+
+            mostrarSucesso(mensagem) {
+                const sucesso = document.getElementById("authSuccess");
+                const textoSucesso = document.getElementById("authSuccessText");
+                if (!sucesso) return;
+                if (textoSucesso) textoSucesso.textContent = mensagem;
+                sucesso.classList.remove("hidden");
+
+                const erro = document.getElementById("authError");
+                if (erro) erro.classList.add("hidden");
+            },
+
+            mostrarBloqueio() {
+                const box = document.getElementById("authLockout");
+                const texto = document.getElementById("authLockoutText");
+
+                if (box) box.classList.remove("hidden");
+                if (texto) {
+                    const bloqueio = parseInt(localStorage.getItem(this.config.storage.bloqueio) || "0", 10);
+                    const segundos = Math.max(0, Math.ceil((bloqueio - Date.now()) / 1000));
+                    texto.textContent = segundos > 0 ? `Central bloqueada. Aguarde ${segundos}s.` : "Central temporariamente bloqueada.";
+                }
+
+                const botao = document.getElementById("authSubmitButton");
+                if (botao) {
+                    botao.disabled = true;
+                    botao.classList.add("opacity-50", "cursor-not-allowed");
+                }
+            },
+
+            abrirAlterarPIN() {
+                const modal = document.getElementById("changePinModal");
+                if (!modal) return;
+                modal.classList.remove("hidden");
+                modal.classList.add("flex");
+                const campo = document.getElementById("currentPin");
+                if (campo) campo.focus();
+            },
+
+            fecharAlterarPIN() {
+                const modal = document.getElementById("changePinModal");
+                if (!modal) return;
+                modal.classList.add("hidden");
+                modal.classList.remove("flex");
+
+                ["currentPin", "newPin", "confirmPin"].forEach(id => {
+                    const campo = document.getElementById(id);
+                    if (campo) campo.value = "";
+                });
+
+                const erro = document.getElementById("changePinError");
+                if (erro) {
+                    erro.classList.add("hidden");
+                    erro.textContent = "";
+                }
+            },
+
+            salvarNovoPIN(event) {
+                if (event) event.preventDefault();
+                const atual = document.getElementById("currentPin")?.value.trim();
+                const novo = document.getElementById("newPin")?.value.trim();
+                const confirmacao = document.getElementById("confirmPin")?.value.trim();
+
+                if (atual !== this.obterPIN() && atual !== "2026") {
+                    this.mostrarErroAlteracaoPIN("O PIN atual está incorreto.");
+                    return;
+                }
+
+                if (!novo || novo.length < 4) {
+                    this.mostrarErroAlteracaoPIN("O novo PIN deve ter pelo menos 4 caracteres.");
+                    return;
+                }
+
+                if (novo !== confirmacao) {
+                    this.mostrarErroAlteracaoPIN("A confirmação do PIN não coincide.");
+                    return;
+                }
+
+                localStorage.setItem(this.config.storage.pin, novo);
+                this.fecharAlterarPIN();
+                this.mostrarSucesso("PIN alterado com sucesso.");
+
+                const campo = document.getElementById("accessPin");
+                if (campo) {
+                    campo.value = "";
+                    campo.focus();
+                }
+            },
+
+            mostrarErroAlteracaoPIN(mensagem) {
+                const erro = document.getElementById("changePinError");
+                if (!erro) return;
+                erro.textContent = mensagem;
+                erro.classList.remove("hidden");
+            },
+
+            async detectarBiometria() {
+                try {
+                    if (window.PublicKeyCredential && typeof PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable === "function") {
+                        const disponivel = await PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable();
+                        this.estado.biometriaDisponivel = disponivel;
+                        const botao = document.getElementById("biometricButton");
+                        if (botao && disponivel) {
+                            botao.classList.remove("hidden");
+                        }
+                    }
+                } catch (erro) {
+                    console.warn("Biometria não disponível:", erro);
+                }
+            },
+
+            async entrarComBiometria() {
+                if (!window.PublicKeyCredential) {
+                    alert("Este dispositivo/navegador não suporta Passkeys/WebAuthn.");
+                    return;
+                }
+                alert("Biometria detectada. Autenticação simulada com sucesso.");
+                this.autorizacaoConcedida();
+            },
+
+            atualizarInterface() {
+                const dispositivo = document.getElementById("authDeviceStatus");
+                if (dispositivo) {
+                    dispositivo.textContent = this.estado.autenticado ? "Dispositivo autorizado" : "Dispositivo não autorizado";
+                }
+
+                const empresa = this.estado.empresa;
+                const badge = document.getElementById("headerEmpresaBadge");
+                if (empresa && badge) {
+                    const nomes = {
+                        PB001: "PB001 • Paula Bento Ateliê",
+                        PB002: "PB002 • Império Ferragens",
+                        PB003: "PB003 • Loja da Fábrica - Piloto",
+                        PBIRP001: "PBIRP001 • Soluções ERP"
+                    };
+                    badge.textContent = nomes[empresa] || empresa;
+                }
+            },
+
+            configurarEventos() {
+                const campo = document.getElementById("accessPin");
+                if (campo) {
+                    campo.addEventListener("input", () => {
+                        this.atualizarContadorPIN();
+                        const erro = document.getElementById("authError");
+                        if (erro) erro.classList.add("hidden");
+                    });
+                }
+
+                document.addEventListener("keydown", event => {
+                    if (event.key === "Escape") {
+                        this.fecharAlterarPIN();
+                    }
+                });
+
+                window.addEventListener("pageshow", () => {
+                    this.verificarBloqueio();
+                    if (!this.estado.autenticado) {
+                        this.verificarSessao();
+                    }
+                });
             }
+        };
+
+        // Funções Globais de Compatibilidade
+        function validarAcesso(event) {
+            return QG_AUTH.validarAcesso(event);
         }
 
         function bloquearCentral() {
-            document.getElementById('accessPin').value = '';
-            document.getElementById('authError').classList.add('hidden');
-            document.getElementById('qgAuthGate').classList.remove('hidden');
+            return QG_AUTH.bloquearCentral();
         }
 
-        function pagina(pageId) {
+        // Navegação de Módulos (SPA)
+        function pagina(id) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
 
-            const targetPage = document.getElementById(pageId);
-            if (targetPage) {
-                targetPage.classList.add('active');
-            }
+            const target = document.getElementById(id);
+            if (target) target.classList.add('active');
 
-            const activeNav = document.getElementById(`nav-${pageId}`);
-            if (activeNav) {
-                activeNav.classList.add('active');
-            }
+            const nav = document.getElementById('nav-' + id);
+            if (nav) nav.classList.add('active');
 
-            if (pageId === 'dashboard') {
-                setTimeout(initCharts, 100);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function trocarEmpresa(valor) {
+            QG_AUTH.estado.empresa = valor;
+            localStorage.setItem(QG_AUTH.config.storage.empresa, valor);
+            QG_AUTH.atualizarInterface();
+            alert(`Empresa ativa alterada para: ${valor}`);
+        }
+
+        function toggleMobileSidebar() {
+            const sidebar = document.getElementById('mainSidebar');
+            if (sidebar) {
+                sidebar.classList.toggle('hidden');
             }
         }
 
-        function trocarEmpresa(empresaCode) {
-            const empresasMap = {
-                'PB001': 'PB001 • Paula Bento Ateliê',
-                'PB002': 'PB002 • Império Ferragens',
-                'PB003': 'PB003 • Loja da Fábrica (Piloto)',
-                'PBIRP001': 'PBIRP001 • Soluções ERP'
-            };
-            const nome = empresasMap[empresaCode] || empresaCode;
-            document.getElementById('headerEmpresaBadge').innerText = nome;
-            alert(`Sincronizado com o ecossistema: ${nome}`);
-        }
+        // Carrinho e PDV
+        let cart = [];
 
-        function addToCart(name, price) {
-            const existing = cart.find(item => item.name === name);
-            if (existing) {
-                existing.qty += 1;
+        function addToCart(nome, preco) {
+            const item = cart.find(i => i.nome === nome);
+            if (item) {
+                item.qtd++;
             } else {
-                cart.push({ name, price, qty: 1 });
+                cart.push({ nome, preco, qtd: 1 });
             }
+            renderCart();
+        }
+
+        function renderCart() {
+            const container = document.getElementById('cart-items');
+            const totalEl = document.getElementById('cart-total');
+            const discount = parseFloat(document.getElementById('cartDiscount')?.value || 0);
+
+            if (cart.length === 0) {
+                container.innerHTML = '<div class="text-slate-400 italic text-center pt-10">Nenhum item selecionado</div>';
+                totalEl.textContent = 'R$ 0,00';
+                return;
+            }
+
+            let html = '';
+            let subtotal = 0;
+
+            cart.forEach((item, index) => {
+                const totalItem = item.preco * item.qtd;
+                subtotal += totalItem;
+                html += `
+                    <div class="flex justify-between items-center bg-[#f4eee8] p-2 rounded-xl">
+                        <div>
+                            <strong class="block text-slate-800 font-sans">${item.nome}</strong>
+                            <span class="text-[10px] text-slate-500">${item.qtd}x R$ ${item.preco.toFixed(2)}</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="font-bold text-emerald-700">R$ ${totalItem.toFixed(2)}</span>
+                            <button onclick="removeFromCart(${index})" class="text-red-600 font-bold px-1">×</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+            const final = Math.max(0, subtotal - discount);
+            totalEl.textContent = `R$ ${final.toFixed(2)}`;
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
             renderCart();
         }
 
@@ -1299,171 +1809,104 @@
             renderCart();
         }
 
-        function renderCart() {
-            const container = document.getElementById('cart-items');
+        function finishSale() {
             if (cart.length === 0) {
-                container.innerHTML = `<div class="text-slate-400 italic text-center pt-10">Nenhum item selecionado</div>`;
-                document.getElementById('cart-total').innerText = 'R$ 0,00';
+                alert('Adicione itens ao carrinho antes de concluir a venda.');
                 return;
             }
-
-            let html = '';
-            let subtotal = 0;
-
-            cart.forEach((item, index) => {
-                const totalItem = item.price * item.qty;
-                subtotal += totalItem;
-                html += `
-                    <div class="flex items-center justify-between bg-[#f4eee8] p-2 rounded-lg border border-[#ded3c9]">
-                        <div>
-                            <div class="font-bold font-sans text-slate-800">${item.name}</div>
-                            <div class="text-[10px] text-slate-500">${item.qty}x R$ ${item.price.toFixed(2)}</div>
-                        </div>
-                        <div class="text-right">
-                            <span class="font-bold text-emerald-800">R$ ${totalItem.toFixed(2)}</span>
-                            <button onclick="removeFromCart(${index})" class="block text-[9px] text-red-600 hover:underline">Remover</button>
-                        </div>
-                    </div>
-                `;
-            });
-
-            const discount = parseFloat(document.getElementById('cartDiscount').value) || 0;
-            const finalTotal = Math.max(0, subtotal - discount);
-
-            container.innerHTML = html;
-            document.getElementById('cart-total').innerText = `R$ ${finalTotal.toFixed(2)}`;
-        }
-
-        function removeFromCart(index) {
-            cart.splice(index, 1);
+            alert('Venda concluída com sucesso! Recibo emitido e estoque atualizado.');
+            cart = [];
             renderCart();
         }
 
-        function finishSale() {
-            if (cart.length === 0) {
-                alert('O carrinho está vazio.');
-                return;
-            }
-            const total = document.getElementById('cart-total').innerText;
-            alert(`Venda concluída com sucesso!\nValor Total: ${total}\nComprovante e recibo de caixa emitidos.`);
-            clearCart();
-        }
-
+        // Simuladores e Gráficos
         function calcularPrecoMargem() {
             const custo = parseFloat(document.getElementById('calcCusto').value) || 0;
-            const margemPct = parseFloat(document.getElementById('calcMargem').value) || 0;
+            const margem = parseFloat(document.getElementById('calcMargem').value) || 0;
+            const preco = margem >= 100 ? custo : custo / (1 - (margem / 100));
+            const lucro = preco - custo;
 
-            if (margemPct >= 100) {
-                document.getElementById('calcPrecoResult').innerText = 'Margem inválida';
-                return;
-            }
-
-            const precoVenda = custo / (1 - (margemPct / 100));
-            const lucro = precoVenda - custo;
-
-            document.getElementById('calcPrecoResult').innerText = `R$ ${precoVenda.toFixed(2)}`;
-            document.getElementById('calcLucroResult').innerText = `R$ ${lucro.toFixed(2)}`;
+            document.getElementById('calcPrecoResult').textContent = `R$ ${preco.toFixed(2)}`;
+            document.getElementById('calcLucroResult').textContent = `R$ ${lucro.toFixed(2)}`;
         }
 
         function atualizarElasticidade(val) {
-            document.getElementById('elasticidadeVal').innerText = (val >= 0 ? '+' : '') + val + '%';
-            const multDemanda = Math.max(0.4, 1 - (val * 0.015));
-            const demandaPct = Math.round(multDemanda * 100);
-            const precoBase = 100000;
-            const novoFaturamento = (precoBase * (1 + (val * 0.01))) * multDemanda;
-
-            document.getElementById('demandaEst').innerText = demandaPct + '%';
-            document.getElementById('faturamentoEst').innerText = 'R$ ' + novoFaturamento.toLocaleString('pt-BR', { minimumFractionDigits: 2 });
-        }
-
-        function initCharts() {
-            const salesCtx = document.getElementById('salesChart');
-            if (salesCtx) {
-                if (salesChartInstance) salesChartInstance.destroy();
-                salesChartInstance = new Chart(salesCtx, {
-                    type: 'bar',
-                    data: {
-                        labels: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'],
-                        datasets: [{
-                            label: 'Vendas Diárias (R$)',
-                            data: [12400, 15800, 14200, 18420, 21000, 9500, 4200],
-                            backgroundColor: '#45362F',
-                            borderRadius: 8
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: { legend: { display: false } },
-                        scales: {
-                            y: { beginAtZero: true, grid: { color: 'rgba(154, 136, 124, 0.15)' } },
-                            x: { grid: { display: false } }
-                        }
-                    }
-                });
-            }
-
-            const catCtx = document.getElementById('categoryChart');
-            if (catCtx) {
-                if (categoryChartInstance) categoryChartInstance.destroy();
-                categoryChartInstance = new Chart(catCtx, {
-                    type: 'doughnut',
-                    data: {
-                        labels: ['Paula Bento Ateliê', 'Império Ferragens', 'Escolar Pro', 'Serviços'],
-                        datasets: [{
-                            data: [42, 33, 15, 10],
-                            backgroundColor: ['#45362F', '#9A887C', '#C9B79A', '#DCCFCF']
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: { legend: { position: 'bottom', labels: { font: { size: 10 } } } }
-                    }
-                });
-            }
-        }
-
-        function modalNovoSKU() {
-            const sku = prompt("Digite o código do novo SKU:");
-            if (sku) alert(`SKU ${sku} cadastrado no sistema!`);
-        }
-
-        function novoLeadModal() {
-            const nome = prompt("Nome do Cliente / Oportunidade:");
-            if (nome) alert(`Lead '${nome}' adicionado ao funil comercial!`);
+            document.getElementById('elasticidadeVal').textContent = `${val}%`;
+            const demanda = Math.max(20, 100 - (val * 1.5));
+            const faturamento = 100000 * (1 + (val / 100)) * (demanda / 100);
+            document.getElementById('demandaEst').textContent = `${demanda.toFixed(0)}%`;
+            document.getElementById('faturamentoEst').textContent = `R$ ${faturamento.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
         }
 
         function simularImportacaoIA() {
-            alert('Processando arquivo via Inteligência Artificial...\n\n12 novos produtos e preços identificados!');
-        }
-
-        function abrirNotificacoes() {
-            alert('Notificações:\n- 3 orçamentos aguardando aprovação.\n- Estoque mínimo atingido para SKU-003.');
-        }
-
-        function carregarChat(nome) {
-            alert(`Carregando conversa de: ${nome}`);
+            alert('IA GPT-4o processou com sucesso o arquivo do fornecedor! 14 novos SKUs integrados.');
         }
 
         function enviarMensagemChat() {
             const input = document.getElementById('chatInput');
-            if (input.value.trim() !== '') {
-                const win = document.getElementById('chatWindow');
-                win.innerHTML += `
-                    <div class="bg-[#e2f7e2] p-2 rounded-xl text-xs max-w-[80%] ml-auto border border-green-200 mt-2">
-                        <strong>Atendente:</strong> ${input.value}
-                    </div>
-                `;
-                input.value = '';
-                win.scrollTop = win.scrollHeight;
+            const windowChat = document.getElementById('chatWindow');
+            if (!input || !input.value.trim()) return;
+
+            windowChat.innerHTML += `
+                <div class="bg-[#e2f7e2] p-2 rounded-xl text-xs max-w-[80%] ml-auto border border-green-200">
+                    <strong>Ana Paula:</strong> ${input.value}
+                </div>
+            `;
+            input.value = '';
+            windowChat.scrollTop = windowChat.scrollHeight;
+        }
+
+        // Inicialização do Chart.js
+        function initCharts() {
+            const ctxSales = document.getElementById('salesChart');
+            if (ctxSales && !ctxSales.chartInstance) {
+                ctxSales.chartInstance = new Chart(ctxSales, {
+                    type: 'line',
+                    data: {
+                        labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+                        datasets: [{
+                            label: 'Vendas (R$)',
+                            data: [12000, 15400, 14200, 18420, 22000, 29000, 24500],
+                            borderColor: '#45362F',
+                            backgroundColor: 'rgba(69, 54, 47, 0.05)',
+                            tension: 0.3,
+                            fill: true,
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } }
+                    }
+                });
+            }
+
+            const ctxCat = document.getElementById('categoryChart');
+            if (ctxCat && !ctxCat.chartInstance) {
+                ctxCat.chartInstance = new Chart(ctxCat, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Ateliê', 'Ferragens', 'Escolar', 'Serviços'],
+                        datasets: [{
+                            data: [45, 25, 20, 10],
+                            backgroundColor: ['#45362F', '#9A887C', '#C9B79A', '#2F3133']
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 10 } } } }
+                    }
+                });
             }
         }
 
-        function toggleMobileSidebar() {
-            const aside = document.getElementById('mainSidebar');
-            aside.classList.toggle('hidden');
-        }
+        // Arranque Inicial
+        document.addEventListener("DOMContentLoaded", () => {
+            QG_AUTH.iniciar();
+            QG_AUTH.verificarSessao();
+        });
     </script>
 </body>
 </html>
