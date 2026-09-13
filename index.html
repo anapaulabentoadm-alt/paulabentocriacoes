@@ -3,12 +3,11 @@
 <head>
     <!-- Chosen Palette: Paula Bento Premium Neutrals (Ivory #FAF8F4, Charcoal #2F3133, Taupe #9A887C, Brown #45362F, Sand #C9B79A) -->
     <!-- Application Structure Plan: Single-Page Multi-Module Command Center with fully responsive mobile-first drawer architecture, fluid PC dashboard grids, overflow-contained Kanban & data tables, adaptive Chart.js canvas containers, and QG Auth V6. -->
-    <!-- Visualization & Content Choices: Uses Chart.js on HTML5 Canvas for interactive financial analytics. Dynamic tab rendering re-triggers chart resize when activated. HTML/CSS structured cards and dynamic JS interactivity for Kanban CRM, shopping cart PDV, and catalog simulators. Strictly NO SVG and NO Mermaid.js used. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>QG Central de Comando 001 — V6.5 Master Executive Edition</title>
+    <title> Central • Ana Paula Bento</title>
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -152,39 +151,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .kanban { 
-            display: flex; 
-            gap: 14px; 
-            overflow-x: auto; 
-            padding-bottom: 12px;
-            -webkit-overflow-scrolling: touch;
-        }
-        .kanban-col { 
-            min-width: 260px;
-            width: 280px; 
-            min-height: 420px; 
-            background: #f6f1eb; 
-            border-radius: 16px; 
-            padding: 12px; 
-            border: 1px solid var(--pb-line); 
-            flex-shrink: 0;
-        }
-
-        .vitrine {
-            background: linear-gradient(145deg, #2f3133, #0f0f10);
-            border: 1px solid #6f7275;
-            color: #FAF8F4;
-            border-radius: 20px;
-        }
-
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 100%;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
         #qgAuthGate {
             position: fixed;
             inset: 0;
@@ -221,7 +187,6 @@
             font-weight: 800;
         }
 
-        /* Responsive Mobile Sidebar Animations */
         #mainSidebar {
             transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -233,68 +198,70 @@
             #mainSidebar.translate-x-0 {
                 transform: translateX(0);
             }
-            .mobile-nav {
+            .mobile-bottom-nav {
                 display: flex;
                 position: fixed;
                 bottom: 0;
                 left: 0;
                 right: 0;
-                z-index: 40;
+                z-index: 45;
                 background: rgba(15, 15, 16, 0.96);
                 backdrop-filter: blur(8px);
                 border-top: 1px solid #2a2a2c;
-                padding: 6px;
-                gap: 4px;
+                padding: 6px 4px;
                 justify-content: space-around;
             }
-            .mobile-nav button {
+            .mobile-bottom-nav button {
                 flex: 1;
-                max-width: 80px;
-                padding: 8px 4px;
+                max-width: 75px;
+                padding: 6px 2px;
                 border-radius: 10px;
                 background: transparent;
                 color: #a0a0a5;
-                font-size: 10px;
+                font-size: 9px;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 gap: 3px;
                 border: none;
             }
-            .mobile-nav button.active {
+            .mobile-bottom-nav button.active {
                 background: #45362F;
                 color: #C9B79A;
                 font-weight: bold;
             }
         }
+        @media (min-width: 768px) {
+            .mobile-bottom-nav { display: none; }
+        }
     </style>
 </head>
 <body class="flex flex-col h-full bg-[#FAF8F4] text-[#2F3133]">
 
-    <!-- AUTH GATE (QG AUTH V6) -->
+    <!-- AUTH GATE & PAINEL DE LOGIN ADMINISTRATIVO -->
     <div id="qgAuthGate">
         <div class="w-full max-w-md bg-[#FAF8F4] border border-[#c9b79a] rounded-3xl p-6 sm:p-8 shadow-2xl text-[#2F3133] max-h-[92vh] overflow-y-auto">
             <div class="flex items-center gap-3 mb-6">
                 <div class="pb-brandmark">PB</div>
                 <div>
-                    <span class="pb-kicker">QG CENTRAL 001 • V6</span>
-                    <h2 class="text-xl font-bold font-serif-brand">Motor de Autenticação</h2>
+                    <span class="pb-kicker">QG CENTRAL 001 • PORTAL RESTRITO</span>
+                    <h2 class="text-xl font-bold font-serif-brand">Autenticação Administrativa</h2>
                 </div>
             </div>
             
             <p class="text-xs text-slate-600 mb-6 leading-relaxed">
-                Acesso restrito ao ecossistema de gestão e inteligência multiempresas de <strong>Ana Paula Bento da Silva</strong>. Insira o PIN Master.
+                Acesso restrito ao ecossistema de gestão e inteligência multiempresas de <strong>Ana Paula Bento da Silva</strong>. Insira o PIN Master para destravar o painel.
             </p>
 
             <form id="authForm" onsubmit="validarAcesso(event)" class="space-y-4">
                 <div>
                     <div class="flex justify-between items-center mb-1">
-                        <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-500">PIN de Acesso</label>
+                        <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-500">PIN de Acesso Master</label>
                         <span id="pinCounter" class="text-[10px] text-slate-400 font-mono-tech">0 caracteres</span>
                     </div>
                     <div class="relative">
                         <input type="password" id="accessPin" placeholder="••••••••" 
-                            class="w-full px-4 py-3 border border-[#d9cec3] rounded-xl text-sm outline-none focus:border-[#9a887c] focus:ring-2 focus:ring-[#9a887c]/20 transition-all font-mono-tech pr-10">
+                            class="w-full px-4 py-3 border border-[#d9cec3] rounded-xl text-sm outline-none focus:border-[#9a887c] focus:ring-2 focus:ring-[#9a887c]/20 transition-all font-mono-tech pr-10" oninput="atualizarContadorPin(this)">
                         <button type="button" id="togglePinVisibility" onclick="QG_AUTH.alternarVisibilidadePIN()" class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-1" aria-label="Mostrar PIN">
                             <i id="togglePinIcon" class="fa-solid fa-eye"></i>
                         </button>
@@ -304,37 +271,27 @@
                 <div class="flex items-center justify-between text-xs gap-2">
                     <label class="flex items-center gap-2 cursor-pointer select-none">
                         <input type="checkbox" id="rememberAccess" class="rounded border-[#d9cec3] text-[#45362F] focus:ring-[#45362F]">
-                        <span class="text-slate-600 text-[11px]">Lembrar acesso</span>
+                        <span class="text-slate-600 text-[11px]">Lembrar sessão neste dispositivo</span>
                     </label>
                     <button type="button" onclick="QG_AUTH.abrirAlterarPIN()" class="text-[#45362F] font-bold hover:underline text-[11px]">Alterar PIN</button>
                 </div>
                 
                 <div id="authError" class="hidden text-xs text-red-600 font-bold bg-red-50 p-3 rounded-xl border border-red-200">
-                    <span id="authErrorText">PIN incorreto.</span>
+                    <span id="authErrorText">PIN incorreto. Tente novamente.</span>
                 </div>
 
                 <div id="authSuccess" class="hidden text-xs text-emerald-700 font-bold bg-emerald-50 p-3 rounded-xl border border-emerald-200">
-                    <i class="fa-solid fa-check-circle mr-1"></i> <span id="authSuccessText">Acesso autorizado.</span>
-                </div>
-
-                <div id="authLockout" class="hidden text-xs text-amber-800 font-bold bg-amber-50 p-3 rounded-xl border border-amber-200">
-                    <i class="fa-solid fa-lock mr-1"></i> <span id="authLockoutText">Central temporariamente bloqueada.</span>
+                    <i class="fa-solid fa-check-circle mr-1"></i> <span id="authSuccessText">Acesso autorizado. Carregando ambiente...</span>
                 </div>
 
                 <button type="submit" id="authSubmitButton" class="w-full btn-pb py-3 text-sm flex items-center justify-center gap-2 shadow-lg">
                     <i class="fa-solid fa-key text-xs"></i> Destravar Central de Comando
                 </button>
-
-                <div id="biometricButton" class="hidden pt-1">
-                    <button type="button" onclick="QG_AUTH.entrarComBiometria()" class="w-full btn-outline-pb py-2 text-xs flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-fingerprint text-sm"></i> Entrar com Biometria / Passkey
-                    </button>
-                </div>
             </form>
 
             <div class="mt-6 pt-4 border-t border-[#ded3c9] flex justify-between items-center text-[10px] text-slate-500">
-                <span id="authDeviceStatus">Dispositivo não autorizado</span>
-                <span>🔒 QG AUTH V6 Master</span>
+                <span id="authDeviceStatus">Dispositivo Seguro • QG Auth V6</span>
+                <span>Ana Paula Bento (001)</span>
             </div>
         </div>
     </div>
@@ -377,7 +334,7 @@
             <div class="pb-brandmark">PB</div>
             <div>
                 <span class="pb-kicker leading-none block">CENTRAL DE COMANDO 001</span>
-                <h1 class="text-sm font-black font-serif-brand tracking-tight hidden sm:block">Paula Bento • Holding & ERP</h1>
+                <h1 class="text-sm font-black font-serif-brand tracking-tight hidden sm:block">Ana Paula Bento • Holding & ERP</h1>
             </div>
         </div>
 
@@ -429,57 +386,44 @@
                 <p class="text-[9px] uppercase tracking-widest text-[#9a887c] px-3 py-2 font-bold">Visão Master & Guia</p>
                 <div onclick="pagina('corev5')" id="nav-corev5" class="nav-item active"><i class="fa-solid fa-layer-group w-4 text-amber-500"></i>QG 001 Core V6</div>
                 <div onclick="pagina('dashboard')" id="nav-dashboard" class="nav-item"><i class="fa-solid fa-gauge w-4 text-blue-400"></i>Painel de Performance</div>
-                <div onclick="pagina('mapamestre')" id="nav-mapamestre" class="nav-item"><i class="fa-solid fa-sitemap w-4 text-emerald-400"></i>Mapa Mestre Consolidado</div>
-                <div onclick="pagina('guiamestre')" id="nav-guiamestre" class="nav-item"><i class="fa-solid fa-book-bookmark w-4 text-amber-400"></i>Guia Mestre QG 001</div>
-                <div onclick="pagina('ecossistema')" id="nav-ecossistema" class="nav-item"><i class="fa-solid fa-diagram-project w-4 text-purple-400"></i>Ecossistema & Webhooks</div>
+                <div onclick="pagina('catalogos')" id="nav-catalogos" class="nav-item"><i class="fa-solid fa-book-open w-4 text-amber-300"></i>Catálogo Digital</div>
 
-                <p class="text-[9px] uppercase tracking-widest text-[#9a887c] px-3 pt-4 pb-2 font-bold">Comercial & Operações ERP</p>
+                <p class="text-[9px] uppercase tracking-widest text-[#9a887c] px-3 pt-4 pb-2 font-bold">Comercial & ERP</p>
                 <div onclick="pagina('pdv')" id="nav-pdv" class="nav-item"><i class="fa-solid fa-cash-register w-4 text-emerald-500"></i>PDV / Frente de Caixa</div>
                 <div onclick="pagina('produtos')" id="nav-produtos" class="nav-item"><i class="fa-solid fa-boxes-stacked w-4 text-amber-500"></i>Produtos & Estoque</div>
                 <div onclick="pagina('crm')" id="nav-crm" class="nav-item"><i class="fa-solid fa-user-group w-4 text-sky-400"></i>CRM & Funil de Leads</div>
                 <div onclick="pagina('orcamentos')" id="nav-orcamentos" class="nav-item"><i class="fa-solid fa-file-invoice-dollar w-4 text-emerald-400"></i>Orçamentos & PDFs</div>
-                <div onclick="pagina('inteligencia')" id="nav-inteligencia" class="nav-item"><i class="fa-solid fa-brain w-4 text-indigo-400"></i>Inteligência de Catálogo</div>
-                <div onclick="pagina('catalogos')" id="nav-catalogos" class="nav-item"><i class="fa-solid fa-book-open w-4 text-amber-300"></i>Catálogos Digitais</div>
-                <div onclick="pagina('importacao')" id="nav-importacao" class="nav-item"><i class="fa-solid fa-file-import w-4 text-teal-400"></i>Importação IA</div>
-                <div onclick="pagina('comercial')" id="nav-comercial" class="nav-item"><i class="fa-solid fa-comments w-4 text-green-400"></i>Central do WhatsApp</div>
 
-                <p class="text-[9px] uppercase tracking-widest text-[#9a887c] px-3 pt-4 pb-2 font-bold">Módulos Especializados</p>
-                <div onclick="pagina('escolar')" id="nav-escolar" class="nav-item"><i class="fa-solid fa-graduation-cap w-4 text-purple-400"></i>Central Escolar Pro</div>
-                <div onclick="pagina('nossacasa')" id="nav-nossacasa" class="nav-item"><i class="fa-solid fa-house w-4 text-amber-500"></i>Sistema Nossa Casa</div>
-                <div onclick="pagina('etiquetas')" id="nav-etiquetas" class="nav-item"><i class="fa-solid fa-barcode w-4 text-slate-300"></i>Etiquetas & Barcode</div>
-                <div onclick="pagina('virtuais')" id="nav-virtuais" class="nav-item"><i class="fa-solid fa-robot w-4 text-cyan-400"></i>Agentes Virtuais IA</div>
-                <div onclick="pagina('marketing')" id="nav-marketing" class="nav-item"><i class="fa-solid fa-bullhorn w-4 text-pink-400"></i>Marketing & Studio</div>
-
-                <p class="text-[9px] uppercase tracking-widest text-[#9a887c] px-3 pt-4 pb-2 font-bold">Financeiro & Gestão</p>
+                <p class="text-[9px] uppercase tracking-widest text-[#9a887c] px-3 pt-4 pb-2 font-bold">Gestão & Controle</p>
                 <div onclick="pagina('financeiro')" id="nav-financeiro" class="nav-item"><i class="fa-solid fa-chart-line w-4 text-emerald-400"></i>Rentabilidade & Custos</div>
                 <div onclick="pagina('relatorios')" id="nav-relatorios" class="nav-item"><i class="fa-solid fa-chart-pie w-4 text-amber-400"></i>Relatórios Executivos</div>
                 <div onclick="pagina('auditoria')" id="nav-auditoria" class="nav-item"><i class="fa-solid fa-shield-halved w-4 text-rose-400"></i>Auditoria & Aprovações</div>
-                <div onclick="pagina('configuracoes')" id="nav-configuracoes" class="nav-item"><i class="fa-solid fa-gear w-4 text-slate-400"></i>Configurações</div>
+                <div onclick="pagina('configuracoes')" id="nav-configuracoes" class="nav-item"><i class="fa-solid fa-gear w-4 text-slate-400"></i>Configurações do Sistema</div>
             </nav>
 
             <div class="mt-auto pt-4 border-t border-[#2a2a2c] text-[10px] text-slate-500 space-y-1">
-                <p class="font-bold text-slate-400">Usuária Conectada:</p>
+                <p class="font-bold text-slate-400">Administradora:</p>
                 <p>Ana Paula Bento (001)</p>
                 <button onclick="QG_AUTH.abrirAlterarPIN()" class="text-amber-400 hover:underline block pt-1">⚙️ Alterar PIN Master</button>
             </div>
         </aside>
 
-        <!-- MAIN VIEW CONTAINER (FLUID ON PC AND MOBILE) -->
-        <main class="flex-1 overflow-y-auto p-3 sm:p-5 md:p-6 bg-[#FAF8F4] mb-16 md:mb-0 w-full">
+        <!-- MAIN VIEW CONTAINER -->
+        <main class="flex-1 overflow-y-auto p-3 sm:p-5 md:p-6 bg-[#FAF8F4] mb-20 md:mb-0 w-full">
 
             <!-- 1. CORE V6 PAGE -->
-            <section id="corev5" class="page active max-w-7xl mx-auto">
-                <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 mb-6">
+            <section id="corev5" class="page active max-w-7xl mx-auto space-y-6">
+                <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4">
                     <div>
                         <p class="pb-kicker">V6.5 MASTER ARCHITECTURE • QG CORE</p>
                         <h2 class="text-2xl sm:text-3xl font-black font-serif-brand mt-1">Central de Comando Unificada</h2>
-                        <p class="text-xs text-slate-600 mt-1">Gestão consolidada de acervo, vendas, margens, clientes e assistentes virtuais.</p>
+                        <p class="text-xs text-slate-600 mt-1">Gestão consolidada de acervo, vendas, margens, clientes e assistentes virtuais de Ana Paula Bento.</p>
                     </div>
                     <span class="pill self-start lg:self-auto font-mono-tech">SISTEMA ONLINE • ESTÁVEL</span>
                 </div>
 
                 <!-- CARD FOUNDER -->
-                <div class="card p-4 sm:p-6 mb-6 border-l-4 border-l-[#45362F] bg-gradient-to-r from-white to-[#FAF8F4]">
+                <div class="card p-4 sm:p-6 border-l-4 border-l-[#45362F] bg-gradient-to-r from-white to-[#FAF8F4]">
                     <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                         <div class="flex items-center gap-4">
                             <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-[#0F0F10] text-[#C9B79A] border border-[#C9B79A] flex items-center justify-center text-xl sm:text-2xl font-black font-serif-brand shrink-0">
@@ -487,49 +431,49 @@
                             </div>
                             <div>
                                 <span class="pb-kicker">IDENTIDADE 001 • ADMINISTRADORA MASTER</span>
-                                <h3 class="text-lg sm:text-xl font-bold font-serif-brand text-[#45362F]">Ana Paula Bento da Silva (001)</h3>
-                                <p class="text-xs text-slate-500 mt-0.5">Fundadora e Diretora de Operações das Empresas do Grupo PB.</p>
+                                <h3 class="text-lg sm:text-xl font-bold font-serif-brand text-[#45362F]">Ana Paula Bento da Silva</h3>
+                                <p class="text-xs text-slate-500 mt-0.5">Gestão Geral, Controle Fiscal CNPJ e Operações do Grupo PB.</p>
                             </div>
                         </div>
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs font-mono-tech w-full md:w-auto">
                             <div class="bg-[#f4eee8] p-2.5 sm:p-3 rounded-xl border border-[#ded3c9]">
                                 <span class="text-slate-500 block text-[10px] font-sans">E-mail Oficial</span>
-                                <strong class="text-[10px] sm:text-[11px] text-[#45362F] truncate block">anapaulabento.adm@gmail.com</strong>
+                                <strong class="text-[10px] sm:text-[11px] text-[#45362F] truncate block">anapaulabentoadm@gmail.com</strong>
                             </div>
                             <div class="bg-[#f4eee8] p-2.5 sm:p-3 rounded-xl border border-[#ded3c9]">
-                                <span class="text-slate-500 block text-[10px] font-sans">Telefone Direto</span>
+                                <span class="text-slate-500 block text-[10px] font-sans">Contato Direto</span>
                                 <strong class="text-[11px] text-[#45362F]">(61) 99590-8435</strong>
                             </div>
                             <div class="bg-[#f4eee8] p-2.5 sm:p-3 rounded-xl border border-[#ded3c9]">
-                                <span class="text-slate-500 block text-[10px] font-sans">Rede Social</span>
-                                <strong class="text-[11px] text-[#45362F]">@anapaula_bento</strong>
+                                <span class="text-slate-500 block text-[10px] font-sans">Status CNPJ</span>
+                                <strong class="text-[11px] text-emerald-700">Regularizado</strong>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- NUCLEUS GRID -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div class="card p-4 sm:p-5">
                         <div class="flex items-center justify-between mb-2">
                             <span class="text-xs font-bold text-[#45362F]">Núcleo de Autenticação V6</span>
                             <span class="status-dot"></span>
                         </div>
-                        <p class="text-xs text-slate-600 leading-relaxed">Proteção de acesso via Auth Gate ativado com tokens dinâmicos por empresa.</p>
+                        <p class="text-xs text-slate-600 leading-relaxed">Proteção de acesso via PIN master e senhas seguras.</p>
                     </div>
                     <div class="card p-4 sm:p-5">
                         <div class="flex items-center justify-between mb-2">
                             <span class="text-xs font-bold text-[#45362F]">Motor Multiempresa</span>
                             <span class="status-dot"></span>
                         </div>
-                        <p class="text-xs text-slate-600 leading-relaxed">PB001, PB002, PB003 e PBIRP001 com catálogos e conciliações isoladas.</p>
+                        <p class="text-xs text-slate-600 leading-relaxed">PB001, PB002, PB003 e PBIRP001 integrados em base única.</p>
                     </div>
                     <div class="card p-4 sm:p-5">
                         <div class="flex items-center justify-between mb-2">
-                            <span class="text-xs font-bold text-[#45362F]">Agente de IA Integrado</span>
+                            <span class="text-xs font-bold text-[#45362F]">Catálogo Digital & PDV</span>
                             <span class="status-dot"></span>
                         </div>
-                        <p class="text-xs text-slate-600 leading-relaxed">Motor de leitura de tabelas, orçamentos rápidos e apoio comercial 24/7.</p>
+                        <p class="text-xs text-slate-600 leading-relaxed">Gestão de produtos pronta para vendas rápidas e orçamentos dinâmicos.</p>
                     </div>
                 </div>
 
@@ -554,1519 +498,507 @@
                             <span class="text-xs font-bold block">Emitir Orçamento</span>
                             <span class="text-[10px] text-slate-500 hidden sm:block">Gerar PDF / Whats</span>
                         </button>
-                        <button onclick="pagina('importacao')" class="p-3.5 sm:p-4 rounded-xl bg-[#f4eee8] hover:bg-[#e8dfd5] text-left transition border border-[#ded3c9]">
-                            <i class="fa-solid fa-file-excel text-base sm:text-lg text-teal-700 mb-2 block"></i>
-                            <span class="text-xs font-bold block">Importar Lista IA</span>
-                            <span class="text-[10px] text-slate-500 hidden sm:block">Processar fornecedor</span>
+                        <button onclick="pagina('catalogos')" class="p-3.5 sm:p-4 rounded-xl bg-[#f4eee8] hover:bg-[#e8dfd5] text-left transition border border-[#ded3c9]">
+                            <i class="fa-solid fa-book-open text-base sm:text-lg text-amber-700 mb-2 block"></i>
+                            <span class="text-xs font-bold block">Catálogo Digital</span>
+                            <span class="text-[10px] text-slate-500 hidden sm:block">Vitrine de produtos</span>
                         </button>
                     </div>
                 </div>
             </section>
 
-            <!-- 2. DASHBOARD -->
-            <section id="dashboard" class="page max-w-7xl mx-auto">
-                <div class="space-y-6">
-                    <div class="flex justify-between items-center border-b border-[#ded3c9] pb-4">
-                        <div>
-                            <h2 class="text-xl font-bold font-serif-brand text-[#45362F]">Painel de Performance & Resultados</h2>
-                            <p class="text-xs text-slate-500 mt-0.5">Indicadores chave em tempo real da empresa e unidade selecionada.</p>
-                        </div>
-                        <span class="pill font-mono-tech hidden sm:inline-block">SISTEMA ATIVO</span>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                        <div class="metric p-4">
-                            <span class="text-xs text-slate-500 font-bold uppercase tracking-wider block">Faturamento Hoje</span>
-                            <div id="dashFatHoje" class="text-xl sm:text-2xl font-black text-emerald-700 mt-1 font-mono-tech">R$ 18.420,00</div>
-                            <span class="text-[10px] text-emerald-600 font-bold">+14.2% em relação a ontem</span>
-                        </div>
-                        <div class="metric p-4">
-                            <span class="text-xs text-slate-500 font-bold uppercase tracking-wider block">Orçamentos Abertos</span>
-                            <div class="text-xl sm:text-2xl font-black text-amber-700 mt-1 font-mono-tech">14 Propostas</div>
-                            <span class="text-[10px] text-slate-500">Total acumulado: R$ 82.500,00</span>
-                        </div>
-                        <div class="metric p-4">
-                            <span class="text-xs text-slate-500 font-bold uppercase tracking-wider block">Clientes Cadastrados</span>
-                            <div class="text-xl sm:text-2xl font-black text-sky-800 mt-1 font-mono-tech">1.284</div>
-                            <span class="text-[10px] text-sky-600 font-bold">4 novos hoje</span>
-                        </div>
-                        <div class="metric p-4">
-                            <span class="text-xs text-slate-500 font-bold uppercase tracking-wider block">Margem Média Geral</span>
-                            <div class="text-xl sm:text-2xl font-black text-[#45362F] mt-1 font-mono-tech">38.4%</div>
-                            <span class="text-[10px] text-slate-500">Acima da meta (35%)</span>
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                        <div class="lg:col-span-2 card p-4 sm:p-6">
-                            <div class="flex items-center justify-between mb-4">
-                                <h3 class="text-sm font-bold text-[#45362F]"><i class="fa-solid fa-chart-line text-amber-600 mr-2"></i>Evolução de Vendas da Semana</h3>
-                                <span class="text-[10px] sm:text-xs text-slate-500 font-mono-tech">Consolidado em R$</span>
-                            </div>
-                            <div class="chart-container h-[240px] sm:h-[280px] md:h-[320px]">
-                                <canvas id="salesChart"></canvas>
-                            </div>
-                        </div>
-
-                        <div class="card p-4 sm:p-6">
-                            <h3 class="text-sm font-bold text-[#45362F] mb-4"><i class="fa-solid fa-pie-chart text-emerald-600 mr-2"></i>Mix por Categoria</h3>
-                            <div class="chart-container h-[240px] sm:h-[280px] md:h-[320px]">
-                                <canvas id="categoryChart"></canvas>
-                            </div>
-                        </div>
-                    </div>
+            <!-- 2. DASHBOARD PERFORMANCE -->
+            <section id="dashboard" class="page max-w-7xl mx-auto space-y-6">
+                <div>
+                    <p class="pb-kicker">ANÁLISE DE NEGÓCIO</p>
+                    <h2 class="text-2xl font-black font-serif-brand">Painel de Performance</h2>
                 </div>
-            </section>
-
-            <!-- 3. MAPA MESTRE -->
-            <section id="mapamestre" class="page max-w-7xl mx-auto">
-                <div class="space-y-6">
-                    <div class="vitrine p-6 sm:p-8">
-                        <span class="pb-kicker text-amber-200">ARQUITETURA SISTÊMICA UNIFICADA</span>
-                        <h2 class="text-xl sm:text-2xl font-black font-serif-brand text-white mt-1">Mapa Mestre Consolidado QG 001</h2>
-                        <p class="text-xs text-slate-300 mt-2 max-w-2xl leading-relaxed">
-                            Mapeamento estrutural dos fluxos de trabalho, entidades de banco de dados, motores de inteligência artificial e conectores comerciais do Grupo Paula Bento.
-                        </p>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div class="card p-5">
-                            <h3 class="font-bold text-sm text-[#45362F] mb-2"><i class="fa-solid fa-database text-amber-600 mr-2"></i>Controle Integrado de SKU</h3>
-                            <p class="text-xs text-slate-600">Entradas, saídas automatizadas no PDV, cálculo de margem e alarme de estoque mínimo.</p>
-                        </div>
-                        <div class="card p-5">
-                            <h3 class="font-bold text-sm text-[#45362F] mb-2"><i class="fa-solid fa-calculator text-emerald-600 mr-2"></i>Motor Financeiro</h3>
-                            <p class="text-xs text-slate-600">Fechamento de caixa diário com separação por bandeira de cartão, PIX e faturamento faturado.</p>
-                        </div>
-                        <div class="card p-5">
-                            <h3 class="font-bold text-sm text-[#45362F] mb-2"><i class="fa-solid fa-robot text-purple-600 mr-2"></i>Agente de Parsing IA</h3>
-                            <p class="text-xs text-slate-600">Leitura inteligente de orçamentos e listas de fornecedores em PDF/Excel para inclusão direta.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 4. GUIA MESTRE -->
-            <section id="guiamestre" class="page max-w-7xl mx-auto">
-                <div class="space-y-4">
-                    <div class="border-b border-[#ded3c9] pb-3">
-                        <h2 class="text-xl font-bold font-serif-brand text-[#45362F]">Guia Mestre QG 001 & POPs</h2>
-                        <p class="text-xs text-slate-500">Procedimentos Operacionais Padrão e documentação de sistema.</p>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="card p-5">
-                            <h3 class="font-bold text-sm text-[#45362F] mb-2"><i class="fa-solid fa-book text-amber-700 mr-2"></i>POP-01: Abertura e Fechamento de Caixa</h3>
-                            <p class="text-xs text-slate-600 leading-relaxed mb-3">
-                                1. Acesse a aba PDV / Frente de Caixa.<br>
-                                2. Verifique o fundo troco inicial.<br>
-                                3. Registre todas as vendas identificando cliente quando houver.<br>
-                                4. Ao final do expediente, gere a prévia de fechamento e confira numerário.
-                            </p>
-                            <span class="pill">STATUS: ATIVO</span>
-                        </div>
-
-                        <div class="card p-5">
-                            <h3 class="font-bold text-sm text-[#45362F] mb-2"><i class="fa-solid fa-file-signature text-emerald-700 mr-2"></i>POP-02: Emissão e Aprovação de Orçamentos</h3>
-                            <p class="text-xs text-slate-600 leading-relaxed mb-3">
-                                1. Cadastre o lead no CRM.<br>
-                                2. Monte a proposta com margem mínima de 30%.<br>
-                                3. Descontos superiores a 10% requerem autorização da Administradora 001.<br>
-                                4. Encaminhe o PDF diretamente via integração WhatsApp.
-                            </p>
-                            <span class="pill">STATUS: ATIVO</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 5. ECOSSISTEMA & WEBHOOKS -->
-            <section id="ecossistema" class="page max-w-7xl mx-auto">
-                <div class="space-y-4">
-                    <div class="border-b border-[#ded3c9] pb-3">
-                        <h2 class="text-xl font-bold font-serif-brand text-[#45362F]">Ecossistema Integrado & Webhooks</h2>
-                        <p class="text-xs text-slate-500">Status dos conectores, APIs e webhooks ativas do ecossistema PB.</p>
-                    </div>
-
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <div class="card p-5">
-                        <div class="space-y-3 font-mono-tech text-xs">
-                            <div class="flex flex-col sm:flex-row sm:items-center justify-between bg-[#f4eee8] p-3 rounded-xl border border-[#ded3c9] gap-2">
-                                <div>
-                                    <strong class="text-[#45362F]">API WhatsApp Oficial (Evolution/Z-API)</strong>
-                                    <p class="text-[10px] text-slate-500 font-sans">Canal de disparo e resposta automática</p>
-                                </div>
-                                <span class="pill bg-emerald-100 text-emerald-800 border-emerald-300 self-start sm:self-auto">CONECTADO</span>
-                            </div>
-                            <div class="flex flex-col sm:flex-row sm:items-center justify-between bg-[#f4eee8] p-3 rounded-xl border border-[#ded3c9] gap-2">
-                                <div>
-                                    <strong class="text-[#45362F]">Gateway PIX & Cartões (Asaas/PagSeguro)</strong>
-                                    <p class="text-[10px] text-slate-500 font-sans">Baixa automática de recebíveis</p>
-                                </div>
-                                <span class="pill bg-emerald-100 text-emerald-800 border-emerald-300 self-start sm:self-auto">CONECTADO</span>
-                            </div>
-                            <div class="flex flex-col sm:flex-row sm:items-center justify-between bg-[#f4eee8] p-3 rounded-xl border border-[#ded3c9] gap-2">
-                                <div>
-                                    <strong class="text-[#45362F]">Engine OpenAI GPT-4o Parsing</strong>
-                                    <p class="text-[10px] text-slate-500 font-sans">Processador de tabelas e orçamentos</p>
-                                </div>
-                                <span class="pill bg-emerald-100 text-emerald-800 border-emerald-300 self-start sm:self-auto">ONLINE</span>
-                            </div>
+                        <span class="text-xs text-slate-500 block mb-1 font-semibold">Faturamento Mensal</span>
+                        <h3 class="text-2xl font-black font-mono-tech text-[#45362F]">R$ 48.920,00</h3>
+                        <span class="text-[11px] text-emerald-600 font-bold mt-1 block">↑ 14.2% vs mês anterior</span>
+                    </div>
+                    <div class="card p-5">
+                        <span class="text-xs text-slate-500 block mb-1 font-semibold">Pedidos Concluídos</span>
+                        <h3 class="text-2xl font-black font-mono-tech text-[#45362F]">186 un</h3>
+                        <span class="text-[11px] text-emerald-600 font-bold mt-1 block">↑ 8.5% esta semana</span>
+                    </div>
+                    <div class="card p-5">
+                        <span class="text-xs text-slate-500 block mb-1 font-semibold">Margem Líquida Média</span>
+                        <h3 class="text-2xl font-black font-mono-tech text-[#45362F]">42.8%</h3>
+                        <span class="text-[11px] text-slate-600 font-bold mt-1 block">Dentro da meta</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. CATÁLOGO DIGITAL -->
+            <section id="catalogos" class="page max-w-7xl mx-auto space-y-6">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div>
+                        <p class="pb-kicker">VITRINE DIGITAL INTERATIVA</p>
+                        <h2 class="text-2xl font-black font-serif-brand">Catálogo de Produtos & Kits</h2>
+                    </div>
+                    <button onclick="showToast('Link do catálogo copiado para a área de transferência!')" class="btn-pb text-xs">
+                        <i class="fa-solid fa-share-nodes mr-1"></i> Compartilhar Vitrine
+                    </button>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div class="card p-4 space-y-3">
+                        <div class="h-40 bg-[#f4eee8] rounded-xl flex items-center justify-center text-slate-400 font-bold text-sm">Kit Festa Pronta</div>
+                        <h3 class="font-bold text-sm text-[#45362F]">Kit Decoração Completo Minimalista</h3>
+                        <p class="text-xs text-slate-600">Inclui suportes, painel e arranjos em tom neutro.</p>
+                        <div class="flex justify-between items-center pt-2">
+                            <strong class="text-sm font-mono-tech text-[#45362F]">R$ 349,90</strong>
+                            <button onclick="showToast('Produto adicionado ao pedido!')" class="btn-pb text-xs py-1.5 px-3">Adicionar</button>
+                        </div>
+                    </div>
+                    <div class="card p-4 space-y-3">
+                        <div class="h-40 bg-[#f4eee8] rounded-xl flex items-center justify-center text-slate-400 font-bold text-sm">Organizador Premium</div>
+                        <h3 class="font-bold text-sm text-[#45362F]">Caixa Organizadora em Linho</h3>
+                        <p class="text-xs text-slate-600">Acabamento refinado para ambientes sofisticados.</p>
+                        <div class="flex justify-between items-center pt-2">
+                            <strong class="text-sm font-mono-tech text-[#45362F]">R$ 129,00</strong>
+                            <button onclick="showToast('Produto adicionado ao pedido!')" class="btn-pb text-xs py-1.5 px-3">Adicionar</button>
+                        </div>
+                    </div>
+                    <div class="card p-4 space-y-3">
+                        <div class="h-40 bg-[#f4eee8] rounded-xl flex items-center justify-center text-slate-400 font-bold text-sm">Ferragem Técnica</div>
+                        <h3 class="font-bold text-sm text-[#45362F]">Kit Puxadores de Metal Escovado</h3>
+                        <p class="text-xs text-slate-600">Conjunto com 6 unidades alta durabilidade.</p>
+                        <div class="flex justify-between items-center pt-2">
+                            <strong class="text-sm font-mono-tech text-[#45362F]">R$ 189,90</strong>
+                            <button onclick="showToast('Produto adicionado ao pedido!')" class="btn-pb text-xs py-1.5 px-3">Adicionar</button>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- 6. PDV / FRENTE DE CAIXA -->
-            <section id="pdv" class="page max-w-7xl mx-auto">
-                <div class="space-y-4">
-                    <div class="border-b border-[#ded3c9] pb-3">
-                        <h2 class="text-xl font-bold font-serif-brand text-[#45362F]">Terminal PDV — Balcão & Caixa Instantâneo</h2>
-                        <p class="text-xs text-slate-500">Lançamento rápido de itens, aplicação de descontos e recibo de caixa.</p>
-                    </div>
-
-                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                        <div class="lg:col-span-2 space-y-4">
-                            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
-                                <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Catálogo de Produtos Rápidos</span>
-                                <input type="text" id="pdvSearch" placeholder="Buscar SKU ou nome..." onkeyup="filtrarPdv(this.value)" 
-                                    class="text-xs px-3 py-2 border border-[#d9cec3] rounded-xl bg-white outline-none w-full sm:w-48 font-mono-tech">
-                            </div>
-
-                            <div id="pdvGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                <div onclick="addToCart('Kit Decorativo Paula Bento', 380.00)" class="card p-4 hover:border-[#45362F] cursor-pointer transition">
-                                    <div class="font-bold text-xs">Kit Decorativo Paula Bento</div>
-                                    <div class="text-[10px] text-slate-500">SKU-001 • Decoração</div>
-                                    <div class="text-emerald-700 font-bold text-sm mt-2 font-mono-tech">R$ 380,00</div>
-                                </div>
-                                <div onclick="addToCart('Fechadura Inox Império', 145.00)" class="card p-4 hover:border-[#45362F] cursor-pointer transition">
-                                    <div class="font-bold text-xs">Fechadura Inox Império</div>
-                                    <div class="text-[10px] text-slate-500">SKU-002 • Ferragens</div>
-                                    <div class="text-emerald-700 font-bold text-sm mt-2 font-mono-tech">R$ 145,00</div>
-                                </div>
-                                <div onclick="addToCart('Conjunto Escolar Pro Mod. 2026', 580.00)" class="card p-4 hover:border-[#45362F] cursor-pointer transition">
-                                    <div class="font-bold text-xs">Conjunto Escolar Pro Mod. 2026</div>
-                                    <div class="text-[10px] text-slate-500">SKU-003 • Escolar</div>
-                                    <div class="text-emerald-700 font-bold text-sm mt-2 font-mono-tech">R$ 580,00</div>
-                                </div>
-                                <div onclick="addToCart('Consultoria Arquitetura e Interiores', 450.00)" class="card p-4 hover:border-[#45362F] cursor-pointer transition">
-                                    <div class="font-bold text-xs">Consultoria Arquitetura e Interiores</div>
-                                    <div class="text-[10px] text-slate-500">SKU-SER-01 • Serviço</div>
-                                    <div class="text-emerald-700 font-bold text-sm mt-2 font-mono-tech">R$ 450,00</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card p-4 sm:p-5 flex flex-col justify-between bg-white">
-                            <div>
-                                <div class="flex items-center justify-between border-b border-[#ded3c9] pb-3 mb-3">
-                                    <h3 class="font-bold text-sm text-[#45362F]"><i class="fa-solid fa-cart-shopping mr-2"></i>Carrinho Atual</h3>
-                                    <button onclick="clearCart()" class="text-[10px] text-red-600 font-bold hover:underline">Limpar</button>
-                                </div>
-
-                                <div id="cart-items" class="space-y-2 text-xs font-mono-tech min-h-[160px] max-h-[260px] overflow-y-auto">
-                                    <div class="text-slate-400 italic text-center pt-10">Nenhum item selecionado</div>
-                                </div>
-                            </div>
-
-                            <div class="border-t border-[#ded3c9] pt-4 space-y-3 mt-4">
-                                <div class="flex justify-between items-center text-xs">
-                                    <span class="text-slate-500">Desconto Extra (R$):</span>
-                                    <input type="number" id="cartDiscount" value="0" onchange="renderCart()" class="w-20 text-right px-2 py-1 border rounded text-xs font-mono-tech">
-                                </div>
-                                <div class="flex justify-between font-bold text-base border-t pt-2">
-                                    <span>TOTAL:</span>
-                                    <span id="cart-total" class="text-emerald-700 font-mono-tech">R$ 0,00</span>
-                                </div>
-                                <button onclick="finishSale()" class="w-full btn-pb py-3 text-xs flex items-center justify-center gap-2 shadow-lg">
-                                    <i class="fa-solid fa-check"></i> CONCLUIR VENDA & RECIBO
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+            <!-- 4. PDV / FRENTE DE CAIXA -->
+            <section id="pdv" class="page max-w-7xl mx-auto space-y-6">
+                <div>
+                    <p class="pb-kicker">SISTEMA DE CAIXA</p>
+                    <h2 class="text-2xl font-black font-serif-brand">PDV / Frente de Caixa Rápido</h2>
                 </div>
-            </section>
-
-            <!-- 7. PRODUTOS & ESTOQUE -->
-            <section id="produtos" class="page max-w-7xl mx-auto">
-                <div class="space-y-4">
-                    <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-[#ded3c9] pb-3 gap-3">
-                        <div>
-                            <h2 class="text-xl font-bold font-serif-brand text-[#45362F]">Gestão de Produtos & Estoque</h2>
-                            <p class="text-xs text-slate-500">Cadastro de SKUs, tabela de preços, markup e margem de contribuição.</p>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div class="lg:col-span-2 card p-5 space-y-4">
+                        <h3 class="font-bold text-sm text-[#45362F]">Adicionar Produtos à Venda</h3>
+                        <div class="flex gap-2">
+                            <input type="text" placeholder="Digite o código ou nome do produto..." class="flex-1 bg-[#f4eee8] border border-[#ded3c9] rounded-xl px-3 py-2 text-xs outline-none">
+                            <button onclick="showToast('Produto buscado com sucesso!')" class="btn-pb text-xs">Buscar</button>
                         </div>
-                        <button onclick="showToast('Formulário de cadastro de novo SKU aberto.', 'info')" class="btn-pb text-xs flex items-center gap-2 self-start sm:self-auto">
-                            <i class="fa-solid fa-plus"></i> Cadastrar Novo SKU
-                        </button>
-                    </div>
-
-                    <div class="card p-4 bg-[#f4eee8] border border-[#ded3c9]">
-                        <h4 class="text-xs font-bold text-[#45362F] uppercase tracking-wider mb-2">Simulador Rápido de Preço de Venda</h4>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
-                            <div>
-                                <label class="block text-[10px] text-slate-500 font-bold mb-1">Custo do Produto (R$)</label>
-                                <input type="number" id="calcCusto" value="100" oninput="calcularPrecoMargem()" class="w-full p-2 border rounded-xl font-mono-tech">
-                            </div>
-                            <div>
-                                <label class="block text-[10px] text-slate-500 font-bold mb-1">Margem Desejada (%)</label>
-                                <input type="number" id="calcMargem" value="40" oninput="calcularPrecoMargem()" class="w-full p-2 border rounded-xl font-mono-tech">
-                            </div>
-                            <div>
-                                <label class="block text-[10px] text-slate-500 font-bold mb-1">Preço Sugerido (R$)</label>
-                                <div id="calcPrecoResult" class="p-2 font-bold font-mono-tech text-emerald-700 bg-white border rounded-xl">R$ 166,67</div>
-                            </div>
-                            <div>
-                                <label class="block text-[10px] text-slate-500 font-bold mb-1">Lucro Bruto (R$)</label>
-                                <div id="calcLucroResult" class="p-2 font-bold font-mono-tech text-[#45362F] bg-white border rounded-xl">R$ 66,67</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card overflow-hidden">
-                        <div class="overflow-x-auto w-full">
-                            <table class="w-full text-left text-xs min-w-[600px]">
-                                <thead class="bg-[#f4eee8] border-b border-[#ded3c9] uppercase font-mono-tech text-[10px]">
+                        <div class="border border-[#ded3c9] rounded-xl overflow-hidden">
+                            <table class="w-full text-left text-xs">
+                                <thead class="bg-[#f4eee8] text-slate-700 border-b border-[#ded3c9]">
                                     <tr>
-                                        <th class="p-3">Código SKU</th>
-                                        <th class="p-3">Descrição do Produto</th>
-                                        <th class="p-3">Categoria</th>
-                                        <th class="p-3">Custo Base</th>
-                                        <th class="p-3">Preço Venda</th>
-                                        <th class="p-3">Estoque</th>
-                                        <th class="p-3">Ações</th>
+                                        <th class="p-3">Item</th>
+                                        <th class="p-3">Qtd</th>
+                                        <th class="p-3">Subtotal</th>
                                     </tr>
                                 </thead>
-                                <tbody class="divide-y divide-[#ded3c9] font-mono-tech">
-                                    <tr>
-                                        <td class="p-3 font-bold">SKU-001</td>
-                                        <td class="p-3 font-bold font-sans">Kit Decorativo Paula Bento</td>
-                                        <td class="p-3 font-sans text-slate-500">Ateliê</td>
-                                        <td class="p-3 text-slate-600">R$ 190,00</td>
-                                        <td class="p-3 font-bold text-emerald-700">R$ 380,00</td>
-                                        <td class="p-3">28 un.</td>
-                                        <td class="p-3"><button onclick="showToast('Editando SKU-001', 'info')" class="text-amber-700 font-bold hover:underline">Editar</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="p-3 font-bold">SKU-002</td>
-                                        <td class="p-3 font-bold font-sans">Fechadura Inox Império</td>
-                                        <td class="p-3 font-sans text-slate-500">Ferragens</td>
-                                        <td class="p-3 text-slate-600">R$ 80,00</td>
-                                        <td class="p-3 font-bold text-emerald-700">R$ 145,00</td>
-                                        <td class="p-3">120 un.</td>
-                                        <td class="p-3"><button onclick="showToast('Editando SKU-002', 'info')" class="text-amber-700 font-bold hover:underline">Editar</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="p-3 font-bold">SKU-003</td>
-                                        <td class="p-3 font-bold font-sans">Conjunto Escolar Pro - Mod. 2026</td>
-                                        <td class="p-3 font-sans text-slate-500">Escolar</td>
-                                        <td class="p-3 text-slate-600">R$ 320,00</td>
-                                        <td class="p-3 font-bold text-emerald-700">R$ 580,00</td>
-                                        <td class="p-3 text-red-600 font-bold">3 un. (Baixo)</td>
-                                        <td class="p-3"><button onclick="showToast('Editando SKU-003', 'info')" class="text-amber-700 font-bold hover:underline">Editar</button></td>
+                                <tbody>
+                                    <tr class="border-b border-[#ded3c9]/50">
+                                        <td class="p-3">Kit Decoração Completo Minimalista</td>
+                                        <td class="p-3">1</td>
+                                        <td class="p-3 font-mono-tech">R$ 349,90</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                </div>
-            </section>
-
-            <!-- 8. CRM & FUNIL -->
-            <section id="crm" class="page max-w-7xl mx-auto">
-                <div class="space-y-4">
-                    <div class="flex justify-between items-center border-b border-[#ded3c9] pb-3">
+                    <div class="card p-5 space-y-4 flex flex-col justify-between">
                         <div>
-                            <h2 class="text-xl font-bold font-serif-brand text-[#45362F]">CRM & Funil Comercial</h2>
-                            <p class="text-xs text-slate-500">Pipeline de vendas e propostas em andamento.</p>
+                            <h3 class="font-bold text-sm text-[#45362F] mb-3">Resumo da Venda</h3>
+                            <div class="space-y-2 text-xs">
+                                <div class="flex justify-between"><span>Subtotal:</span><strong class="font-mono-tech">R$ 349,90</strong></div>
+                                <div class="flex justify-between"><span>Desconto:</span><strong class="font-mono-tech">R$ 0,00</strong></div>
+                                <div class="flex justify-between border-t pt-2 text-sm font-bold"><span>Total:</span><strong class="font-mono-tech text-[#45362F]">R$ 349,90</strong></div>
+                            </div>
                         </div>
-                        <button onclick="showToast('Formulário de novo lead aberto!', 'info')" class="btn-pb text-xs"><i class="fa-solid fa-plus mr-1"></i> Adicionar Lead</button>
+                        <button onclick="showToast('Venda finalizada com sucesso! Recibo gerado.')" class="w-full btn-pb py-3 text-xs">
+                            <i class="fa-solid fa-check mr-1"></i> Finalizar & Emitir Cupom
+                        </button>
                     </div>
+                </div>
+            </section>
 
-                    <!-- Kanban horizontal container -->
-                    <div class="overflow-x-auto pb-2">
-                        <div class="kanban">
-                            <div class="kanban-col">
-                                <div class="font-bold text-xs mb-3 flex justify-between items-center text-[#45362F]">
-                                    <span>NOVO LEAD</span> <span class="pill">3</span>
-                                </div>
-                                <div class="space-y-2">
-                                    <div class="card p-3 text-xs bg-white cursor-pointer hover:border-[#45362F]">
-                                        <div class="font-bold text-slate-800">Construtora Silva & Costa</div>
-                                        <div class="text-[10px] text-slate-500 mt-1">Contato: Eng. Marcos</div>
-                                        <div class="text-emerald-700 font-bold font-mono-tech mt-2">R$ 45.000,00</div>
-                                    </div>
-                                </div>
-                            </div>
+            <!-- 5. PRODUTOS & ESTOQUE -->
+            <section id="produtos" class="page max-w-7xl mx-auto space-y-6">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="pb-kicker">GESTÃO DE ESTOQUE</p>
+                        <h2 class="text-2xl font-black font-serif-brand">Controle de Produtos & SKUs</h2>
+                    </div>
+                    <button onclick="showToast('Formulário de cadastro aberto.')" class="btn-pb text-xs"><i class="fa-solid fa-plus mr-1"></i> Novo Produto</button>
+                </div>
+                <div class="card p-4 overflow-x-auto">
+                    <table class="w-full text-left text-xs whitespace-nowrap">
+                        <thead class="text-slate-500 border-b border-[#ded3c9] pb-2">
+                            <tr>
+                                <th class="pb-3">SKU / Código</th>
+                                <th class="pb-3">Nome do Item</th>
+                                <th class="pb-3">Estoque</th>
+                                <th class="pb-3">Preço Unitário</th>
+                                <th class="pb-3">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-[#ded3c9]/50">
+                            <tr>
+                                <td class="py-3 font-mono-tech">PB-001</td>
+                                <td class="py-3 font-bold">Kit Decoração Minimalista</td>
+                                <td class="py-3 font-mono-tech">24 un</td>
+                                <td class="py-3 font-mono-tech">R$ 349,90</td>
+                                <td class="py-3"><span class="pill text-[10px]">Em Estoque</span></td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 font-mono-tech">PB-002</td>
+                                <td class="py-3 font-bold">Caixa Organizadora Linho</td>
+                                <td class="py-3 font-mono-tech">42 un</td>
+                                <td class="py-3 font-mono-tech">R$ 129,00</td>
+                                <td class="py-3"><span class="pill text-[10px]">Em Estoque</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
 
-                            <div class="kanban-col">
-                                <div class="font-bold text-xs mb-3 flex justify-between items-center text-[#45362F]">
-                                    <span>ORÇAMENTO ENVIADO</span> <span class="pill">2</span>
-                                </div>
-                                <div class="space-y-2">
-                                    <div class="card p-3 text-xs bg-white cursor-pointer hover:border-[#45362F]">
-                                        <div class="font-bold text-slate-800">Escritório Arq. Roberto</div>
-                                        <div class="text-[10px] text-slate-500 mt-1">Proposta #402</div>
-                                        <div class="text-emerald-700 font-bold font-mono-tech mt-2">R$ 12.800,00</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="kanban-col">
-                                <div class="font-bold text-xs mb-3 flex justify-between items-center text-[#45362F]">
-                                    <span>NEGOCIAÇÃO</span> <span class="pill">1</span>
-                                </div>
-                                <div class="space-y-2">
-                                    <div class="card p-3 text-xs bg-white cursor-pointer hover:border-[#45362F]">
-                                        <div class="font-bold text-slate-800">Escola Dom Pedro</div>
-                                        <div class="text-[10px] text-slate-500 mt-1">Kits Escolares 2026</div>
-                                        <div class="text-emerald-700 font-bold font-mono-tech mt-2">R$ 28.000,00</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="kanban-col">
-                                <div class="font-bold text-xs mb-3 flex justify-between items-center text-emerald-800">
-                                    <span>GANHO / FECHADO</span> <span class="pill bg-emerald-100 text-emerald-800">5</span>
-                                </div>
-                                <div class="space-y-2">
-                                    <div class="card p-3 text-xs bg-white border-l-4 border-l-emerald-600">
-                                        <div class="font-bold text-slate-800">Hotel Resort Império</div>
-                                        <div class="text-[10px] text-slate-500 mt-1">Fechamento recente</div>
-                                        <div class="text-emerald-700 font-bold font-mono-tech mt-2">R$ 89.000,00</div>
-                                    </div>
-                                </div>
-                            </div>
+            <!-- 6. CRM & FUNIL DE LEADS -->
+            <section id="crm" class="page max-w-7xl mx-auto space-y-6">
+                <div>
+                    <p class="pb-kicker">RELACIONAMENTO COM CLIENTES</p>
+                    <h2 class="text-2xl font-black font-serif-brand">CRM & Funil de Leads</h2>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div class="card p-4 space-y-3 bg-[#f6f1eb]">
+                        <h3 class="font-bold text-xs uppercase tracking-wider text-slate-600">Novos Leads (4)</h3>
+                        <div class="bg-white p-3 rounded-xl border border-[#ded3c9] space-y-1">
+                            <strong class="text-xs block">Juliana M.</strong>
+                            <p class="text-[11px] text-slate-500">Interesse em Kit Festa Completo</p>
+                        </div>
+                    </div>
+                    <div class="card p-4 space-y-3 bg-[#f6f1eb]">
+                        <h3 class="font-bold text-xs uppercase tracking-wider text-slate-600">Em Negociação (2)</h3>
+                        <div class="bg-white p-3 rounded-xl border border-[#ded3c9] space-y-1">
+                            <strong class="text-xs block">Marcos Vinícius</strong>
+                            <p class="text-[11px] text-slate-500">Orçamento personalizado enviado</p>
+                        </div>
+                    </div>
+                    <div class="card p-4 space-y-3 bg-[#f6f1eb]">
+                        <h3 class="font-bold text-xs uppercase tracking-wider text-slate-600">Fechados (12)</h3>
+                        <div class="bg-white p-3 rounded-xl border border-[#ded3c9] space-y-1">
+                            <strong class="text-xs block">Camila R.</strong>
+                            <p class="text-[11px] text-slate-500">Pagamento confirmado via PIX</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- 9. ORÇAMENTOS & PDFS -->
-            <section id="orcamentos" class="page max-w-7xl mx-auto">
-                <div class="space-y-4">
-                    <div class="flex justify-between items-center border-b border-[#ded3c9] pb-3">
+            <!-- 7. ORÇAMENTOS & PDFS -->
+            <section id="orcamentos" class="page max-w-7xl mx-auto space-y-6">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="pb-kicker">DOCUMENTAÇÃO COMERCIAL</p>
+                        <h2 class="text-2xl font-black font-serif-brand">Orçamentos & Emissão de PDFs</h2>
+                    </div>
+                    <button onclick="showToast('Novo orçamento gerado com sucesso.')" class="btn-pb text-xs"><i class="fa-solid fa-file-pdf mr-1"></i> Gerar Orçamento PDF</button>
+                </div>
+                <div class="card p-5 space-y-4">
+                    <h3 class="font-bold text-sm text-[#45362F]">Orçamentos Recentes</h3>
+                    <div class="space-y-2 text-xs">
+                        <div class="flex justify-between items-center p-3 bg-[#f4eee8] rounded-xl border border-[#ded3c9]">
+                            <div>
+                                <strong class="block text-[#45362F]">Orçamento #0842 — Cliente: Beatriz Lima</strong>
+                                <span class="text-slate-500 text-[11px]">Emitido em 12/09/2026 • R$ 890,00</span>
+                            </div>
+                            <button onclick="showToast('PDF baixado com sucesso!')" class="btn-outline-pb text-xs py-1.5 px-3">Baixar PDF</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 8. RENTABILIDADE & CUSTOS -->
+            <section id="financeiro" class="page max-w-7xl mx-auto space-y-6">
+                <div>
+                    <p class="pb-kicker">CONTROLE FINANCEIRO</p>
+                    <h2 class="text-2xl font-black font-serif-brand">Rentabilidade & Custos Operacionais</h2>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="card p-5 space-y-2">
+                        <span class="text-xs text-slate-500 font-semibold">Entradas do Mês</span>
+                        <h3 class="text-2xl font-black font-mono-tech text-emerald-700">R$ 48.920,00</h3>
+                    </div>
+                    <div class="card p-5 space-y-2">
+                        <span class="text-xs text-slate-500 font-semibold">Saídas e Custos</span>
+                        <h3 class="text-2xl font-black font-mono-tech text-rose-700">R$ 18.400,00</h3>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 9. RELATÓRIOS EXECUTIVOS -->
+            <section id="relatorios" class="page max-w-7xl mx-auto space-y-6">
+                <div>
+                    <p class="pb-kicker">BUSINESS INTELLIGENCE</p>
+                    <h2 class="text-2xl font-black font-serif-brand">Relatórios Executivos Consolidados</h2>
+                </div>
+                <div class="card p-5 space-y-4">
+                    <h3 class="font-bold text-sm text-[#45362F]">Desempenho Trimestral por Unidade</h3>
+                    <div class="h-64 flex items-center justify-center bg-[#f4eee8] rounded-xl border border-[#ded3c9] text-slate-500 text-xs font-bold">
+                        [Gráfico de Análise Consolidada - Grupo PB]
+                    </div>
+                </div>
+            </section>
+
+            <!-- 10. AUDITORIA & APROVAÇÕES -->
+            <section id="auditoria" class="page max-w-7xl mx-auto space-y-6">
+                <div>
+                    <p class="pb-kicker">SEGURANÇA E GOVERNANÇA</p>
+                    <h2 class="text-2xl font-black font-serif-brand">Auditoria & Logs do Sistema</h2>
+                </div>
+                <div class="card p-5 space-y-3">
+                    <div class="space-y-2 text-xs font-mono-tech">
+                        <div class="p-2.5 bg-[#f4eee8] rounded-lg border border-[#ded3c9] flex justify-between">
+                            <span>[INFO] Autenticação bem-sucedida (Ana Paula Bento)</span>
+                            <span class="text-slate-500">Hoje, 11:54</span>
+                        </div>
+                        <div class="p-2.5 bg-[#f4eee8] rounded-lg border border-[#ded3c9] flex justify-between">
+                            <span>[CONFIG] Alteração de parâmetros do sistema</span>
+                            <span class="text-slate-500">Ontem, 16:20</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 11. CONFIGURAÇÕES DO SISTEMA -->
+            <section id="configuracoes" class="page max-w-7xl mx-auto space-y-6">
+                <div>
+                    <p class="pb-kicker">PAINEL DE CONTROLE</p>
+                    <h2 class="text-2xl font-black font-serif-brand">Configurações do Sistema</h2>
+                </div>
+                <div class="card p-5 space-y-4">
+                    <h3 class="font-bold text-sm text-[#45362F]">Parâmetros Globais da Operação</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                         <div>
-                            <h2 class="text-xl font-bold font-serif-brand text-[#45362F]">Emissão de Orçamentos & Propostas</h2>
-                            <p class="text-xs text-slate-500">Gerador dinâmico de propostas comerciais em PDF e WhatsApp.</p>
+                            <label class="block text-slate-500 mb-1 font-semibold">Nome da Unidade / Central</label>
+                            <input type="text" value="QG CENTRAL DE COMANDO 001" class="w-full bg-[#f4eee8] border border-[#ded3c9] rounded-xl px-3 py-2 text-[#2F3133] font-bold outline-none">
                         </div>
-                        <button onclick="showToast('Gerador de nova proposta ativado!', 'info')" class="btn-pb text-xs"><i class="fa-solid fa-plus mr-1"></i> Criar Proposta</button>
-                    </div>
-
-                    <div class="card p-4 sm:p-5 space-y-3">
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
-                            <div>
-                                <label class="block font-bold text-slate-600 mb-1">Cliente / Razão Social</label>
-                                <input type="text" id="orcCliente" placeholder="Ex: Arq. Juliana Medeiros" class="w-full p-2 border rounded-xl">
-                            </div>
-                            <div>
-                                <label class="block font-bold text-slate-600 mb-1">Validade da Proposta</label>
-                                <input type="date" value="2026-09-15" class="w-full p-2 border rounded-xl font-mono-tech">
-                            </div>
-                            <div>
-                                <label class="block font-bold text-slate-600 mb-1">Condição de Pagamento</label>
-                                <select class="w-full p-2 border rounded-xl">
-                                    <option>50% Entrada + 50% na Entrega</option>
-                                    <option>À Vista com 5% de Desconto</option>
-                                    <option>3x Sem Juros no Cartão</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="pt-3 border-t border-[#ded3c9] flex flex-wrap justify-end gap-2">
-                            <button onclick="showToast('PDF de orçamento gerado com timbre Paula Bento!', 'success')" class="btn-outline-pb text-xs">
-                                <i class="fa-solid fa-file-pdf mr-1 text-red-600"></i> Gerar PDF
-                            </button>
-                            <button onclick="showToast('Link do orçamento enviado via WhatsApp!', 'success')" class="btn-pb text-xs">
-                                <i class="fa-brands fa-whatsapp mr-1"></i> Enviar WhatsApp
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 10. INTELIGÊNCIA DE CATÁLOGO -->
-            <section id="inteligencia" class="page max-w-7xl mx-auto">
-                <div class="space-y-4">
-                    <div class="border-b border-[#ded3c9] pb-3">
-                        <h2 class="text-xl font-bold font-serif-brand text-[#45362F]">Inteligência de Precificação & Elasticidade</h2>
-                        <p class="text-xs text-slate-500">Matriz de análise de rentabilidade por canal de venda.</p>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="card p-5">
-                            <h3 class="font-bold text-sm text-[#45362F] mb-3"><i class="fa-solid fa-sliders text-amber-600 mr-2"></i>Simulador de Elasticidade de Preço</h3>
-                            <div class="space-y-3 text-xs">
-                                <div>
-                                    <div class="flex justify-between font-bold mb-1">
-                                        <span>Aumento/Desconto de Preço:</span>
-                                        <span id="elasticidadeVal" class="font-mono-tech text-amber-700">0%</span>
-                                    </div>
-                                    <input type="range" min="-20" max="30" value="0" id="elasticidadeRange" oninput="atualizarElasticidade(this.value)" class="w-full">
-                                </div>
-                                <div class="bg-[#f4eee8] p-3 rounded-xl border border-[#ded3c9] space-y-1">
-                                    <div class="flex justify-between"><span>Demanda Estimada:</span> <strong id="demandaEst" class="font-mono-tech">100%</strong></div>
-                                    <div class="flex justify-between"><span>Faturamento Projetado:</span> <strong id="faturamentoEst" class="font-mono-tech text-emerald-700">R$ 100.000,00</strong></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card p-5">
-                            <h3 class="font-bold text-sm text-[#45362F] mb-2"><i class="fa-solid fa-bullseye text-emerald-600 mr-2"></i>Meta de Margem por Categoria</h3>
-                            <div class="space-y-2 text-xs font-mono-tech">
-                                <div class="flex justify-between items-center">
-                                    <span>Decoração & Ateliê</span>
-                                    <span class="pill">Meta 45% (Atual 48%)</span>
-                                </div>
-                                <div class="flex justify-between items-center">
-                                    <span>Ferragens Império</span>
-                                    <span class="pill">Meta 30% (Atual 32%)</span>
-                                </div>
-                                <div class="flex justify-between items-center">
-                                    <span>Kits Escolares Pro</span>
-                                    <span class="pill">Meta 35% (Atual 36.5%)</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 11. CATÁLOGOS DIGITAIS -->
-            <section id="catalogos" class="page max-w-7xl mx-auto">
-                <div class="space-y-4">
-                    <div class="border-b border-[#ded3c9] pb-3">
-                        <h2 class="text-xl font-bold font-serif-brand text-[#45362F]">Catálogos Digitais & Vitrines Interativas</h2>
-                        <p class="text-xs text-slate-500">Vitrines prontas para compartilhamento comercial.</p>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <div class="card p-5 text-center">
-                            <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center mx-auto mb-3 font-bold text-xl">
-                                <i class="fa-solid fa-gem"></i>
-                            </div>
-                            <h3 class="font-bold text-sm">Coleção Ateliê Premium</h3>
-                            <p class="text-xs text-slate-500 mt-1 mb-3">Linha nobre de decoração e arte decorativa.</p>
-                            <button onclick="showToast('Vitrine Ateliê aberta para visualização do cliente!', 'info')" class="btn-outline-pb text-xs w-full">Visualizar Vitrine</button>
-                        </div>
-
-                        <div class="card p-5 text-center">
-                            <div class="w-12 h-12 rounded-xl bg-slate-200 text-slate-800 flex items-center justify-center mx-auto mb-3 font-bold text-xl">
-                                <i class="fa-solid fa-screwdriver-wrench"></i>
-                            </div>
-                            <h3 class="font-bold text-sm">Império Ferragens 2026</h3>
-                            <p class="text-xs text-slate-500 mt-1 mb-3">Fechaduras, puxadores e acessórios em inox.</p>
-                            <button onclick="showToast('Vitrine Império Ferragens aberta!', 'info')" class="btn-outline-pb text-xs w-full">Visualizar Vitrine</button>
-                        </div>
-
-                        <div class="card p-5 text-center">
-                            <div class="w-12 h-12 rounded-xl bg-purple-100 text-purple-800 flex items-center justify-center mx-auto mb-3 font-bold text-xl">
-                                <i class="fa-solid fa-graduation-cap"></i>
-                            </div>
-                            <h3 class="font-bold text-sm">Catálogo Escolar Pro</h3>
-                            <p class="text-xs text-slate-500 mt-1 mb-3">Listas e móveis escolares padronizados.</p>
-                            <button onclick="showToast('Vitrine Escolar Pro aberta!', 'info')" class="btn-outline-pb text-xs w-full">Visualizar Vitrine</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 12. IMPORTAÇÃO IA -->
-            <section id="importacao" class="page max-w-7xl mx-auto">
-                <div class="space-y-4">
-                    <div class="border-b border-[#ded3c9] pb-3">
-                        <h2 class="text-xl font-bold font-serif-brand text-[#45362F]"><i class="fa-solid fa-file-import text-teal-700 mr-2"></i>Importação Automática IA</h2>
-                        <p class="text-xs text-slate-500">Processamento de tabelas de fornecedores Excel, CSV e PDF via modelo de linguagem.</p>
-                    </div>
-
-                    <div class="card p-6 sm:p-10 text-center border-2 border-dashed border-[#c9b79a] bg-[#fbf7f2]">
-                        <i class="fa-solid fa-cloud-arrow-up text-3xl text-[#9a887c] mb-3"></i>
-                        <h3 class="text-sm font-bold text-[#45362F]">Arraste o arquivo aqui ou clique para selecionar</h3>
-                        <p class="text-xs text-slate-500 mt-1">Suporta formato .XLSX, .CSV ou PDF de catálogo de fornecedores.</p>
-                        <button onclick="simularImportacaoIA()" class="btn-pb text-xs mt-4">Simular Leitura IA de Tabela</button>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 13. CENTRAL WHATSAPP -->
-            <section id="comercial" class="page max-w-7xl mx-auto">
-                <div class="space-y-4">
-                    <div class="border-b border-[#ded3c9] pb-3">
-                        <h2 class="text-xl font-bold font-serif-brand text-[#45362F]"><i class="fa-solid fa-comments text-green-600 mr-2"></i>Central de Comunicação WhatsApp</h2>
-                        <p class="text-xs text-slate-500">Inbox unificado de atendimento e mensagens de vendas.</p>
-                    </div>
-
-                    <div class="card p-4 grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div class="space-y-2 md:border-r border-[#ded3c9] md:pr-3">
-                            <h3 class="font-bold text-xs uppercase text-slate-500">Conversas Ativas</h3>
-                            <div class="p-3 bg-[#f4eee8] rounded-xl cursor-pointer hover:bg-[#e8dfd5]">
-                                <strong class="text-xs block">Construtora Silva</strong>
-                                <span class="text-[10px] text-slate-500">Aguardando orçamento da linha inox...</span>
-                            </div>
-                            <div class="p-3 bg-white rounded-xl border border-[#ded3c9] cursor-pointer hover:bg-[#f4eee8]">
-                                <strong class="text-xs block">Arq. Roberto</strong>
-                                <span class="text-[10px] text-slate-500">Proposta aprovada! Enviar PIX.</span>
-                            </div>
-                        </div>
-
-                        <div class="md:col-span-2 flex flex-col justify-between h-[320px] sm:h-[360px]">
-                            <div id="chatWindow" class="space-y-2 overflow-y-auto p-3 bg-[#fbf7f2] rounded-xl border border-[#ded3c9] flex-1 mb-3">
-                                <div class="bg-white p-2.5 rounded-xl text-xs max-w-[85%] border border-[#ded3c9]">
-                                    <strong>Cliente:</strong> Olá, gostaria da cotação para 50 kits escolares.
-                                </div>
-                                <div class="bg-[#e2f7e2] p-2.5 rounded-xl text-xs max-w-[85%] ml-auto border border-green-200">
-                                    <strong>Atendente IA:</strong> Olá! Claro, temos o modelo 2026 pronto. Enviarei o link em PDF!
-                                </div>
-                            </div>
-
-                            <div class="flex gap-2">
-                                <input type="text" id="chatInput" placeholder="Digite uma resposta..." class="flex-1 p-2.5 border rounded-xl text-xs outline-none focus:border-[#9a887c]">
-                                <button onclick="enviarMensagemChat()" class="btn-pb text-xs px-4"><i class="fa-solid fa-paper-plane"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 14. CENTRAL ESCOLAR PRO -->
-            <section id="escolar" class="page max-w-7xl mx-auto">
-                <div class="space-y-4">
-                    <div class="border-b border-[#ded3c9] pb-3">
-                        <h2 class="text-xl font-bold font-serif-brand text-[#45362F]"><i class="fa-solid fa-graduation-cap text-purple-700 mr-2"></i>Central Escolar Pro</h2>
-                        <p class="text-xs text-slate-500">Módulo especializado para elaboração de kits escolares e precificação por lista de turmas.</p>
-                    </div>
-
-                    <div class="card p-4 sm:p-6">
-                        <h3 class="text-sm font-bold mb-3">Montador Automático de Kit por Série</h3>
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs mb-4">
-                            <div>
-                                <label class="block font-bold text-slate-600 mb-1">Selecione a Escola</label>
-                                <select class="w-full p-2 border rounded-xl">
-                                    <option>Escola Dom Pedro I</option>
-                                    <option>Colégio Santa Maria</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block font-bold text-slate-600 mb-1">Série / Ano</label>
-                                <select class="w-full p-2 border rounded-xl">
-                                    <option>5º Ano - Ensino Fundamental</option>
-                                    <option>6º Ano - Ensino Fundamental</option>
-                                </select>
-                            </div>
-                            <div class="flex items-end">
-                                <button onclick="showToast('Kit gerado com sucesso! Total estimado: R$ 420,00', 'success')" class="btn-pb w-full py-2.5 text-xs">Gerar Kit Completo</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 15. SISTEMA NOSSA CASA -->
-            <section id="nossacasa" class="page max-w-7xl mx-auto">
-                <div class="space-y-4">
-                    <div class="border-b border-[#ded3c9] pb-3">
-                        <h2 class="text-xl font-bold font-serif-brand text-[#45362F]"><i class="fa-solid fa-house text-amber-700 mr-2"></i>Sistema Nossa Casa • Projetos & Interiores</h2>
-                        <p class="text-xs text-slate-500">Gestão de orçamentos para artigos de decoração, cortinas e ambientação corporativa.</p>
-                    </div>
-
-                    <div class="card p-6">
-                        <p class="text-xs text-slate-600 leading-relaxed">
-                            Acompanhamento de medições, amostras selecionadas e propostas exclusivas do ateliê para arquitetos e clientes finais.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 16. ETIQUETAS & BARCODE -->
-            <section id="etiquetas" class="page max-w-7xl mx-auto">
-                <div class="space-y-4">
-                    <div class="border-b border-[#ded3c9] pb-3">
-                        <h2 class="text-xl font-bold font-serif-brand text-[#45362F]"><i class="fa-solid fa-barcode text-slate-700 mr-2"></i>Etiquetas & Código de Barras</h2>
-                        <p class="text-xs text-slate-500">Gerador e impressor de etiquetas de gôndola e código EAN-13.</p>
-                    </div>
-
-                    <div class="card p-6">
-                        <div class="flex flex-col sm:flex-row items-center gap-4">
-                            <div class="border p-4 rounded-xl bg-white text-center font-mono-tech w-full sm:w-auto">
-                                <i class="fa-solid fa-barcode text-4xl block mb-2"></i>
-                                <span class="text-xs font-bold">7891234567890</span>
-                                <div class="text-[10px] text-slate-500">Kit Decorativo PB</div>
-                            </div>
-                            <div>
-                                <button onclick="showToast('Enviando impressão de 50 etiquetas para a impressora térmica...', 'info')" class="btn-pb text-xs">
-                                    <i class="fa-solid fa-print mr-1"></i> Imprimir Lote
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 17. AGENTES VIRTUAIS IA -->
-            <section id="virtuais" class="page max-w-7xl mx-auto">
-                <div class="space-y-4">
-                    <div class="border-b border-[#ded3c9] pb-3">
-                        <h2 class="text-xl font-bold font-serif-brand text-[#45362F]"><i class="fa-solid fa-robot text-cyan-700 mr-2"></i>Agentes Virtuais & IA</h2>
-                        <p class="text-xs text-slate-500">Configuração de prompts e assistentes de atendimento automático.</p>
-                    </div>
-                    <div class="card p-6">
-                        <p class="text-xs text-slate-600">Agentes de atendimento integrados com OpenAI GPT-4o para resposta a leads via WhatsApp e e-mail.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 18. MARKETING & STUDIO -->
-            <section id="marketing" class="page max-w-7xl mx-auto">
-                <div class="space-y-4">
-                    <div class="border-b border-[#ded3c9] pb-3">
-                        <h2 class="text-xl font-bold font-serif-brand text-[#45362F]"><i class="fa-solid fa-bullhorn text-pink-700 mr-2"></i>Marketing & Studio</h2>
-                        <p class="text-xs text-slate-500">Planejamento de campanhas e criativos das empresas.</p>
-                    </div>
-                    <div class="card p-6">
-                        <p class="text-xs text-slate-600">Planejamento de campanhas sazonais e disparos promocionais.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 19. FINANCEIRO & CUSTOS -->
-            <section id="financeiro" class="page max-w-7xl mx-auto">
-                <div class="space-y-4">
-                    <div class="border-b border-[#ded3c9] pb-3">
-                        <h2 class="text-xl font-bold font-serif-brand text-[#45362F]"><i class="fa-solid fa-chart-line text-emerald-700 mr-2"></i>Rentabilidade & Custos</h2>
-                        <p class="text-xs text-slate-500">Demonstrativo de resultados e fluxo de caixa consolidado.</p>
-                    </div>
-                    <div class="card p-6">
-                        <p class="text-xs text-slate-600">Controle financeiro e conciliação bancária integrados.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 20. RELATÓRIOS EXECUTIVOS -->
-            <section id="relatorios" class="page max-w-7xl mx-auto">
-                <div class="space-y-4">
-                    <div class="border-b border-[#ded3c9] pb-3">
-                        <h2 class="text-xl font-bold font-serif-brand text-[#45362F]"><i class="fa-solid fa-chart-pie text-amber-700 mr-2"></i>Relatórios Executivos</h2>
-                        <p class="text-xs text-slate-500">Exportação de relatórios gerenciais para diretoria.</p>
-                    </div>
-                    <div class="card p-6">
-                        <p class="text-xs text-slate-600">Geração de relatórios consolidados em PDF e CSV.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 21. AUDITORIA & APROVAÇÕES -->
-            <section id="auditoria" class="page max-w-7xl mx-auto">
-                <div class="space-y-4">
-                    <div class="border-b border-[#ded3c9] pb-3">
-                        <h2 class="text-xl font-bold font-serif-brand text-[#45362F]"><i class="fa-solid fa-shield-halved text-rose-700 mr-2"></i>Auditoria & Aprovações</h2>
-                        <p class="text-xs text-slate-500">Log de atividades e liberação de exceções de margem e descontos.</p>
-                    </div>
-                    <div class="card p-6">
-                        <p class="text-xs text-slate-600">Rastreabilidade completa de ações e alterações de preços.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 22. CONFIGURAÇÕES -->
-            <section id="configuracoes" class="page max-w-7xl mx-auto">
-                <div class="space-y-4">
-                    <div class="border-b border-[#ded3c9] pb-3">
-                        <h2 class="text-xl font-bold font-serif-brand text-[#45362F]"><i class="fa-solid fa-gear text-slate-700 mr-2"></i>Configurações do Sistema</h2>
-                        <p class="text-xs text-slate-500">Parâmetros gerais da holding e preferências de usuário.</p>
-                    </div>
-                    <div class="card p-6 space-y-4">
                         <div>
-                            <h3 class="font-bold text-sm text-[#45362F] mb-2">Segurança e PIN Master</h3>
-                            <button onclick="QG_AUTH.abrirAlterarPIN()" class="btn-pb text-xs">Alterar PIN de Acesso (V6)</button>
+                            <label class="block text-slate-500 mb-1 font-semibold">Administradora Responsável</label>
+                            <input type="text" value="Ana Paula Bento da Silva" class="w-full bg-[#f4eee8] border border-[#ded3c9] rounded-xl px-3 py-2 text-[#2F3133] font-bold outline-none">
                         </div>
                     </div>
+                    <button onclick="showToast('Configurações salvas com sucesso!')" class="btn-pb text-xs">Salvar Alterações</button>
                 </div>
             </section>
 
         </main>
     </div>
 
-    <!-- MOBILE BOTTOM NAVIGATION -->
-    <div class="mobile-nav md:hidden flex justify-around">
-        <button id="mobile-nav-corev5" onclick="pagina('corev5')"><i class="fa-solid fa-layer-group text-sm"></i><span>Core</span></button>
-        <button id="mobile-nav-dashboard" onclick="pagina('dashboard')"><i class="fa-solid fa-gauge text-sm"></i><span>Painel</span></button>
-        <button id="mobile-nav-pdv" onclick="pagina('pdv')"><i class="fa-solid fa-cash-register text-sm"></i><span>PDV</span></button>
-        <button id="mobile-nav-crm" onclick="pagina('crm')"><i class="fa-solid fa-user-group text-sm"></i><span>CRM</span></button>
-        <button id="mobile-nav-produtos" onclick="pagina('produtos')"><i class="fa-solid fa-boxes-stacked text-sm"></i><span>Estoque</span></button>
+    <!-- BOTTOM NAVIGATION (MOBILE) -->
+    <div class="mobile-bottom-nav">
+        <button onclick="pagina('corev5')" id="mob-corev5" class="active">
+            <i class="fa-solid fa-layer-group text-sm"></i>
+            <span>Início</span>
+        </button>
+        <button onclick="pagina('pdv')" id="mob-pdv">
+            <i class="fa-solid fa-cash-register text-sm"></i>
+            <span>PDV</span>
+        </button>
+        <button onclick="pagina('catalogos')" id="mob-catalogos">
+            <i class="fa-solid fa-book-open text-sm"></i>
+            <span>Catálogo</span>
+        </button>
+        <button onclick="pagina('crm')" id="mob-crm">
+            <i class="fa-solid fa-user-group text-sm"></i>
+            <span>CRM</span>
+        </button>
+        <button onclick="pagina('configuracoes')" id="mob-configuracoes">
+            <i class="fa-solid fa-gear text-sm"></i>
+            <span>Ajustes</span>
+        </button>
     </div>
 
-    <!-- JAVASCRIPT LOGIC & AUTH V6 MOTOR -->
+    <!-- RODAPÉ COMPLETO -->
+    <footer class="bg-[#0F0F10] text-slate-400 py-4 px-6 text-center text-xs border-t border-[#2a2a2c] z-30 shrink-0">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+            <p><strong>QG Central de Comando 001</strong> • Desenvolvido para Ana Paula Bento da Silva</p>
+            <p class="text-[11px] text-slate-500">Ambiente Protegido por QG Auth V6 • Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <!-- TOAST NOTIFICATION CONTAINER -->
+    <div id="toastContainer" class="fixed bottom-20 sm:bottom-6 right-4 z-[999999] flex flex-col gap-2 pointer-events-none"></div>
+
+    <!-- JAVASCRIPT CORE ENGINE -->
     <script>
-        /* ============================================================
-           TOAST NOTIFICATIONS
-           ============================================================ */
-        function showToast(mensagem, tipo = 'info') {
-            let container = document.getElementById('toastContainer');
-            if (!container) {
-                container = document.createElement('div');
-                container.id = 'toastContainer';
-                container.className = 'fixed bottom-16 md:bottom-6 right-4 left-4 sm:left-auto sm:max-w-md z-[9999] flex flex-col gap-2 pointer-events-none';
-                document.body.appendChild(container);
-            }
-
-            const toast = document.createElement('div');
-            const colors = {
-                info: 'bg-[#0F0F10] text-[#FAF8F4] border-[#9A887C]',
-                success: 'bg-emerald-900 text-emerald-100 border-emerald-500',
-                warning: 'bg-amber-900 text-amber-100 border-amber-500'
-            };
-
-            toast.className = `px-4 py-3 rounded-xl border text-xs shadow-2xl font-medium transition-all transform translate-y-2 opacity-0 pointer-events-auto flex items-center gap-2 ${colors[tipo] || colors.info}`;
-            toast.innerHTML = `<i class="fa-solid fa-circle-info text-amber-400"></i> <span>${mensagem}</span>`;
-
-            container.appendChild(toast);
-
-            setTimeout(() => {
-                toast.classList.remove('translate-y-2', 'opacity-0');
-            }, 10);
-
-            setTimeout(() => {
-                toast.classList.add('opacity-0', 'translate-y-2');
-                setTimeout(() => toast.remove(), 300);
-            }, 3200);
-        }
-
-        /* ============================================================
-           QG CENTRAL DE COMANDO 001
-           AUTH V6 — MOTOR CENTRAL DE AUTENTICAÇÃO
-           ============================================================ */
-
+        // Sistema de Autenticação QG Auth V6
         const QG_AUTH = {
-
-            config: {
-                version: "V6.5",
-                defaultPin: "2026",
-                maxTentativas: 5,
-                bloqueioMinutos: 5,
-                storage: {
-                    pin: "qg001_auth_pin_v6",
-                    sessao: "qg001_auth_session_v6",
-                    lembrar: "qg001_auth_remember_v6",
-                    usuario: "qg001_auth_usuario_v6",
-                    empresa: "qg001_auth_empresa_v6",
-                    tentativas: "qg001_auth_tentativas_v6",
-                    bloqueio: "qg001_auth_bloqueio_v6"
-                }
-            },
-
-            estado: {
-                autenticado: false,
-                usuario: "Ana Paula Bento",
-                empresa: "PB003",
-                tentativas: 0,
-                bloqueado: false,
-                biometriaDisponivel: false
-            },
-
-            iniciar() {
-                try {
-                    this.inicializarPIN();
-                    this.carregarEstado();
-                    this.verificarBloqueio();
-                    this.detectarBiometria();
-                    this.configurarEventos();
-                    this.atualizarInterface();
-                } catch (erro) {
-                    console.error("QG AUTH V6:", erro);
-                    this.mostrarErro("Não foi possível inicializar a autenticação.");
-                }
-            },
-
-            inicializarPIN() {
-                if (!localStorage.getItem(this.config.storage.pin)) {
-                    localStorage.setItem(this.config.storage.pin, this.config.defaultPin);
-                }
-            },
-
-            obterPIN() {
-                return localStorage.getItem(this.config.storage.pin) || this.config.defaultPin;
-            },
-
-            carregarEstado() {
-                const usuario = localStorage.getItem(this.config.storage.usuario);
-                const empresa = localStorage.getItem(this.config.storage.empresa);
-
-                if (usuario) this.estado.usuario = usuario;
-                if (empresa) this.estado.empresa = empresa;
-
-                this.estado.tentativas = parseInt(
-                    localStorage.getItem(this.config.storage.tentativas) || "0",
-                    10
-                );
-            },
-
-            salvarSessao() {
-                sessionStorage.setItem(
-                    this.config.storage.sessao,
-                    JSON.stringify({
-                        autenticado: true,
-                        usuario: this.estado.usuario,
-                        empresa: this.estado.empresa,
-                        timestamp: Date.now()
-                    })
-                );
-            },
-
-            verificarSessao() {
-                const sessao = sessionStorage.getItem(this.config.storage.sessao);
-                const lembrar = localStorage.getItem(this.config.storage.lembrar);
-
-                if (sessao) {
-                    try {
-                        const dados = JSON.parse(sessao);
-                        if (dados && dados.autenticado === true) {
-                            this.estado.autenticado = true;
-                            this.liberarCentral();
-                            return true;
-                        }
-                    } catch (erro) {
-                        sessionStorage.removeItem(this.config.storage.sessao);
-                    }
-                }
-
-                if (lembrar === "true") {
-                    this.estado.autenticado = true;
-                    this.salvarSessao();
-                    this.liberarCentral();
-                    return true;
-                }
-
-                this.bloquearCentral();
-                return false;
-            },
-
-            validarAcesso(event) {
-                if (event) event.preventDefault();
-
-                if (this.estado.bloqueado) {
-                    this.mostrarBloqueio();
-                    return;
-                }
-
-                const campo = document.getElementById("accessPin");
-                if (!campo) return;
-
-                const pin = campo.value.trim();
-
-                if (!pin) {
-                    this.mostrarErro("Introduza o PIN de acesso.");
-                    campo.focus();
-                    return;
-                }
-
-                const pinCorreto = this.obterPIN();
-
-                if (pin === pinCorreto || pin === "001" || pin === "1234") {
-                    this.autorizacaoConcedida();
+            pinPadrao: "1234",
+            verificar() {
+                const salvo = localStorage.getItem('qg_auth_master_pin');
+                if(salvo) this.pinPadrao = salvo;
+                const token = sessionStorage.getItem('qg_authenticated') || localStorage.getItem('qg_authenticated');
+                if(token === 'true') {
+                    document.getElementById('qgAuthGate').classList.add('hidden');
                 } else {
-                    this.registrarTentativaFalha();
+                    document.getElementById('qgAuthGate').classList.remove('hidden');
                 }
             },
-
-            autorizacaoConcedida() {
-                this.estado.autenticado = true;
-                this.estado.tentativas = 0;
-                localStorage.setItem(this.config.storage.tentativas, "0");
-
-                const remember = document.getElementById("rememberAccess");
-                if (remember && remember.checked) {
-                    localStorage.setItem(this.config.storage.lembrar, "true");
-                } else {
-                    localStorage.removeItem(this.config.storage.lembrar);
-                }
-
-                this.salvarSessao();
-                this.mostrarSucesso("Acesso autorizado. A iniciar Central 001...");
-
-                setTimeout(() => {
-                    this.liberarCentral();
-                }, 250);
-            },
-
-            liberarCentral() {
-                const gate = document.getElementById("qgAuthGate");
-                if (gate) gate.classList.add("hidden");
-                this.estado.autenticado = true;
-
-                try {
-                    if (typeof initCharts === "function") {
-                        setTimeout(initCharts, 100);
-                    }
-                } catch (erro) {
-                    console.warn("QG AUTH: initCharts não disponível.", erro);
-                }
-            },
-
-            bloquearCentral() {
-                this.estado.autenticado = false;
-                const campo = document.getElementById("accessPin");
-                if (campo) campo.value = "";
-                this.limparMensagens();
-
-                const gate = document.getElementById("qgAuthGate");
-                if (gate) gate.classList.remove("hidden");
-
-                setTimeout(() => {
-                    if (campo) campo.focus();
-                }, 100);
-            },
-
             bloquear() {
-                sessionStorage.removeItem(this.config.storage.sessao);
-                this.estado.autenticado = false;
-                this.bloquearCentral();
+                sessionStorage.removeItem('qg_authenticated');
+                localStorage.removeItem('qg_authenticated');
+                document.getElementById('accessPin').value = '';
+                document.getElementById('qgAuthGate').classList.remove('hidden');
+                showToast('Sistema bloqueado com segurança.', 'info');
             },
-
-            sair() {
-                this.bloquear();
-            },
-
-            registrarTentativaFalha() {
-                this.estado.tentativas++;
-                localStorage.setItem(this.config.storage.tentativas, String(this.estado.tentativas));
-
-                const restantes = this.config.maxTentativas - this.estado.tentativas;
-                if (restantes <= 0) {
-                    this.iniciarBloqueio();
-                    return;
-                }
-
-                this.mostrarErro(`PIN incorreto. Tentativas restantes: ${restantes}.`);
-                const campo = document.getElementById("accessPin");
-                if (campo) {
-                    campo.value = "";
-                    campo.focus();
-                }
-            },
-
-            iniciarBloqueio() {
-                const fim = Date.now() + (this.config.bloqueioMinutos * 60 * 1000);
-                localStorage.setItem(this.config.storage.bloqueio, String(fim));
-                this.estado.bloqueado = true;
-                this.mostrarBloqueio();
-            },
-
-            verificarBloqueio() {
-                const bloqueio = parseInt(localStorage.getItem(this.config.storage.bloqueio) || "0", 10);
-                if (bloqueio && Date.now() < bloqueio) {
-                    this.estado.bloqueado = true;
-                    this.mostrarBloqueio();
-                    return true;
-                }
-                localStorage.removeItem(this.config.storage.bloqueio);
-                this.estado.bloqueado = false;
-                this.estado.tentativas = 0;
-                localStorage.setItem(this.config.storage.tentativas, "0");
-                return false;
-            },
-
             alternarVisibilidadePIN() {
-                const campo = document.getElementById("accessPin");
-                const icone = document.getElementById("togglePinIcon");
-                const botao = document.getElementById("togglePinVisibility");
-
-                if (!campo) return;
-
-                if (campo.type === "password") {
-                    campo.type = "text";
-                    if (icone) icone.className = "fa-solid fa-eye-slash";
-                    if (botao) botao.setAttribute("aria-label", "Ocultar PIN");
+                const input = document.getElementById('accessPin');
+                const icon = document.getElementById('togglePinIcon');
+                if(input.type === 'password') {
+                    input.type = 'text';
+                    icon.className = 'fa-solid fa-eye-slash';
                 } else {
-                    campo.type = "password";
-                    if (icone) icone.className = "fa-solid fa-eye";
-                    if (botao) botao.setAttribute("aria-label", "Mostrar PIN");
+                    input.type = 'password';
+                    icon.className = 'fa-solid fa-eye';
                 }
             },
-
-            atualizarContadorPIN() {
-                const campo = document.getElementById("accessPin");
-                const contador = document.getElementById("pinCounter");
-                if (!campo || !contador) return;
-                contador.textContent = `${campo.value.length} caracteres`;
-            },
-
-            limparMensagens() {
-                ["authError", "authSuccess", "authLockout"].forEach(id => {
-                    const elemento = document.getElementById(id);
-                    if (elemento) elemento.classList.add("hidden");
-                });
-            },
-
-            mostrarErro(mensagem) {
-                const erro = document.getElementById("authError");
-                const texto = document.getElementById("authErrorText");
-                if (texto) texto.textContent = mensagem;
-                if (erro) erro.classList.remove("hidden");
-
-                const sucesso = document.getElementById("authSuccess");
-                if (sucesso) sucesso.classList.add("hidden");
-            },
-
-            mostrarSucesso(mensagem) {
-                const sucesso = document.getElementById("authSuccess");
-                const textoSucesso = document.getElementById("authSuccessText");
-                if (!sucesso) return;
-                if (textoSucesso) textoSucesso.textContent = mensagem;
-                sucesso.classList.remove("hidden");
-
-                const erro = document.getElementById("authError");
-                if (erro) erro.classList.add("hidden");
-            },
-
-            mostrarBloqueio() {
-                const box = document.getElementById("authLockout");
-                const texto = document.getElementById("authLockoutText");
-
-                if (box) box.classList.remove("hidden");
-                if (texto) {
-                    const bloqueio = parseInt(localStorage.getItem(this.config.storage.bloqueio) || "0", 10);
-                    const segundos = Math.max(0, Math.ceil((bloqueio - Date.now()) / 1000));
-                    texto.textContent = segundos > 0 ? `Central bloqueada. Aguarde ${segundos}s.` : "Central temporariamente bloqueada.";
-                }
-
-                const botao = document.getElementById("authSubmitButton");
-                if (botao) {
-                    botao.disabled = true;
-                    botao.classList.add("opacity-50", "cursor-not-allowed");
-                }
-            },
-
             abrirAlterarPIN() {
-                const modal = document.getElementById("changePinModal");
-                if (!modal) return;
-                modal.classList.remove("hidden");
-                modal.classList.add("flex");
-                const campo = document.getElementById("currentPin");
-                if (campo) campo.focus();
+                document.getElementById('changePinModal').classList.remove('hidden');
+                document.getElementById('changePinModal').classList.add('flex');
             },
-
             fecharAlterarPIN() {
-                const modal = document.getElementById("changePinModal");
-                if (!modal) return;
-                modal.classList.add("hidden");
-                modal.classList.remove("flex");
-
-                ["currentPin", "newPin", "confirmPin"].forEach(id => {
-                    const campo = document.getElementById(id);
-                    if (campo) campo.value = "";
-                });
-
-                const erro = document.getElementById("changePinError");
-                if (erro) {
-                    erro.classList.add("hidden");
-                    erro.textContent = "";
-                }
+                document.getElementById('changePinModal').classList.remove('flex');
+                document.getElementById('changePinModal').classList.add('hidden');
             },
+            salvarNovoPIN(e) {
+                e.preventDefault();
+                const atual = document.getElementById('currentPin').value;
+                const novo = document.getElementById('newPin').value;
+                const confirma = document.getElementById('confirmPin').value;
+                const errDiv = document.getElementById('changePinError');
 
-            salvarNovoPIN(event) {
-                if (event) event.preventDefault();
-                const atual = document.getElementById("currentPin")?.value.trim();
-                const novo = document.getElementById("newPin")?.value.trim();
-                const confirmacao = document.getElementById("confirmPin")?.value.trim();
-
-                if (atual !== this.obterPIN()) {
-                    this.mostrarErroAlteracaoPIN("O PIN atual está incorreto.");
+                if(atual !== this.pinPadrao) {
+                    errDiv.textContent = 'PIN atual incorreto.';
+                    errDiv.classList.remove('hidden');
+                    return;
+                }
+                if(novo.length < 4) {
+                    errDiv.textContent = 'O novo PIN deve ter pelo menos 4 caracteres.';
+                    errDiv.classList.remove('hidden');
+                    return;
+                }
+                if(novo !== confirma) {
+                    errDiv.textContent = 'A confirmação do PIN não confere.';
+                    errDiv.classList.remove('hidden');
                     return;
                 }
 
-                if (!novo || novo.length < 4) {
-                    this.mostrarErroAlteracaoPIN("O novo PIN deve ter pelo menos 4 caracteres.");
-                    return;
-                }
-
-                if (novo !== confirmacao) {
-                    this.mostrarErroAlteracaoPIN("A confirmação do PIN não coincide.");
-                    return;
-                }
-
-                localStorage.setItem(this.config.storage.pin, novo);
+                this.pinPadrao = novo;
+                localStorage.setItem('qg_auth_master_pin', novo);
+                errDiv.classList.add('hidden');
                 this.fecharAlterarPIN();
-                this.mostrarSucesso("PIN alterado com sucesso.");
-
-                const campo = document.getElementById("accessPin");
-                if (campo) {
-                    campo.value = "";
-                    campo.focus();
-                }
-            },
-
-            mostrarErroAlteracaoPIN(mensagem) {
-                const erro = document.getElementById("changePinError");
-                if (!erro) return;
-                erro.textContent = mensagem;
-                erro.classList.remove("hidden");
-            },
-
-            async detectarBiometria() {
-                try {
-                    if (window.PublicKeyCredential && typeof PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable === "function") {
-                        const disponivel = await PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable();
-                        this.estado.biometriaDisponivel = disponivel;
-                        const botao = document.getElementById("biometricButton");
-                        if (botao && disponivel) {
-                            botao.classList.remove("hidden");
-                        }
-                    }
-                } catch (erro) {
-                    console.warn("Biometria não disponível:", erro);
-                }
-            },
-
-            async entrarComBiometria() {
-                if (!window.PublicKeyCredential) {
-                    showToast("Este dispositivo não suporta Passkeys/WebAuthn.", "warning");
-                    return;
-                }
-                showToast("Biometria confirmada! Autenticando...", "success");
-                this.autorizacaoConcedida();
-            },
-
-            atualizarInterface() {
-                const dispositivo = document.getElementById("authDeviceStatus");
-                if (dispositivo) {
-                    dispositivo.textContent = this.estado.autenticado ? "Dispositivo autorizado" : "Dispositivo não autorizado";
-                }
-
-                const empresa = this.estado.empresa;
-                const badge = document.getElementById("headerEmpresaBadge");
-                if (empresa && badge) {
-                    const nomes = {
-                        PB001: "PB001 • Paula Bento Ateliê",
-                        PB002: "PB002 • Império Ferragens",
-                        PB003: "PB003 • Loja da Fábrica - Piloto",
-                        PBIRP001: "PBIRP001 • Soluções ERP"
-                    };
-                    badge.textContent = nomes[empresa] || empresa;
-                }
-
-                const selectEmpresa = document.getElementById("empresaAtual");
-                if (selectEmpresa && empresa) {
-                    selectEmpresa.value = empresa;
-                }
-            },
-
-            configurarEventos() {
-                const campo = document.getElementById("accessPin");
-                if (campo) {
-                    campo.addEventListener("input", () => {
-                        this.atualizarContadorPIN();
-                        const erro = document.getElementById("authError");
-                        if (erro) erro.classList.add("hidden");
-                    });
-                }
-
-                document.addEventListener("keydown", event => {
-                    if (event.key === "Escape") {
-                        this.fecharAlterarPIN();
-                    }
-                });
-
-                window.addEventListener("pageshow", () => {
-                    this.verificarBloqueio();
-                    if (!this.estado.autenticado) {
-                        this.verificarSessao();
-                    }
-                });
+                showToast('PIN master alterado com sucesso!');
             }
         };
 
-        function validarAcesso(event) {
-            return QG_AUTH.validarAcesso(event);
+        function atualizarContadorPin(el) {
+            const len = el.value.length;
+            document.getElementById('pinCounter').textContent = `${len} caractere${len === 1 ? '' : 's'}`;
         }
 
-        function bloquearCentral() {
-            return QG_AUTH.bloquearCentral();
+        function validarAcesso(e) {
+            e.preventDefault();
+            const pin = document.getElementById('accessPin').value;
+            const lembrar = document.getElementById('rememberAccess').checked;
+            const errBox = document.getElementById('authError');
+            const successBox = document.getElementById('authSuccess');
+
+            if(pin === QG_AUTH.pinPadrao) {
+                errBox.classList.add('hidden');
+                successBox.classList.remove('hidden');
+                if(lembrar) {
+                    localStorage.setItem('qg_authenticated', 'true');
+                } else {
+                    sessionStorage.setItem('qg_authenticated', 'true');
+                }
+                setTimeout(() => {
+                    document.getElementById('qgAuthGate').classList.add('hidden');
+                    successBox.classList.add('hidden');
+                    showToast('Bem-vinda ao QG Central, Ana Paula Bento!');
+                }, 600);
+            } else {
+                errBox.classList.remove('hidden');
+            }
         }
 
-        /* ============================================================
-           NAVEGAÇÃO COMPLETA DE MÓDULOS E LOCAIS (SPA NAVIGATOR)
-           ============================================================ */
+        // Navegação de Páginas (Single Page Architecture)
         function pagina(id) {
-            const targetPage = document.getElementById(id);
-            if (!targetPage) {
-                console.warn(`Página/Módulo "${id}" não encontrado.`);
-                return;
-            }
-
-            // Ocultar todas as seções
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            
-            // Desativar itens de menu desktop
             document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+            document.querySelectorAll('.mobile-bottom-nav button').forEach(b => b.classList.remove('active'));
 
-            // Desativar botões da navegação móvel
-            document.querySelectorAll('.mobile-nav button').forEach(b => b.classList.remove('active'));
+            const targetPage = document.getElementById(id);
+            const targetNav = document.getElementById('nav-' + id);
+            const targetMob = document.getElementById('mob-' + id);
 
-            // Ativar a página de destino
-            targetPage.classList.add('active');
+            if(targetPage) targetPage.classList.add('active');
+            if(targetNav) targetNav.classList.add('active');
+            if(targetMob) targetMob.classList.add('active');
 
-            // Ativar item de navegação desktop correspondente
-            const nav = document.getElementById('nav-' + id);
-            if (nav) nav.classList.add('active');
-
-            // Ativar item de navegação mobile correspondente
-            const mobileNav = document.getElementById('mobile-nav-' + id);
-            if (mobileNav) mobileNav.classList.add('active');
-
-            // Fechar sidebar mobile se estiver aberta
-            closeMobileSidebar();
-
-            // Rolar painel principal para o topo
-            const mainContent = document.querySelector('main');
-            if (mainContent) mainContent.scrollTop = 0;
-
-            // Se a página ativada for o Dashboard, acionar redimensionamento e re-render dos gráficos
-            if (id === 'dashboard') {
-                setTimeout(initCharts, 80);
+            // Fecha o menu mobile se estiver aberto
+            const sidebar = document.getElementById('mainSidebar');
+            const backdrop = document.getElementById('sidebarBackdrop');
+            if(sidebar && !sidebar.classList.contains('-translate-x-full')) {
+                sidebar.classList.add('-translate-x-full');
+                if(backdrop) backdrop.classList.add('hidden');
             }
-        }
 
-        function trocarEmpresa(valor) {
-            QG_AUTH.estado.empresa = valor;
-            localStorage.setItem(QG_AUTH.config.storage.empresa, valor);
-            QG_AUTH.atualizarInterface();
-
-            const nomes = {
-                PB001: "PB001 — Paula Bento Ateliê",
-                PB002: "PB002 — Império Ferragens",
-                PB003: "PB003 — Loja da Fábrica (Piloto)",
-                PBIRP001: "PBIRP001 — Soluções ERP"
-            };
-
-            showToast(`Unidade alterada para: ${nomes[valor] || valor}`, 'success');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function toggleMobileSidebar() {
             const sidebar = document.getElementById('mainSidebar');
             const backdrop = document.getElementById('sidebarBackdrop');
-            if (sidebar && backdrop) {
-                if (sidebar.classList.contains('-translate-x-full')) {
-                    sidebar.classList.remove('-translate-x-full');
-                    sidebar.classList.add('translate-x-0');
-                    backdrop.classList.remove('hidden');
-                } else {
-                    closeMobileSidebar();
-                }
-            }
-        }
-
-        function closeMobileSidebar() {
-            const sidebar = document.getElementById('mainSidebar');
-            const backdrop = document.getElementById('sidebarBackdrop');
-            if (sidebar && backdrop && window.innerWidth < 768) {
-                sidebar.classList.add('-translate-x-full');
-                sidebar.classList.remove('translate-x-0');
-                backdrop.classList.add('hidden');
-            }
-        }
-
-        /* ============================================================
-           PDV & CARRINHO DE COMPRAS
-           ============================================================ */
-        let cart = [];
-
-        function addToCart(nome, preco) {
-            const item = cart.find(i => i.nome === nome);
-            if (item) {
-                item.qtd++;
+            if(sidebar.classList.contains('-translate-x-full')) {
+                sidebar.classList.remove('-translate-x-full');
+                if(backdrop) backdrop.classList.remove('hidden');
             } else {
-                cart.push({ nome, preco, qtd: 1 });
-            }
-            renderCart();
-            showToast(`Adicionado: ${nome}`, 'info');
-        }
-
-        function renderCart() {
-            const container = document.getElementById('cart-items');
-            const totalEl = document.getElementById('cart-total');
-            const discount = parseFloat(document.getElementById('cartDiscount')?.value || 0);
-
-            if (!container || !totalEl) return;
-
-            if (cart.length === 0) {
-                container.innerHTML = '<div class="text-slate-400 italic text-center pt-10">Nenhum item selecionado</div>';
-                totalEl.textContent = 'R$ 0,00';
-                return;
-            }
-
-            let html = '';
-            let subtotal = 0;
-
-            cart.forEach((item, index) => {
-                const totalItem = item.preco * item.qtd;
-                subtotal += totalItem;
-                html += `
-                    <div class="flex justify-between items-center bg-[#f4eee8] p-2 rounded-xl border border-[#ded3c9]">
-                        <div>
-                            <strong class="block text-slate-800 font-sans text-xs">${item.nome}</strong>
-                            <span class="text-[10px] text-slate-500">${item.qtd}x R$ ${item.preco.toFixed(2)}</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <span class="font-bold text-emerald-700 text-xs">R$ ${totalItem.toFixed(2)}</span>
-                            <button onclick="removeFromCart(${index})" class="text-red-600 font-bold px-1 hover:text-red-800 text-sm">×</button>
-                        </div>
-                    </div>
-                `;
-            });
-
-            container.innerHTML = html;
-            const final = Math.max(0, subtotal - discount);
-            totalEl.textContent = `R$ ${final.toFixed(2)}`;
-        }
-
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            renderCart();
-        }
-
-        function clearCart() {
-            cart = [];
-            renderCart();
-            showToast('Carrinho limpo.', 'info');
-        }
-
-        function finishSale() {
-            if (cart.length === 0) {
-                showToast('Adicione itens ao carrinho antes de concluir a venda.', 'warning');
-                return;
-            }
-            showToast('Venda concluída com sucesso! Recibo e estoque atualizados.', 'success');
-            cart = [];
-            renderCart();
-        }
-
-        function filtrarPdv(termo) {
-            const termoLower = termo.toLowerCase();
-            const cards = document.querySelectorAll('#pdvGrid > div');
-            cards.forEach(card => {
-                const texto = card.textContent.toLowerCase();
-                if (texto.includes(termoLower)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-
-        /* ============================================================
-           SIMULADORES E FERRAMENTAS INTERATIVAS
-           ============================================================ */
-        function calcularPrecoMargem() {
-            const custo = parseFloat(document.getElementById('calcCusto').value) || 0;
-            const margem = parseFloat(document.getElementById('calcMargem').value) || 0;
-            const preco = margem >= 100 ? custo : custo / (1 - (margem / 100));
-            const lucro = preco - custo;
-
-            document.getElementById('calcPrecoResult').textContent = `R$ ${preco.toFixed(2)}`;
-            document.getElementById('calcLucroResult').textContent = `R$ ${lucro.toFixed(2)}`;
-        }
-
-        function atualizarElasticidade(val) {
-            document.getElementById('elasticidadeVal').textContent = `${val}%`;
-            const demanda = Math.max(20, 100 - (val * 1.5));
-            const faturamento = 100000 * (1 + (val / 100)) * (demanda / 100);
-            document.getElementById('demandaEst').textContent = `${demanda.toFixed(0)}%`;
-            document.getElementById('faturamentoEst').textContent = `R$ ${faturamento.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
-        }
-
-        function simularImportacaoIA() {
-            showToast('IA GPT-4o processou o arquivo! 14 novos SKUs integrados.', 'success');
-        }
-
-        function enviarMensagemChat() {
-            const input = document.getElementById('chatInput');
-            const windowChat = document.getElementById('chatWindow');
-            if (!input || !input.value.trim()) return;
-
-            windowChat.innerHTML += `
-                <div class="bg-[#e2f7e2] p-2.5 rounded-xl text-xs max-w-[85%] ml-auto border border-green-200">
-                    <strong>Ana Paula:</strong> ${input.value}
-                </div>
-            `;
-            input.value = '';
-            windowChat.scrollTop = windowChat.scrollHeight;
-        }
-
-        /* ============================================================
-           INICIALIZAÇÃO E RESIZE DE CHART.JS
-           ============================================================ */
-        let salesChartInstance = null;
-        let categoryChartInstance = null;
-
-        function initCharts() {
-            const ctxSales = document.getElementById('salesChart');
-            if (ctxSales) {
-                if (salesChartInstance) {
-                    salesChartInstance.resize();
-                    salesChartInstance.update();
-                } else {
-                    salesChartInstance = new Chart(ctxSales, {
-                        type: 'line',
-                        data: {
-                            labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
-                            datasets: [{
-                                label: 'Vendas (R$)',
-                                data: [12000, 15400, 14200, 18420, 22000, 29000, 24500],
-                                borderColor: '#45362F',
-                                backgroundColor: 'rgba(69, 54, 47, 0.08)',
-                                tension: 0.3,
-                                fill: true,
-                                borderWidth: 2
-                            }]
-                        },
-                        options: {
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            plugins: { legend: { display: false } },
-                            scales: {
-                                y: { beginAtZero: true, grid: { color: 'rgba(154, 136, 124, 0.15)' } },
-                                x: { grid: { display: false } }
-                            }
-                        }
-                    });
-                }
-            }
-
-            const ctxCat = document.getElementById('categoryChart');
-            if (ctxCat) {
-                if (categoryChartInstance) {
-                    categoryChartInstance.resize();
-                    categoryChartInstance.update();
-                } else {
-                    categoryChartInstance = new Chart(ctxCat, {
-                        type: 'doughnut',
-                        data: {
-                            labels: ['Ateliê', 'Ferragens', 'Escolar', 'Serviços'],
-                            datasets: [{
-                                data: [45, 25, 20, 10],
-                                backgroundColor: ['#45362F', '#9A887C', '#C9B79A', '#2F3133']
-                            }]
-                        },
-                        options: {
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10 } } } }
-                        }
-                    });
-                }
+                sidebar.classList.add('-translate-x-full');
+                if(backdrop) backdrop.classList.add('hidden');
             }
         }
 
-        // Listener de redimensionamento global para atualizar os gráficos
-        window.addEventListener('resize', () => {
-            if (salesChartInstance) salesChartInstance.resize();
-            if (categoryChartInstance) categoryChartInstance.resize();
-        });
+        function trocarEmpresa(val) {
+            const map = {
+                'PB001': 'PB001 • Paula Bento Ateliê',
+                'PB002': 'PB002 • Império Ferragens',
+                'PB003': 'PB003 • Loja da Fábrica (Piloto)',
+                'PBIRP001': 'PBIRP001 • Soluções ERP'
+            };
+            document.getElementById('headerEmpresaBadge').textContent = map[val] || val;
+            showToast(`Unidade alterada para: ${map[val]}`);
+        }
 
-        /* ============================================================
-           ARRANQUE DA APLICAÇÃO
-           ============================================================ */
-        document.addEventListener("DOMContentLoaded", () => {
-            QG_AUTH.iniciar();
-            QG_AUTH.verificarSessao();
+        function showToast(msg, type='success') {
+            const container = document.getElementById('toastContainer');
+            if(!container) return;
+            const toast = document.createElement('div');
+            toast.className = `pointer-events-auto px-4 py-3 rounded-xl shadow-xl text-xs font-bold text-white flex items-center gap-2 transition-all transform translate-y-2 opacity-0 ${type === 'info' ? 'bg-[#2F3133]' : 'bg-[#45362F] border border-[#c9b79a]'}`;
+            toast.innerHTML = `<i class="fa-solid ${type === 'info' ? 'fa-circle-info text-blue-400' : 'fa-circle-check text-amber-400'}"></i> <span>${msg}</span>`;
+            container.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.classList.remove('translate-y-2', 'opacity-0');
+            }, 10);
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-2', 'opacity-0');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        // Inicialização
+        window.addEventListener('DOMContentLoaded', () => {
+            QG_AUTH.verificar();
         });
     </script>
 </body>
